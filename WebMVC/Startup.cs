@@ -13,7 +13,7 @@ namespace WebMVC
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseStatusCodePages();
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
 
             if (env.IsDevelopment())
             {

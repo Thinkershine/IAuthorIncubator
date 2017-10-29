@@ -3,6 +3,8 @@
     background-size: cover;
 }
 
+
+
 nav {
     position: fixed;
     bottom: 0;
@@ -17,6 +19,15 @@ nav {
     border-radius: 69px 69px 128px 128px;
 }
 
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
     nav ul {
         list-style: none;
         padding: 15px;
@@ -29,6 +40,7 @@ nav {
             font-size: 1.6em;
             color: white;
         }
+
 
 h1 {
     color: white;

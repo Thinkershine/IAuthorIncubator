@@ -3,12 +3,41 @@
     background-size: cover;
 }
 
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    width: 55%;
+    padding: 0;
+    margin: 0 auto;
+    background-color: rgb(128, 128, 128);
+    background-color: rgba(128, 128, 128, 0.7);
+    border-radius: 69px 69px 128px 128px;
+}
+
+    nav ul {
+        list-style: none;
+        padding: 15px;
+        margin: 0;
+        text-align: center;
+    }
+
+        nav ul li {
+            display: inline;
+            font-size: 1.6em;
+            color: white;
+        }
+
 h1 {
     color: white;
+    background-color: rgb(128, 128, 128);
     background-color: rgba(128, 128, 128, 0.7);
     border-radius: 15px;
-    height: 5%; width: 25%;
-    padding: 15px; margin: 0 auto;
+    height: 5%;
+    width: 25%;
+    padding: 15px;
+    margin: 0 auto;
     text-align: center;
-
 }

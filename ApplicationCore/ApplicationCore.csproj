@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+    <Authors>Thinkershine: Sebastian Siemaszko</Authors>
+    <Company>Siemaszko Foundation</Company>
+    <Description>Application Domain Layer</Description>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <FileVersion>0.0.1.0</FileVersion>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Version>0.0.1</Version>
+    <Copyright>Siemaszko Foundation</Copyright>
+    <Product>ApplicationCore: IAuthorIncubator</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+
+</Project>

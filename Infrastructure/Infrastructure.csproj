@@ -6,21 +6,18 @@
     <ApplicationIcon />
     <StartupObject />
     <Authors>Thinkershine: Sebastian Siemaszko</Authors>
-    <Version>0.0.1</Version>
-    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <Version>0.0.2</Version>
+    <AssemblyVersion>0.0.2.0</AssemblyVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Copyright>Siemaszko Foundation</Copyright>
     <Company>Siemaszko Foundation</Company>
     <Description>DAO: Database Access Layer</Description>
     <Product>Infrastructure: IAuthorIncubator</Product>
+    <PackageReleaseNotes>InMemory: WritingDayHeaderRepository &amp; WritingPathRepository</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>

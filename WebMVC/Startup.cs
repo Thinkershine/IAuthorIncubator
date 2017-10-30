@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using ApplicationCore.Entities;
+using ApplicationCore.Interfaces;
+using Infrastructure.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,6 +11,8 @@ namespace WebMVC
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IRepository<WritingPath>, InMemoryWritingPathRepository<WritingPath>>();
+            services.AddScoped<IRepository<WritingDayHeader>, InMemoryWritingDayHeaderRepository<WritingDayHeader>>();
             services.AddMvc();
         }
 

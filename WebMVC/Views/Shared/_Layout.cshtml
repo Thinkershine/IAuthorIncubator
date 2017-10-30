@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link type="text/css" rel="stylesheet" href="~/css/HomePage.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/WritingPathComponent.css" />
 </head>
 <body>
     @Html.Partial("_NavigationPartial");
+
+    <div>
+        @await Component.InvokeAsync("WritingPathComponent", "Thinkershine")
+    </div>
     <div>
         @RenderBody()
     </div>
+
+    <script src="~/js/WritingPath.js" ></script>
 </body>
 </html>

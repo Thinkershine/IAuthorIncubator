@@ -1,16 +1,29 @@
 ﻿@model WritingPathViewModel
-<div id="writing-path-component">
-    <h2>Writer's Journey</h2>
-    <h3>Path: @Model.PathName</h3>
-    <div style="border: 2px solid black;">
+<div id="writing-path-component" class="hidden">
+    <div id="writing-path-header">
+        <h2>Writer's Journey</h2>
+        <h3>@Model.PathName</h3>
         <p>Words to Write: @Model.TotalWords.ToString("##,###")</p>
         <p>Duration: @Model.TotalDays days</p>
     </div>
-    @foreach (var day in Model.Days)
-    {
-        <h4>Day @day.DayNumber </h4>
-        <p>XP: @day.ExperienceReward</p>
-        <p>Goal: @day.RequiredWords words</p>
-        <p>@day.WrittenWords words written</p>
-    }
+
+    <div id="days-info-container">
+        <div id="days-info-body">
+            @foreach (var day in Model.Days)
+            {
+                <div class="writing-path-single-day-info">
+                    <span class="title">Day Title</span> <span class="writing-path-single-day-number">@day.DayNumber</span>
+
+                    <p>XP: @day.ExperienceReward <span>Goal: @day.RequiredWords words</span></p>
+
+                    <p>@day.WrittenWords words written <span><button class="do-it btn">Write</button></span></p>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="days-info-footer">
+        <h4>Your Stats</h4>
+        <p>Goal</p>
+        <p>Throphies</p>
+    </div>
 </div>

@@ -1,0 +1,16 @@
+﻿@model WritingPathViewModel
+<div id="writing-path-component">
+    <h2>Writer's Journey</h2>
+    <h3>Path: @Model.PathName</h3>
+    <div style="border: 2px solid black;">
+        <p>Words to Write: @Model.TotalWords.ToString("##,###")</p>
+        <p>Duration: @Model.TotalDays days</p>
+    </div>
+    @foreach (var day in Model.Days)
+    {
+        <h4>Day @day.DayNumber </h4>
+        <p>XP: @day.ExperienceReward</p>
+        <p>Goal: @day.RequiredWords words</p>
+        <p>@day.WrittenWords words written</p>
+    }
+</div>

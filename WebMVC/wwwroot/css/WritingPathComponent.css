@@ -1,0 +1,14 @@
+﻿#writing-path-component {
+    background-color: rgb(128, 128, 128);
+    background-color: rgba(128, 128, 128, 0.7);
+    width: 320px;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.hidden {
+    visibility: hidden;
+}

@@ -3,7 +3,11 @@
     background-size: cover;
 }
 
-
+html, body {
+    max-height: 100%;
+    overflow-y: hidden;
+    color: white;
+}
 
 nav {
     position: fixed;

@@ -4,7 +4,6 @@ using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using WebMVC.Services;
 
 namespace WebMVC
 {
@@ -14,7 +13,6 @@ namespace WebMVC
         {
             services.AddScoped<IRepository<WritingPath>, InMemoryWritingPathRepository<WritingPath>>();
             services.AddScoped<IRepository<WritingDayHeader>, InMemoryWritingDayHeaderRepository<WritingDayHeader>>();
-            services.AddScoped<IWriterPathService, WritingPathService>();
             services.AddMvc();
         }
 

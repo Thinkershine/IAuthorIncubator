@@ -15,7 +15,12 @@
 - ViewModels: WritingDayBodyViewModel, WritingDayHeaderViewModel, WritingPathViewModel
 - Views: WritingPathView, WritingDayView
 - WritingPathController</PackageReleaseNotes>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\app.ts" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="Helpers\NotFoundViewResult.cs" />
@@ -28,6 +33,14 @@
   <ItemGroup>
     <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\scripts\" />
   </ItemGroup>
 
 </Project>

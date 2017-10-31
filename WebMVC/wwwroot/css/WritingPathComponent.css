@@ -18,8 +18,14 @@
 }
 
     #writing-path-component:hover {
+        background-color: rgb(0,0,0);
         background-color: rgba(0,0,0,0.6);
     }
+
+.hidden {
+    opacity: 0;
+    left: -300px !important;
+}
 
 #writing-path-header, #days-info-footer {
     height: 18%;
@@ -44,7 +50,9 @@
     }
 
     #days-info-body::-webkit-scrollbar-track {
+        -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     }
 
     #days-info-body::-webkit-scrollbar-thumb {
@@ -86,7 +94,7 @@
     }
 
 .writing-path-single-day-number {
-    background-color: rgb(128, 128, 155);
+    background-color: goldenrod;
     background-clip: padding-box;
     background-origin: padding-box;
     border-radius: 3px;
@@ -98,11 +106,6 @@
     opacity: .8;
     width: 16px;
     text-align: center;
-}
-
-.hidden {
-    opacity: 0;
-    left: -300px !important;
 }
 
 .btn {
@@ -128,11 +131,11 @@
 }
 
     .btn:hover {
-        background-color: darkgreen;
+        background-color: rgb(70,139,14);
     }
 
 .do-it {
-    background-color: green;
+    background-color: rgb(115,183,64);
     width: 55px;
     height: 35px;
     margin-left: 25px;
@@ -142,4 +145,8 @@
     opacity: .8;
     z-index: 40;
     color: white;
+}
+
+.xp-reward {
+    color: goldenrod;
 }

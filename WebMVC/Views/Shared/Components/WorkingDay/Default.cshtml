@@ -1,6 +1,7 @@
 ﻿@model WritingDayBodyViewModel
 
-<div> @*WritingArea Component*@
+<div>
+    @*WritingArea Component*@
     <div id="writing-area-header">
         <h2></h2>
         <blockquote>@Model.HiddenQuote</blockquote>
@@ -8,5 +9,8 @@
     </div>
     <div id="writing-area-body">
         <p>Day @Model.Id</p>
+        <p id="main-writing-area">
+            <textarea id="txt" cols="45" rows="8" aria-required="true">@Model.WrittenText</textarea>
+        </p>
     </div>
 </div>

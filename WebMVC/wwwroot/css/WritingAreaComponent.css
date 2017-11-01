@@ -1,6 +1,6 @@
 ﻿#writing-area {
     width: 825px;
-    height: 650px;
+    height: 785px;
     position: relative;
     margin: 0 auto;
     top: 25px;
@@ -57,7 +57,18 @@ blockquote {
     }
 
 #writing-area-body {
-    width: 100%;
-    height: 80%;
-    padding: 15px;
+    width: 825px;
+    height: 400px;
+    position: relative;
+}
+
+#txt {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    width: 775px;
+    height: 600px;
+    background-color: rgb(250,250,250);
+    opacity: 0.9;
+    resize: none;
 }

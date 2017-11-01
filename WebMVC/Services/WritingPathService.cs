@@ -10,12 +10,15 @@ namespace WebMVC.Services
     {
         public IRepository<WritingPath> _writingPathRepository { get; set; }
         public IRepository<WritingDayHeader> _writingDayHeadersRepository { get; set; }
+        public IRepository<WritingDayBody> _writingDayBodiesRepository { get; set; }
 
         public WritingPathService(IRepository<WritingPath> writingPathRepository,
-            IRepository<WritingDayHeader> writingDayHeaderRepository)
+            IRepository<WritingDayHeader> writingDayHeaderRepository,
+            IRepository<WritingDayBody> writingDayBodyRepository)
         {
             _writingPathRepository = writingPathRepository;
             _writingDayHeadersRepository = writingDayHeaderRepository;
+            _writingDayBodiesRepository = writingDayBodyRepository;
         }
 
         public Task<WritingPathViewModel> GetWritingPathForUser(int pathId, string userName)
@@ -70,7 +73,16 @@ namespace WebMVC.Services
 
         public Task<WritingDayBodyViewModel> GetPathDayBody(int pathId, int pathDay, string userName)
         {
-            throw new System.NotImplementedException();
+            var pathDayModel = _writingDayBodiesRepository.GetById(pathDay); // TODO : Get by Day ID not by ALL DAYS IDs...
+
+            return Task.Run(() => new WritingDayBodyViewModel
+            {
+                Id = pathDayModel.Id,
+                WrittenText = pathDayModel.WrittenText,
+                HiddenQuote = pathDayModel.HiddenQuote,
+                HiddenWisdom = pathDayModel.HiddenWisdom,
+                ExercisePrompts = pathDayModel.ExercisePrompts
+            });
         }
     }
 }

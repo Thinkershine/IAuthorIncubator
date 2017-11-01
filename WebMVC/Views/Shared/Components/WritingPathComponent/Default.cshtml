@@ -1,5 +1,6 @@
 ﻿@model WritingPathViewModel
-<div id="writing-path-component" class="hidden">
+
+<div id="writing-path-component" class="writing-path-hidden">
     <div id="writing-path-header">
         <h2>Writer's Journey</h2>
         <h3>@Model.PathName</h3>
@@ -16,7 +17,7 @@
 
                     <p><span class="xp-reward">XP:</span> @day.ExperienceReward Goal: @day.RequiredWords words</p>
 
-                    <p>@day.WrittenWords words written <span><button class="do-it btn">Write</button></span></p>
+                    <p>@day.WrittenWords words written <span><a onclick="getWritingDay(@Model.Id, @day.Id)" class="do-it btn button-start-writing">Write</a></span></p>
                 </div>
             }
         </div>

@@ -3,6 +3,12 @@
     "noImplicitAny": true,
     "noEmitOnError": true,
     "sourceMap": true,
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.iterable"
+    ],
     "target": "es5",
     "outDir": "../wwwroot/scripts"
   },

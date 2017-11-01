@@ -4,16 +4,24 @@
     <title>@ViewBag.Title</title>
     <link type="text/css" rel="stylesheet" href="~/css/HomePage.css" />
     <link type="text/css" rel="stylesheet" href="~/css/WritingPathComponent.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/WritingAreaComponent.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
 </head>
 <body>
     @Html.Partial("_NavigationPartial")
 
     <div>
-        @await Component.InvokeAsync("WritingPathComponent", "Thinkershine")
-    </div>
-    <div>
         @RenderBody()
     </div>
-    <script src="~/js/WritingPath.js"></script>
+
+    <div>
+        @await Component.InvokeAsync("WritingPathComponent", "Thinkershine")
+    </div>
+
+    <div id="writing-area" class="writing-area-hidden">
+    </div>
+    <script src="~/scripts/app.js"></script>
 </body>
 </html>

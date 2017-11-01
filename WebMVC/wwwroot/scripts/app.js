@@ -1,7 +1,6 @@
-function sayHello() {
-    var compiler = document.getElementById("compiler").value;
-    var framework = document.getElementById("framework").value;
-    return "Hello from " + compiler + " and " + framework + "!";
+function getWritingDay(pathId, dayId) {
+    $.get("WritingArea/GetDay/" + pathId + "/" + dayId, function (data) {
+        $("#writing-area").html(data).removeClass("writing-area-hidden");
+    });
 }
-var changes = "Yea!";
 //# sourceMappingURL=app.js.map

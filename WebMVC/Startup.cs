@@ -14,6 +14,7 @@ namespace WebMVC
         {
             services.AddScoped<IRepository<WritingPath>, InMemoryWritingPathRepository<WritingPath>>();
             services.AddScoped<IRepository<WritingDayHeader>, InMemoryWritingDayHeaderRepository<WritingDayHeader>>();
+            services.AddScoped<IRepository<WritingDayBody>, InMemoryWritingDayBodyRepository<WritingDayBody>>();
             services.AddScoped<IWriterPathService, WritingPathService>();
             services.AddMvc();
         }

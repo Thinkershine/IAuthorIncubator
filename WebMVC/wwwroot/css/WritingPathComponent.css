@@ -22,7 +22,7 @@
         background-color: rgba(0,0,0,0.6);
     }
 
-.hidden {
+.writing-path-hidden {
     opacity: 0;
     left: -300px !important;
 }

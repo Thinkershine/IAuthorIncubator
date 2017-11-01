@@ -1,0 +1,22 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using ApplicationCore.Interfaces;
+
+namespace WebMVC.Controllers
+{
+    public class WritingAreaController : Controller
+    {
+        private IWriterPathService _writerPathService;
+
+        public WritingAreaController(IWriterPathService writerPathSerivce)
+        {
+            _writerPathService = writerPathSerivce;
+        }
+
+        [Route("WritingArea/GetDay/{path?}/{day?}")]
+        public IActionResult GetDay(int path, int day)
+        {
+            int[] temp = new int[] { path, day };
+            return ViewComponent("WorkingDay", temp);
+        }
+    }
+}

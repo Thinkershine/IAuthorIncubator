@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ApplicationCore.Interfaces;
+using WebMVC.ViewModels;
 
 namespace WebMVC.Controllers
 {
@@ -17,6 +18,15 @@ namespace WebMVC.Controllers
         {
             int[] temp = new int[] { path, day };
             return ViewComponent("WorkingDay", temp);
+        }
+
+        public void SaveDay(WritingDayBodyViewModel incomingDay)
+        {
+            if (ModelState.IsValid)
+            {
+                //_writerPathService.SaveTheDay(incomingDay);
+                System.Console.WriteLine($"Saving The Day {incomingDay}");
+            }
         }
     }
 }

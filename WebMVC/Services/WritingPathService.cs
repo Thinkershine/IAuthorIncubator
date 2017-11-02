@@ -47,6 +47,7 @@ namespace WebMVC.Services
                 viewModel.Add(new WritingDayHeaderViewModel {
                     Id = day.Id,
                     DayNumber = day.DayNumber,
+                    HiddenQuote = day.HiddenQuote,
                     ExperienceReward = day.ExperienceReward,
                     RequiredWords = day.RequiredWords,
                     WrittenWords = day.WrittenWords
@@ -68,7 +69,16 @@ namespace WebMVC.Services
 
         public Task<WritingDayHeaderViewModel> GetPathDayHeader(int pathId, int pathDay, string userName)
         {
-            throw new System.NotImplementedException();
+            var pathDayModel = _writingDayHeadersRepository.GetById(pathDay);
+
+            return Task.Run(() => new WritingDayHeaderViewModel
+            {
+                Id = pathDayModel.Id,
+                DayNumber = pathDayModel.DayNumber,
+                ExperienceReward = pathDayModel.ExperienceReward,
+                RequiredWords = pathDayModel.RequiredWords,
+                WrittenWords = pathDayModel.WrittenWords
+            });
         }
 
         public Task<WritingDayBodyViewModel> GetPathDayBody(int pathId, int pathDay, string userName)
@@ -78,8 +88,8 @@ namespace WebMVC.Services
             return Task.Run(() => new WritingDayBodyViewModel
             {
                 Id = pathDayModel.Id,
+                PathId = pathId,
                 WrittenText = pathDayModel.WrittenText,
-                HiddenQuote = pathDayModel.HiddenQuote,
                 HiddenWisdom = pathDayModel.HiddenWisdom,
                 ExercisePrompts = pathDayModel.ExercisePrompts
             });

@@ -12,10 +12,10 @@ namespace WebMVC.ViewComponents
             _writerPathService = writerPathSerivce;
         }
 
-        public IViewComponentResult Invoke(int[] dataId)
+        public IViewComponentResult Invoke(int[] dayIds)
         {
-            int pathId = dataId[0];
-            int dayId = dataId[1];
+            int pathId = dayIds[0];
+            int dayId = dayIds[1];
             return View("Default", _writerPathService.GetPathDayBody(pathId, dayId, "Thinkershine").Result);
         }
     }

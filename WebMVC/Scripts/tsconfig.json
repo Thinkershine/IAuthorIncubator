@@ -2,6 +2,7 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "noEmitOnError": true,
+    "removeComments": true,
     "sourceMap": true,
     "lib": [
       "dom",

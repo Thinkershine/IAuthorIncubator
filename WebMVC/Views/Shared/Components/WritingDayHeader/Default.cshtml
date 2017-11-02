@@ -1,0 +1,15 @@
+﻿@model WritingDayHeaderViewModel
+@*WritingArea WritingDayHeader*@
+<div id="writing-day-header">
+    <p class="day-number">Day @Model.DayNumber</p>
+    <p>
+        <span class="xp-reward">XP:</span> @Model.ExperienceReward |
+        <span id="writing-day-required-words">Required Words: @Model.RequiredWords.ToString("##,###")</span>
+    </p>
+    <div class="progress-background">
+        <div class="progress-slider"></div>
+    </div>
+    <p>
+        Written Words: @Model.WrittenWords
+    </p>
+</div>

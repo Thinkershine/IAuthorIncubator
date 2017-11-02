@@ -28,38 +28,21 @@
     top: -9999px !important;
 }
 
-blockquote {
-    position: relative;
-    margin: 0;
-    padding: 30px 60px;
-    text-align: center;
-    font-size: 30px;
+#writing-day-header {
+    padding-top: 8px;
 }
-
-    blockquote:before, blockquote:after {
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        font-size: 90px;
-        line-height: 1;
-    }
-
-    blockquote:before {
-        top: 0;
-        left: 0;
-        content: "\201C";
-    }
-
-    blockquote:after {
-        top: 0;
-        right: 0;
-        content: "\201D";
-    }
 
 #writing-area-body {
     width: 825px;
     height: 400px;
     position: relative;
+}
+
+.day-number {
+    padding-top: 8px;
+    font-size: 21px;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #txt {
@@ -71,4 +54,48 @@ blockquote {
     background-color: rgb(250,250,250);
     opacity: 0.9;
     resize: none;
+    border: none;
+    font-size: 17px;
+    line-height: 27px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    padding: 15px;
+}
+
+    #txt:active {
+        border: none;
+    }
+
+    #txt::-webkit-scrollbar {
+        width: 0.7em;
+    }
+
+    #txt::-webkit-scrollbar-track {
+        -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    #txt::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
+
+    #txt::-webkit-scrollbar-corner {
+        display: none;
+    }
+
+
+/*Writing progress Slider*/
+.progress-background {
+    background-color: rgba(0,0,0,0.3); 
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    height: 20px;
+    width: 775px;
+    margin: 0 auto;
+}
+
+.progress-slider {
+    width: 100%;
+    height: 14px;
+    background-color: goldenrod;
 }

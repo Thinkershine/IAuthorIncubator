@@ -1,12 +1,12 @@
 ﻿$(document).ready(function () {
     var typingTimer: number;
     var autosaveTimer: number;
-    var doneTypingInterval = 1000;
+    var doneTypingInterval = 500;
     var autosaveInterval = 3000;
 
     var currentWrittenWords = 0;
 
-    $('#txt').keyup(function () {
+    $(document).on("keyup", "#txt", function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
         if ($('#txt').val()) {
@@ -25,6 +25,24 @@
 
 function doneTyping(newText: number): void {
     $('#written-words').text(newText);
+    checkProgress(newText);
+}
+
+function checkProgress(currentWrittenWords: number): void {
+    var requiredWords: number = +$("#writing-day-required-words").text();
+    var percentageCompleted: number = (currentWrittenWords * 100) / requiredWords;
+    var percentageFloored: number = Math.floor(percentageCompleted);
+
+    if (percentageFloored >= 100)
+    {
+        percentageFloored = 100;
+    }
+    updateSlider(percentageFloored);
+}
+
+function updateSlider(byPercentage: number): void {
+    $(".progress-slider").css("width", byPercentage + "%").css({
+        transition: 'width .8s ease-in-out'});
 }
 
 function saveToDB(wordsWrittenCount: number, textWritten: any): void {
@@ -36,7 +54,7 @@ function saveToDB(wordsWrittenCount: number, textWritten: any): void {
 }
 
 function checkCompletion(currentWrittenWords: number): void {
-    var requiredWords = $('#txt').data('val');
+    var requiredWords: number = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
         //TODO: PLAY MUSIC & ANIMATION
         $('#achievement-unlocked').removeClass('hidden');

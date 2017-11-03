@@ -156,7 +156,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 11,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 30,
                 AccomplishedDate = null,
                 RequiredWords = 300,
                 WrittenWords = 0
@@ -169,7 +169,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 12,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 30,
                 AccomplishedDate = null,
                 RequiredWords = 300,
                 WrittenWords = 0
@@ -182,7 +182,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 13,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 35,
                 AccomplishedDate = null,
                 RequiredWords = 350,
                 WrittenWords = 0
@@ -195,7 +195,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 14,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 35,
                 AccomplishedDate = null,
                 RequiredWords = 350,
                 WrittenWords = 0
@@ -208,7 +208,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 15,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 40,
                 AccomplishedDate = null,
                 RequiredWords = 400,
                 WrittenWords = 0
@@ -221,7 +221,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 16,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 40,
                 AccomplishedDate = null,
                 RequiredWords = 400,
                 WrittenWords = 0
@@ -234,7 +234,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 17,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 45,
                 AccomplishedDate = null,
                 RequiredWords = 450,
                 WrittenWords = 0
@@ -247,7 +247,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 18,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 45,
                 AccomplishedDate = null,
                 RequiredWords = 450,
                 WrittenWords = 0
@@ -260,7 +260,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 19,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 50,
                 AccomplishedDate = null,
                 RequiredWords = 500,
                 WrittenWords = 0
@@ -273,7 +273,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 20,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 50,
                 AccomplishedDate = null,
                 RequiredWords = 500,
                 WrittenWords = 0
@@ -286,7 +286,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 21,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 55,
                 AccomplishedDate = null,
                 RequiredWords = 550,
                 WrittenWords = 0
@@ -299,7 +299,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 22,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 55,
                 AccomplishedDate = null,
                 RequiredWords = 550,
                 WrittenWords = 0
@@ -312,7 +312,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 23,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 60,
                 AccomplishedDate = null,
                 RequiredWords = 600,
                 WrittenWords = 0
@@ -325,7 +325,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 24,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 60,
                 AccomplishedDate = null,
                 RequiredWords = 600,
                 WrittenWords = 0
@@ -338,7 +338,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 25,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 65,
                 AccomplishedDate = null,
                 RequiredWords = 650,
                 WrittenWords = 0
@@ -351,7 +351,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 26,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 65,
                 AccomplishedDate = null,
                 RequiredWords = 650,
                 WrittenWords = 0
@@ -364,7 +364,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 27,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 70,
                 AccomplishedDate = null,
                 RequiredWords = 700,
                 WrittenWords = 0
@@ -377,7 +377,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 28,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 70,
                 AccomplishedDate = null,
                 RequiredWords = 700,
                 WrittenWords = 0
@@ -390,7 +390,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 29,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 75,
                 AccomplishedDate = null,
                 RequiredWords = 750,
                 WrittenWords = 0
@@ -403,7 +403,7 @@ namespace Infrastructure.Data
                 PathId = 0,
                 DayNumber = 30,
                 RewardReceived = false,
-                ExperienceReward = 25,
+                ExperienceReward = 75,
                 AccomplishedDate = null,
                 RequiredWords = 750,
                 WrittenWords = 0

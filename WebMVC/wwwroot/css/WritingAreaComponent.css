@@ -95,7 +95,7 @@
 }
 
 .progress-slider {
-    width: 100%;
+    width: 0;
     height: 14px;
     background-color: goldenrod;
 }

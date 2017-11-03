@@ -1,10 +1,10 @@
 $(document).ready(function () {
     var typingTimer;
     var autosaveTimer;
-    var doneTypingInterval = 1000;
+    var doneTypingInterval = 500;
     var autosaveInterval = 3000;
     var currentWrittenWords = 0;
-    $('#txt').keyup(function () {
+    $(document).on("keyup", "#txt", function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
         if ($('#txt').val()) {
@@ -16,13 +16,28 @@ $(document).ready(function () {
 });
 function doneTyping(newText) {
     $('#written-words').text(newText);
+    checkProgress(newText);
+}
+function checkProgress(currentWrittenWords) {
+    var requiredWords = +$("#writing-day-required-words").text();
+    var percentageCompleted = (currentWrittenWords * 100) / requiredWords;
+    var percentageFloored = Math.floor(percentageCompleted);
+    if (percentageFloored >= 100) {
+        percentageFloored = 100;
+    }
+    updateSlider(percentageFloored);
+}
+function updateSlider(byPercentage) {
+    $(".progress-slider").css("width", byPercentage + "%").css({
+        transition: 'width .8s ease-in-out'
+    });
 }
 function saveToDB(wordsWrittenCount, textWritten) {
     $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
     checkCompletion(wordsWrittenCount);
 }
 function checkCompletion(currentWrittenWords) {
-    var requiredWords = $('#txt').data('val');
+    var requiredWords = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
         $('#achievement-unlocked').removeClass('hidden');
         $.ajax({

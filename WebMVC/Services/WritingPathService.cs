@@ -76,6 +76,7 @@ namespace WebMVC.Services
                 Id = pathDayModel.Id,
                 DayNumber = pathDayModel.DayNumber,
                 ExperienceReward = pathDayModel.ExperienceReward,
+                GoldenPenReward = pathDayModel.GoldenPenReward,
                 RequiredWords = pathDayModel.RequiredWords,
                 WrittenWords = pathDayModel.WrittenWords
             });

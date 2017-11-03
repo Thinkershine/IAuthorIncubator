@@ -16,7 +16,7 @@ namespace WebMVC.ViewComponents
         {
             int pathId = dayIds[0];
             int dayId = dayIds[1];
-            return View("Default", _writerPathService.GetPathDayBody(pathId, dayId, "Thinkershine").Result);
+            return View("WorkingDayView", _writerPathService.GetPathDayBody(pathId, dayId, "Thinkershine").Result);
         }
     }
 }

@@ -4,26 +4,28 @@ $(document).ready(function () {
     var doneTypingInterval = 500;
     var autosaveInterval = 3000;
     var currentWrittenWords = 0;
+    var currentWrittingDay = 0;
     $(document).on("keyup", "#txt", function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
         if ($('#txt').val()) {
             currentWrittenWords = countWords($('#txt').val());
-            typingTimer = setTimeout(function () { doneTyping(currentWrittenWords); }, doneTypingInterval);
-            autosaveTimer = setTimeout(function () { saveToDB(currentWrittenWords, $('#txt').val()); }, autosaveInterval);
+            currentWrittingDay = +$("#current-writing-dayID").text();
+            typingTimer = setTimeout(function () { doneTyping(currentWrittenWords, currentWrittingDay); }, doneTypingInterval);
         }
     });
 });
-function doneTyping(newText) {
+function doneTyping(newText, currentDayID) {
     $('#written-words').text(newText);
-    checkProgress(newText);
+    checkProgress(newText, currentDayID);
 }
-function checkProgress(currentWrittenWords) {
+function checkProgress(currentWrittenWords, dayID) {
     var requiredWords = +$("#writing-day-required-words").text();
     var percentageCompleted = (currentWrittenWords * 100) / requiredWords;
     var percentageFloored = Math.floor(percentageCompleted);
     if (percentageFloored >= 100) {
         percentageFloored = 100;
+        checkCompletion(currentWrittenWords);
     }
     updateSlider(percentageFloored);
 }
@@ -39,16 +41,22 @@ function saveToDB(wordsWrittenCount, textWritten) {
 function checkCompletion(currentWrittenWords) {
     var requiredWords = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
-        $('#achievement-unlocked').removeClass('hidden');
         $.ajax({
-            url: "api/IAuthorHabitAPI/" + $('#day-number').val(),
+            url: "writingarea/getreward/" + +$("#current-writing-dayID").text(),
             contentType: "text/plain",
             method: "GET",
             success: function (data) {
                 console.log("SUCCESSFUL CONGRATULATE");
+                displayReward(data);
             }
         });
     }
+}
+function displayReward(data) {
+    $('#writing-day-reward').html(data).removeClass('writing-area-hidden');
+}
+function claimReward() {
+    $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
 }
 function countWords(inTextArea) {
     inTextArea = prepareForCounting(inTextArea);

@@ -11,6 +11,7 @@
     </div>
     <p>
         Written Words: <span id="written-words">@Model.WrittenWords</span>
-        <script>checkProgress(@Model.WrittenWords)</script>
+        <script>checkProgress(@Model.WrittenWords, @Model.Id)</script>
     </p>
+    <p id="current-writing-dayID" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.Id</p>
 </div>

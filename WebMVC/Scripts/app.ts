@@ -5,14 +5,16 @@
     var autosaveInterval = 3000;
 
     var currentWrittenWords = 0;
+    var currentWrittingDay = 0;
 
     $(document).on("keyup", "#txt", function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
         if ($('#txt').val()) {
             currentWrittenWords = countWords($('#txt').val());
-            typingTimer = setTimeout(function () { doneTyping(currentWrittenWords); }, doneTypingInterval);
-            autosaveTimer = setTimeout(function () { saveToDB(currentWrittenWords, $('#txt').val()); }, autosaveInterval);
+            currentWrittingDay = +$("#current-writing-dayID").text();
+            typingTimer = setTimeout(function () { doneTyping(currentWrittenWords, currentWrittingDay); }, doneTypingInterval);
+            //autosaveTimer = setTimeout(function () { saveToDB(currentWrittenWords, $('#txt').val()); }, autosaveInterval);
         }
     });
 
@@ -23,12 +25,12 @@
 });
 
 
-function doneTyping(newText: number): void {
+function doneTyping(newText: number, currentDayID: number): void {
     $('#written-words').text(newText);
-    checkProgress(newText);
+    checkProgress(newText, currentDayID);
 }
 
-function checkProgress(currentWrittenWords: number): void {
+function checkProgress(currentWrittenWords: number, dayID: number): void {
     var requiredWords: number = +$("#writing-day-required-words").text();
     var percentageCompleted: number = (currentWrittenWords * 100) / requiredWords;
     var percentageFloored: number = Math.floor(percentageCompleted);
@@ -36,6 +38,7 @@ function checkProgress(currentWrittenWords: number): void {
     if (percentageFloored >= 100)
     {
         percentageFloored = 100;
+        checkCompletion(currentWrittenWords);
     }
     updateSlider(percentageFloored);
 }
@@ -56,21 +59,29 @@ function saveToDB(wordsWrittenCount: number, textWritten: any): void {
 function checkCompletion(currentWrittenWords: number): void {
     var requiredWords: number = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
-        //TODO: PLAY MUSIC & ANIMATION
-        $('#achievement-unlocked').removeClass('hidden');
 
         $.ajax({
-            url: "api/IAuthorHabitAPI/" + $('#day-number').val(),
+            url: "writingarea/getreward/" + +$("#current-writing-dayID").text(),
             contentType: "text/plain",
             method: "GET",
             success: function (data) {
                 console.log("SUCCESSFUL CONGRATULATE");
+                displayReward(data);
             }
         })
         //TODO: SHOW UP ACHIEVEMENT 
         //TODO: STORE IN DB AS COMPLETED
         //TODO: ASSIGN POINTS, SHOW SKILL UP, LEVEL UP, ETC...
     }
+}
+
+function displayReward(data: string): void {
+    //TODO: PLAY MUSIC & ANIMATION
+    $('#writing-day-reward').html(data).removeClass('writing-area-hidden');
+}
+
+function claimReward() {
+    $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
 }
 
 function countWords(inTextArea: any): number {

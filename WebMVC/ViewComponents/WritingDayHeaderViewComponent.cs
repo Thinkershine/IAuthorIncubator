@@ -1,6 +1,5 @@
 ﻿using ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace WebMVC.ViewComponents
 {
@@ -15,7 +14,8 @@ namespace WebMVC.ViewComponents
 
         public IViewComponentResult Invoke(int pathId, int dayId)
         {
-            return View("Default", _writerPathService.GetPathDayHeader(pathId, dayId, "Thinkershine").Result);
+            // Todo: Create it Async
+            return View("WritingDayHeaderView", _writerPathService.GetPathDayHeader(pathId, dayId, "Thinkershine").Result);
         }
     }
 }

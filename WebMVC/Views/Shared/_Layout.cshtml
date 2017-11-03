@@ -11,17 +11,6 @@
     <script src="~/scripts/app.js"></script>
 </head>
 <body>
-    @Html.Partial("_NavigationPartial")
-
-    <div>
-        @RenderBody()
-    </div>
-
-    <div>
-        @await Component.InvokeAsync("WritingPathComponent", "Thinkershine")
-    </div>
-
-    <div id="writing-area" class="writing-area-hidden">
-    </div>
+    @RenderBody()
 </body>
 </html>

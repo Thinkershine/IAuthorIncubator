@@ -12,10 +12,10 @@ namespace WebMVC
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IRepository<WritingPath>, InMemoryWritingPathRepository<WritingPath>>();
-            services.AddScoped<IRepository<WritingDayHeader>, InMemoryWritingDayHeaderRepository<WritingDayHeader>>();
-            services.AddScoped<IRepository<WritingDayBody>, InMemoryWritingDayBodyRepository<WritingDayBody>>();
-            services.AddScoped<IWriterPathService, WritingPathService>();
+            services.AddSingleton<IRepository<WritingPath>, InMemoryWritingPathRepository<WritingPath>>();
+            services.AddSingleton<IRepository<WritingDayHeader>, InMemoryWritingDayHeaderRepository<WritingDayHeader>>();
+            services.AddSingleton<IRepository<WritingDayBody>, InMemoryWritingDayBodyRepository<WritingDayBody>>();
+            services.AddSingleton<IWriterPathService, WritingPathService>();
             services.AddMvc();
         }
 

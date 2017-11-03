@@ -6,3 +6,9 @@
         <a onclick="hideHiddenMessageOfTheDay()" class="animate action-button yellow">Thank You :)</a>
     </p>
 </div>
+
+@Html.Partial("_NavigationPartial")
+
+@await Component.InvokeAsync("WritingPathComponent", "Thinkershine")
+
+<div id="writing-area" class="writing-area-hidden"></div>

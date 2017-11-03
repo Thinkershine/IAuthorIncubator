@@ -28,7 +28,7 @@ namespace Infrastructure.Data
                 ExperienceReward = 25,
                 AccomplishedDate = null,
                 RequiredWords = 50,
-                WrittenWords = 0
+                WrittenWords = 181
             } as T);
 
             Add(new WritingDayHeader

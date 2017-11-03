@@ -17,7 +17,7 @@
 
                 <p><span class="xp-reward">XP:</span> @day.ExperienceReward Goal: @day.RequiredWords words</p>
 
-                <p>@day.WrittenWords words written <span><button onclick="getWritingDay(@Model.Id, @day.Id); changeMessage('@day.HiddenQuote');" class="action-button do-it btn button-start-writing">Write</button></span></p>
+                <p>@day.WrittenWords words written <span><button onclick="getWritingDay(@Model.Id, @day.Id); displayHiddenQuote(@Model.Id, @day.Id)" class="action-button do-it btn button-start-writing">Write</button></span></p>
             </div>
         }
     </div>

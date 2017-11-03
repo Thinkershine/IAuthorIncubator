@@ -6,7 +6,6 @@ namespace WebMVC.ViewComponents
     {
         public RewardViewComponent()
         {
-
         }
 
         // todo : receive reward

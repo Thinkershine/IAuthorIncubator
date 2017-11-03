@@ -110,7 +110,7 @@ var stopwords = ['a', 'all', 'an', 'and', 'are', 'as', 'at', 'be', 'but',
     'the', 'their', 'they', 'this', 'to', 'us', 'was', 'we', 'who', 'with', 'you'];
 function getWritingDay(pathId, dayId) {
     $.get("WritingArea/GetDay/" + pathId + "/" + dayId, function (data) {
-        setTimeout(function () { $("#writing-area").html(data).removeClass("writing-area-hidden"); }, 2000);
+        setTimeout(function () { $("#writing-area").html(data).removeClass("writing-area-hidden"); }, 1000);
     });
 }
 var pathIsActive = false;
@@ -126,6 +126,11 @@ function getWritingPath() {
             pathIsActive = true;
         });
     }
+}
+function displayHiddenQuote(pathID, dayID) {
+    $.get("WritingPath/" + pathID + "/" + dayID, function (data) {
+        $("#hidden-message-of-the-day").html(data).removeClass("hidden-message-of-the-day");
+    });
 }
 function changeMessage(message) {
     if (message.length <= 1) {

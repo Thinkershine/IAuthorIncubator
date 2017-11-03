@@ -16,5 +16,11 @@ namespace WebMVC.Controllers
 
             return ViewComponent("WritingPath");
         }
+
+        [Route("WritingPath/{pathID?}/{dayID?}")]
+        public IActionResult GetHiddenQuote(int pathID, int dayID)
+        {
+            return ViewComponent("HiddenQuote", new { pathID, dayID });
+        }
     }
 }

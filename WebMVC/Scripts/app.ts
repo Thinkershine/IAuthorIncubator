@@ -152,7 +152,7 @@ var stopwords = ['a', 'all', 'an', 'and', 'are', 'as', 'at', 'be', 'but',
 
 function getWritingDay(pathId: number, dayId: number): void {
     $.get("WritingArea/GetDay/" + pathId + "/" + dayId, function (data) {
-        setTimeout(function () { $("#writing-area").html(data).removeClass("writing-area-hidden") }, 2000); // todo: show awaiting indicator...?
+        setTimeout(function () { $("#writing-area").html(data).removeClass("writing-area-hidden") }, 1000); // todo: show awaiting indicator...?
     });
 }
 
@@ -173,6 +173,12 @@ function getWritingPath(): void {
 }
 
 //View Methods
+
+function displayHiddenQuote(pathID: number, dayID: number): void {
+    $.get("WritingPath/" + pathID + "/" + dayID, function (data) {
+        $("#hidden-message-of-the-day").html(data).removeClass("hidden-message-of-the-day");
+    });
+}
 
 function changeMessage(message: string): void {
     if (message.length <= 1) {

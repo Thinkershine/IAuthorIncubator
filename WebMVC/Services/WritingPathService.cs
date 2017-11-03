@@ -95,5 +95,12 @@ namespace WebMVC.Services
                 ExercisePrompts = pathDayModel.ExercisePrompts
             });
         }
+
+        public Task<string> GetQuoteOfTheDay(int pathId, int dayId)
+        {
+            var pathDayModel = _writingDayHeadersRepository.GetById(dayId); // Todo: Get also by path...
+
+            return Task.Run(() => pathDayModel.HiddenQuote);
+        }
     }
 }

@@ -8,5 +8,13 @@ namespace WebMVC.Controllers
         {
             return View();
         }
+
+        [Route("WritingPath/{pathID?}")]
+        public IActionResult GetWritingPath(int pathID)
+        {
+            // Todo : If no writing path ID return last_used_path
+
+            return ViewComponent("WritingPath");
+        }
     }
 }

@@ -113,6 +113,20 @@ function getWritingDay(pathId, dayId) {
         setTimeout(function () { $("#writing-area").html(data).removeClass("writing-area-hidden"); }, 2000);
     });
 }
+var pathIsActive = false;
+function getWritingPath() {
+    if (pathIsActive) {
+        $("#writing-path-component").toggleClass("writing-path-hidden");
+        return;
+    }
+    else {
+        var pathID = 0;
+        $.get("WritingPath/" + pathID, function (data) {
+            $("#writing-path-component").html(data).removeClass("writing-path-hidden");
+            pathIsActive = true;
+        });
+    }
+}
 function changeMessage(message) {
     if (message.length <= 1) {
         return;

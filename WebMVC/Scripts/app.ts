@@ -35,8 +35,7 @@ function checkProgress(currentWrittenWords: number, dayID: number): void {
     var percentageCompleted: number = (currentWrittenWords * 100) / requiredWords;
     var percentageFloored: number = Math.floor(percentageCompleted);
 
-    if (percentageFloored >= 100)
-    {
+    if (percentageFloored >= 100) {
         percentageFloored = 100;
         checkCompletion(currentWrittenWords);
     }
@@ -45,7 +44,8 @@ function checkProgress(currentWrittenWords: number, dayID: number): void {
 
 function updateSlider(byPercentage: number): void {
     $(".progress-slider").css("width", byPercentage + "%").css({
-        transition: 'width .8s ease-in-out'});
+        transition: 'width .8s ease-in-out'
+    });
 }
 
 function saveToDB(wordsWrittenCount: number, textWritten: any): void {
@@ -150,24 +150,38 @@ var stopwords = ['a', 'all', 'an', 'and', 'are', 'as', 'at', 'be', 'but',
 
 //API METHODS
 
-function getWritingDay(pathId: number, dayId: number) {
+function getWritingDay(pathId: number, dayId: number): void {
     $.get("WritingArea/GetDay/" + pathId + "/" + dayId, function (data) {
         setTimeout(function () { $("#writing-area").html(data).removeClass("writing-area-hidden") }, 2000); // todo: show awaiting indicator...?
     });
 }
 
+var pathIsActive: boolean = false;
+
+function getWritingPath(): void {
+    if (pathIsActive) {
+        $("#writing-path-component").toggleClass("writing-path-hidden");
+        return;
+    }
+    else {
+        var pathID: number = 0;
+        $.get("WritingPath/" + pathID, function (data) {
+            $("#writing-path-component").html(data).removeClass("writing-path-hidden");
+            pathIsActive = true;
+        });
+    }
+}
+
 //View Methods
 
 function changeMessage(message: string): void {
-    if (message.length <= 1)
-    {
+    if (message.length <= 1) {
         return;
     }
     $("#message-of-the-day").text(message);
     $("#hidden-message-of-the-day").removeClass('hidden-message-of-the-day');
 }
 
-function hideHiddenMessageOfTheDay()
-{
+function hideHiddenMessageOfTheDay() {
     $("#hidden-message-of-the-day").addClass('hidden-message-of-the-day');
 }

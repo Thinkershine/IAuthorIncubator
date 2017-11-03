@@ -88,8 +88,10 @@ nav {
 }
 
 .yellow {
-    background-color: goldenrod;
-    border-bottom: 5px solid #D1B358;
+    background-color: goldenrod;}
+
+.green {
+    background-color: rgb(115,183,64);
 }
 
 .button-holder {
@@ -97,26 +99,59 @@ nav {
 }
 
 .action-button {
-    position: relative;
-    padding: 10px 40px;
-    margin: 0px 10px 10px 5px;
-    font-size: 21px;
-    text-decoration: none;
-    width: 250px;
-    height: 34px;
-    font-size: 21px;
-    border-radius: 3px;
+    padding: 15px 25px;
+    width: 230px;
+    font-size: 24px;
+    text-align: center;
     cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: goldenrod;
+    font-family: Georgia, Times, Times New Roman, serif;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 7px #999;
 }
 
     .action-button:active {
-        transform: translate(0px,5px);
-        -webkit-transform: translate(0px,5px);
-        border-bottom: 1px solid;
+        background-color: darkgoldenrod;
+        box-shadow: 0 3px #666;
+        transform: translateY(4px);
     }
 
-    .action-button:hover {
-        background-color: darkgoldenrod;
+    .action-button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .action-button span:after {
+            content: ':)';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .action-button-start-writing span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+
+    .action-button:hover span {
+        padding-right: 25px;
+    }
+
+    .action-button:hover span:after {
+        opacity: 1;
+        right: 0;
     }
 
 

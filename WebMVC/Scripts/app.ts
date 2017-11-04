@@ -176,7 +176,7 @@ function getWritingPath(): void {
 
 function displayHiddenQuote(pathID: number, dayID: number): void {
     $.get("WritingPath/" + pathID + "/" + dayID, function (data) {
-        $("#hidden-message-of-the-day").html(data).removeClass("hidden-message-of-the-day");
+        $("#quote-of-the-day").html(data).removeClass("hidden-quote");
     });
 }
 
@@ -184,10 +184,10 @@ function changeMessage(message: string): void {
     if (message.length <= 1) {
         return;
     }
-    $("#message-of-the-day").text(message);
-    $("#hidden-message-of-the-day").removeClass('hidden-message-of-the-day');
+    $("#quote-of-the-day").text(message);
+    $("#quote-of-the-day").removeClass('hidden-quote');
 }
 
 function hideHiddenMessageOfTheDay() {
-    $("#hidden-message-of-the-day").addClass('hidden-message-of-the-day');
+    $("#quote-of-the-day").addClass('hidden-quote');
 }

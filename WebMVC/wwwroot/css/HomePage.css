@@ -1,40 +1,70 @@
-﻿html {
+﻿/* Author Working Area */
+
+html {
     background: url(/images/GrowthTree.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
 html, body {
+    color: white;
+    font-family: Georgia, Times, Times New Roman, serif;
     max-height: 100%;
     overflow-y: hidden;
-    color: white;
 }
 
+/* 
+            I
+        Components
+            
+    1. Navigation 
+    2. Quote of The Day
+    3. Writing Path
+        A. Writing Path Single Day
+    4. Writing Area
+        A. Working Area
+        B. Writing progress Bar
+    5. Writing Reward
+
+           II 
+    Additional Styling
+
+    1. Transitions
+    2. Gradients
+    3. Buttons
+    4. Style
+
+*/
+
+/******************************
+
+        I Components
+
+******************************/
+/* 
+    1. Navigation 
+*/
 nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 55px;
-    width: 55%;
-    padding: 0;
-    margin: 0 auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, .35);
     border-radius: 69px 69px 128px 128px;
+    bottom: 0;
+    height: 55px;
+    left: 0;
+    margin: 0 auto;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    width: 55%;
 }
 
     nav:hover {
         background-color: rgb(0, 0, 0);
         background-color: rgba(0, 0, 0, .65);
-        transition: background-color .5s;
-        -moz-transition: background-color .5s;
-        -webkit-transition: background-color .5s;
-        -o-transition: background-color .5s;
     }
 
     nav a {
-        text-decoration: none;
         color: white;
+        text-decoration: none;
     }
 
         nav a:hover {
@@ -43,78 +73,353 @@ nav {
 
     nav ul {
         list-style: none;
-        padding: 15px;
         margin: 0;
+        padding: 15px;
         text-align: center;
     }
 
         nav ul li {
+            color: white;
             display: inline;
             font-size: 1.6em;
-            color: white;
         }
 
-.clickable-p:hover {
-    text-decoration: underline;
+.clickable:hover {
     cursor: pointer;
+    text-decoration: underline;
 }
 
-.hidden-message-of-the-day {
-    visibility: hidden;
-    opacity: 0;
-    left: -2000px;
-}
+/* 
+    2. Quote of The Day 
+*/
 
-#hidden-message-of-the-day {
-    top: 33%;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 825px;
+#quote-of-the-day {
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, .90);
     border-radius: 3px;
+    left: 0;
+    margin: auto;
     position: absolute;
+    right: 0;
+    top: 33%;
+    width: 825px;
     z-index: 1000;
+}
+
+.hidden-quote {
+    left: -2000px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 
+    3. Writing Path
+*/
+
+#writing-path-component {
+    height: 100%;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    transition: background .5s, left .3s ease-in, opacity .5s;
+    width: 290px;
+}
+
+    #writing-path-component:hover {
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.6);
+    }
+
+.writing-path-hidden {
+    left: -300px !important;
+    opacity: 0;
+}
+
+#writing-path-header, #days-info-footer {
+    cursor: default;
+    height: 18%;
+    padding-top: 8px;
+    text-align: center;
+}
+
+#days-info-container {
+    height: 55%;
+}
+
+#days-info-body {
+    height: 100%;
+    margin-top: 8px;
+    overflow: scroll;
+    overflow-y: scroll;
+}
+
+    #days-info-body::-webkit-scrollbar {
+        width: 0.7em;
+    }
+
+    #days-info-body::-webkit-scrollbar-track {
+        -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    #days-info-body::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
+
+    #days-info-body::-webkit-scrollbar-corner {
+        display: none;
+    }
+
+/*
+    A. Writing Path Single Day
+*/
+
+.writing-path-single-day-info {
+    background-color: rgb(128, 128, 128);
+    background-color: rgba(128, 128, 128, 0.7);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px;
+    cursor: default;
+    margin-bottom: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    padding: 6px 6px 2px 16px;
+    position: relative;
+    width: 250px;
+    z-index: 10;
+}
+
+    .writing-path-single-day-info:hover {
+        background-color: rgb(128, 128, 128);
+        background-color: rgba(128, 128, 128, 0.8);
+    }
+
+    .writing-path-single-day-info .title {
+        border-bottom: 1px solid rgb(128, 128, 128);
+        margin-bottom: 2px;
+        padding: 0;
+        width: 100%;
+    }
+
+.writing-path-single-day-number {
+    background-clip: padding-box;
+    background-color: goldenrod;
+    background-origin: padding-box;
+    border-radius: 3px;
+    opacity: .8;
+    padding: 4px;
+    position: absolute;
+    right: 3px;
+    text-align: center;
+    top: 3px;
+    width: 16px;
+    z-index: 40;
+}
+
+/* 
+    4. Writing Area
+*/
+
+#writing-area {
+    height: 785px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    top: 25px;
+    transition: background .5s, opacity .5s;
+    vertical-align: central;
+    width: 825px;
+}
+
+    #writing-area:hover {
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.6);
+    }
+
+.writing-area-hidden {
+    opacity: 0;
+    top: -9999px !important;
+}
+
+#writing-day-header {
+    padding-top: 8px;
+}
+
+#writing-area-body {
+    height: 400px;
+    position: relative;
+    width: 825px;
+}
+
+.day-number {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 21px;
+    font-style: italic;
+    padding-top: 8px;
+}
+
+/*
+    A. Working Area
+*/
+
+#txt {
+    background-color: rgb(250,250,250);
+    border: none;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    font-size: 17px;
+    height: 600px;
+    left: 25px;
+    line-height: 27px;
+    opacity: 0.9;
+    padding: 15px;
+    position: absolute;
+    resize: none;
+    top: 20px;
+    width: 775px;
+}
+
+    #txt:active {
+        border: none;
+    }
+
+    #txt::-webkit-scrollbar {
+        width: 0.7em;
+    }
+
+    #txt::-webkit-scrollbar-track {
+        -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    #txt::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
+
+    #txt::-webkit-scrollbar-corner {
+        display: none;
+    }
+
+
+/* 
+    B. Writing progress Bar
+*/
+
+.progress-background {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    height: 20px;
+    margin: 0 auto;
+    width: 775px;
+}
+
+.progress-slider {
+    background-color: goldenrod;
+    height: 14px;
+    width: 0;
+}
+
+/*
+    5. Writing Reward
+*/
+
+#writing-day-reward {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, .90);
+    border-radius: 3px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 33%;
+    width: 825px;
+    z-index: 1000;
+}
+
+/******************************
+
+    II Additional Styling
+
+******************************/
+
+/* 
+    1. Transition
+*/
+
+.bg-transition {
+    transition: background-color 0.5s;
+}
+
+.visibility-transition {
     transition: visibility 0.3s, opacity 0.3s;
-    -webkit-transition: visibility 0.3s, opacity 0.3s;
 }
 
-/*button ANIMATION*/
+/* 
+    2. Gradients
+*/
 
-.animate {
-    transition: all 0.1s;
-    -webkit-transition: all 0.1s;
+.bg-gradient {
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
 }
 
-.yellow {
-    background-color: goldenrod;}
-
-.green {
-    background-color: rgb(115,183,64);
-}
+/*
+    3. Buttons
+*/
 
 .button-holder {
     text-align: center;
 }
 
-.action-button {
-    padding: 15px 25px;
-    width: 230px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
+.animate {
+    transition: all 0.1s;
+}
+
+.yellow {
     background-color: goldenrod;
-    font-family: Georgia, Times, Times New Roman, serif;
+}
+
+    .yellow:active {
+        background-color: darkgoldenrod;
+    }
+
+.green {
+    background-color: rgb(115,183,64);
+}
+
+    .green:active {
+        background-color: rgb(70,139,14);
+    }
+
+.action-button {
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: 0 7px #999;
+    color: #fff;
+    cursor: pointer;
+    font-size: 24px;
+    margin-bottom: 0;
+    outline: none;
+    padding: 15px 25px;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    vertical-align: middle;
+    width: 230px;
 }
 
     .action-button:active {
-        background-color: darkgoldenrod;
         box-shadow: 0 3px #666;
         transform: translateY(4px);
     }
@@ -128,56 +433,64 @@ nav {
 
         .action-button span:after {
             content: ':)';
-            position: absolute;
             opacity: 0;
-            top: 0;
+            position: absolute;
             right: -20px;
+            top: 0;
             transition: 0.5s;
         }
-
-        .action-button-start-writing span:after {
-            content: '\00bb';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
 
     .action-button:hover span {
         padding-right: 25px;
     }
 
-    .action-button:hover span:after {
-        opacity: 1;
-        right: 0;
-    }
+        .action-button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
 
+.do-it-button {
+    bottom: 3px;
+    font-size: 14px;
+    opacity: .8;
+    padding: 6px 12px;
+    position: absolute;
+    right: 3px;
+    width: 75px;
+    z-index: 40;
+}
+
+/*
+    4. Style
+*/
 
 blockquote {
     color: white;
-    text-align: center;
-    padding: 30px 60px;
     font-size: 21px;
+    padding: 30px 60px;
+    text-align: center;
 }
 
     blockquote:before, blockquote:after {
+        font-size: 90px;
+        height: 60px;
+        line-height: 1;
         position: absolute;
         width: 60px;
-        height: 60px;
-        font-size: 90px;
-        line-height: 1;
     }
 
     blockquote:before {
-        top: 0;
-        left: 0;
         content: "\201C";
+        left: 0;
+        top: 0;
     }
 
     blockquote:after {
-        top: 0;
-        right: 0;
         content: "\201D";
+        right: 0;
+        top: 0;
     }
+
+.xp-reward {
+    color: goldenrod;
+}

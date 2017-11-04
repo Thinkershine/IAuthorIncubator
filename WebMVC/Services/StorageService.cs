@@ -6,14 +6,14 @@ namespace WebMVC.Services
 {
     public class StorageService : IStorageService
     {
-        private IRepository<WritingDayBody> _writingDayBodyRepository;
+        private IRepository<UserWritingDayBody> _writingDayBodyRepository;
 
-        public StorageService(IRepository<WritingDayBody> writingDayBodyRepository)
+        public StorageService(IRepository<UserWritingDayBody> writingDayBodyRepository)
         {
             _writingDayBodyRepository = writingDayBodyRepository;
         }
 
-        public void SaveTheDay(WritingDayBody incomingDayBody)
+        public void SaveTheDay(UserWritingDayBody incomingDayBody)
         {
             _writingDayBodyRepository.Update(incomingDayBody);
         }

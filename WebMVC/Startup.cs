@@ -15,7 +15,8 @@ namespace WebMVC
         {
             services.AddSingleton<IRepository<WritingPath>, InMemoryWritingPathRepository<WritingPath>>();
             services.AddSingleton<IRepository<WritingDayHeader>, InMemoryWritingDayHeaderRepository<WritingDayHeader>>();
-            services.AddSingleton<IRepository<WritingDayBody>, InMemoryWritingDayBodyRepository<WritingDayBody>>();
+            services.AddSingleton<IRepository<UserWritingDayBody>, InMemoryWritingDayBodyRepository<UserWritingDayBody>>();
+            services.AddSingleton<InMemoryUserDataRepository>();
             services.AddSingleton<IWriterPathService, WritingPathService>();
             services.AddSingleton<IStorageService, StorageService>();
             services.AddMvc();

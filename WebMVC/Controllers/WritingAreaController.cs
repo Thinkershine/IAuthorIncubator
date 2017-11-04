@@ -53,7 +53,7 @@ namespace WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                WritingDayBody newDayBody = new WritingDayBody
+                UserWritingDayBody newDayBody = new UserWritingDayBody
                 {
                     Id = writingDayBody.Id,
                     DayId = writingDayBody.DayId,

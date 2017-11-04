@@ -10,26 +10,26 @@
 
 <div id="days-info-container">
     <div id="days-info-body">
-        @foreach (var day in Model.Days)
-        {
-            <div class="writing-path-single-day-info">
-                @if (day.Locked)
-                {
-                    <div class="locked-day">
-                        <p>Sorry This Day is Locked!</p>
-                        <p><i class="fa fa-lock fa-2x" aria-hidden="true"></i></p>
-                    </div>
-                }
-                else
-                {
-                    <span class="title">Day Title</span> <span class="writing-path-single-day-number">@day.DayNumber</span>
-
-                    <p><span class="xp-reward">XP:</span> @day.ExperienceReward Goal: @day.RequiredWords words</p>
-
-                    <p>@day.WrittenWords words written <button onclick="getWritingDay(@Model.Id, @day.Id); displayHiddenQuote(@Model.Id, @day.Id)" class="animate action-button do-it-button green"><span>Write</span></button></p>
-                }
-            </div>
-        }
+            @for(int i = 0; i < Model.Days.Count; i += 1)
+            {
+                <div class="writing-path-single-day-info">
+                    @if (Model.UserDays[i].Locked)
+                    {
+                        <div class="locked-day">
+                            <p>Day @Model.Days[i].DayNumber Locked</p>
+                            <p><i class="fa fa-lock fa-2x" aria-hidden="true"></i></p>
+                        </div>
+                    }
+                    else
+                    {
+                        <span class="title">Day Title</span> <span class="writing-path-single-day-number">@Model.Days[i].DayNumber</span>
+                        <p><span class="xp-reward">XP:</span> @Model.Days[i].ExperienceReward Goal: @Model.Days[i].RequiredWords words</p>
+                        <p><button onclick="getWritingDay(@Model.Id, @Model.Days[i].Id); displayHiddenQuote(@Model.Id, @Model.Days[i].Id)" class="animate action-button do-it-button green"><span>Write</span></button></p>
+                        <p>@Model.UserDays[i].WrittenWords words written
+                        </p>
+                    }
+                </div>
+            }  
     </div>
 </div>
 <div id="days-info-footer">

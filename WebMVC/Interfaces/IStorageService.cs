@@ -5,6 +5,6 @@ namespace WebMVC.Interfaces
 {
     public interface IStorageService
     {
-        void SaveTheDay(WritingDayBody incomingDayBody);
+        void SaveTheDay(UserWritingDayBody incomingDayBody);
     }
 }

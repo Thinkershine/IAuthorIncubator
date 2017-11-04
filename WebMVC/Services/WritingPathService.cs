@@ -4,6 +4,8 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using WebMVC.ViewModels;
 using WebMVC.Interfaces;
+using Infrastructure.Data;
+using WebMVC.ViewModels.UserDTO;
 
 namespace WebMVC.Services
 {
@@ -11,15 +13,18 @@ namespace WebMVC.Services
     {
         public IRepository<WritingPath> _writingPathRepository { get; set; }
         public IRepository<WritingDayHeader> _writingDayHeadersRepository { get; set; }
-        public IRepository<WritingDayBody> _writingDayBodiesRepository { get; set; }
+        public IRepository<UserWritingDayBody> _writingDayBodiesRepository { get; set; }
+        public InMemoryUserDataRepository _inMemoryUserDataRepository { get; set; }
 
         public WritingPathService(IRepository<WritingPath> writingPathRepository,
             IRepository<WritingDayHeader> writingDayHeaderRepository,
-            IRepository<WritingDayBody> writingDayBodyRepository)
+            IRepository<UserWritingDayBody> writingDayBodyRepository,
+            InMemoryUserDataRepository userDataRepository)
         {
             _writingPathRepository = writingPathRepository;
             _writingDayHeadersRepository = writingDayHeaderRepository;
             _writingDayBodiesRepository = writingDayBodyRepository;
+            _inMemoryUserDataRepository = userDataRepository;
         }
 
         public Task<WritingPathViewModel> GetWritingPathForUser(int pathId, string userName)
@@ -35,7 +40,8 @@ namespace WebMVC.Services
                 PathName = writingPath.PathName,
                 TotalWords = writingPath.TotalWords,
                 TotalDays = writingPath.TotalDays,
-                Days = CreateDayHeaderViewModelsFromWritingPathDays(_writingDayHeadersRepository.List())
+                Days = CreateDayHeaderViewModelsFromWritingPathDays(_writingDayHeadersRepository.List()),
+                UserDays = CreateUserDayInfoViewModelForThisPath(_inMemoryUserDataRepository.GetUserPathDayInfo())
                 // TODO I will still need a way to filter results by pathID alone...
             });
         }
@@ -59,6 +65,22 @@ namespace WebMVC.Services
             }
 
             return viewModel;
+        }
+        private List<UserPathDayInfoViewModel> CreateUserDayInfoViewModelForThisPath(List<UserPathDayInfo> userDataForPath)
+        {
+            List<UserPathDayInfoViewModel> userDataForView = new List<UserPathDayInfoViewModel>();
+            foreach (UserPathDayInfo day in userDataForPath)
+            {
+                userDataForView.Add(new UserPathDayInfoViewModel
+                {
+                    PathId = day.PathId,
+                    DayId = day.DayId,
+                    WrittenWords = day.WrittenWords,
+                    Accomplished = day.Accomplished,
+                    Locked = day.Locked
+                });
+            }
+            return userDataForView;
         }
 
         public Task<IEnumerable<WritingDayHeaderViewModel>> GetPathDayHeaders(int pathId)

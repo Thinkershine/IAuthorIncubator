@@ -17,7 +17,7 @@ namespace Infrastructure.Data
 
         private void InitializeDayBodyRepository()
         {
-            Add(new WritingDayBody
+            Add(new UserWritingDayBody
             {
                 Id = 0,
                 DayId = 0,
@@ -46,7 +46,7 @@ namespace Infrastructure.Data
 
         private T GetEmptyWritingDayBody(int id, int dayId, int pathId)
         {
-            return new WritingDayBody
+            return new UserWritingDayBody
             {
                 Id = id,
                 DayId = dayId,

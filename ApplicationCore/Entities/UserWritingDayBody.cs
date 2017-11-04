@@ -2,7 +2,7 @@
 
 namespace ApplicationCore.Entities
 {
-    public class WritingDayBody : BaseEntity
+    public class UserWritingDayBody : BaseEntity
     {
         public int DayId { get; set; }
         public int PathId { get; set; }

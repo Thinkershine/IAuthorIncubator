@@ -93,5 +93,14 @@ namespace Infrastructure.Data
             _userPathDayInfo[dayId].WrittenWords = incomingDayBody.WrittenWords;
             _userWritingDayBodies[dayId] = incomingDayBody;
         }
+
+        public void AccomplishTheDay(UserPathDayInfo accomplishedDay)
+        {
+            var dayId = accomplishedDay.DayId;
+            _userPathDayInfo[dayId].Accomplished = accomplishedDay.Accomplished;
+            var nextId = dayId + 1;
+            _userPathDayInfo[nextId].Locked = false; // todo : clean this
+            System.Console.WriteLine($"Day Unlocked {_userPathDayInfo[dayId++].Locked}");
+        }
     }
 }

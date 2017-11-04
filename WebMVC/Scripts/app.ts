@@ -37,7 +37,7 @@ function checkProgress(currentWrittenWords: number, dayID: number): void {
 
     if (percentageFloored >= 100) {
         percentageFloored = 100;
-        checkCompletion(currentWrittenWords);
+        checkCompletion(currentWrittenWords, dayID);
     }
     updateSlider(percentageFloored);
 }
@@ -64,18 +64,17 @@ function saveToDB(wordsWrittenCount: number, writtenText: any, currentWritingDay
         }
     })
 
-    checkCompletion(wordsWrittenCount);
     //TODO: OR COULD GET DATETIME FROM C# when SAVED? 
     //TODO: IF COMPLETED ON THE SERVER, SAVE Completed, add skill points, level up, badges etc. right away
     // > THEN UPDATE THE VIEW WITH NEXT METHOD
 }
 
-function checkCompletion(currentWrittenWords: number): void {
+function checkCompletion(currentWrittenWords: number, currentWritingDay: number): void {
     var requiredWords: number = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
 
         $.ajax({
-            url: "writingarea/getreward/" + +$("#current-writing-dayID").text(),
+            url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
             contentType: "text/plain",
             method: "GET",
             success: function (data) {
@@ -83,7 +82,17 @@ function checkCompletion(currentWrittenWords: number): void {
                 displayReward(data);
             }
         })
-        //TODO: SHOW UP ACHIEVEMENT 
+
+        $.ajax({
+            url: "WritingArea/DayAccomplished/",
+            contentType: "application/json",
+            method: "POST",
+            data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, Accomplished: true }),
+            success: function (data) {
+                // TODO : Display REWARD & ACHIEVEMENT!!! Hurray !
+            }
+        })
+        //TODO: SHOW UP ACHIEVEMENT
         //TODO: STORE IN DB AS COMPLETED
         //TODO: ASSIGN POINTS, SHOW SKILL UP, LEVEL UP, ETC...
     }

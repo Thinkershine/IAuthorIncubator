@@ -26,7 +26,7 @@ function checkProgress(currentWrittenWords, dayID) {
     var percentageFloored = Math.floor(percentageCompleted);
     if (percentageFloored >= 100) {
         percentageFloored = 100;
-        checkCompletion(currentWrittenWords);
+        checkCompletion(currentWrittenWords, dayID);
     }
     updateSlider(percentageFloored);
 }
@@ -45,18 +45,25 @@ function saveToDB(wordsWrittenCount, writtenText, currentWritingDay) {
             $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
         }
     });
-    checkCompletion(wordsWrittenCount);
 }
-function checkCompletion(currentWrittenWords) {
+function checkCompletion(currentWrittenWords, currentWritingDay) {
     var requiredWords = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
         $.ajax({
-            url: "writingarea/getreward/" + +$("#current-writing-dayID").text(),
+            url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
             contentType: "text/plain",
             method: "GET",
             success: function (data) {
                 console.log("SUCCESSFUL CONGRATULATE");
                 displayReward(data);
+            }
+        });
+        $.ajax({
+            url: "WritingArea/DayAccomplished/",
+            contentType: "application/json",
+            method: "POST",
+            data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, Accomplished: true }),
+            success: function (data) {
             }
         });
     }

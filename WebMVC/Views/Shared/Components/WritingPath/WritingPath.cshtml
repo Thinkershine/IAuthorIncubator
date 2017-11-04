@@ -25,7 +25,11 @@
                         <span class="title">Day Title</span> <span class="writing-path-single-day-number">@Model.Days[i].DayNumber</span>
                         <p><span class="xp-reward">XP:</span> @Model.Days[i].ExperienceReward Goal: @Model.Days[i].RequiredWords words</p>
                         <p><button onclick="getWritingDay(@Model.Id, @Model.Days[i].Id); displayHiddenQuote(@Model.Id, @Model.Days[i].Id)" class="animate action-button do-it-button green"><span>Write</span></button></p>
-                        <p>@Model.UserDays[i].WrittenWords words written
+                        <p>@Model.UserDays[i].WrittenWords words written 
+                        @if (Model.UserDays[i].Accomplished)
+                        {
+                            <i class="fa fa-heart" aria-hidden="true"></i><span> Accomplished</span><i class="fa fa-check" aria-hidden="true"></i>
+                        }
                         </p>
                     }
                 </div>

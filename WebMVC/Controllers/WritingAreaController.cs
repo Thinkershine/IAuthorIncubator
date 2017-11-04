@@ -2,6 +2,7 @@
 using WebMVC.ViewModels;
 using ApplicationCore.Entities;
 using WebMVC.Interfaces;
+using WebMVC.ViewModels.UserDTO;
 
 namespace WebMVC.Controllers
 {
@@ -63,8 +64,26 @@ namespace WebMVC.Controllers
                 };
 
                 _storageService.SaveTheDay(newDayBody);
-                System.Console.WriteLine($"Saving The Day {writingDayBody.WrittenText}");
             }
         }
+
+        [HttpPost]
+        [Consumes("application/json")]
+        [Route("WritingArea/DayAccomplished/{dayID?}")]
+        public void DayAccomplished([FromBody]UserPathDayInfoViewModel accomplishedDay)
+        {
+            if (ModelState.IsValid)
+            {
+                UserPathDayInfo newAccomplishedDay = new UserPathDayInfo
+                {
+                    PathId = accomplishedDay.PathId,
+                    DayId = accomplishedDay.DayId,
+                    Accomplished = true
+                };
+
+                _storageService.AccomplishTheDay(newAccomplishedDay);
+            }
+        }
+
     }
 }

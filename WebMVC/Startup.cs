@@ -4,6 +4,7 @@ using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using WebMVC.Interfaces;
 using WebMVC.Services;
 
 namespace WebMVC
@@ -16,6 +17,7 @@ namespace WebMVC
             services.AddSingleton<IRepository<WritingDayHeader>, InMemoryWritingDayHeaderRepository<WritingDayHeader>>();
             services.AddSingleton<IRepository<WritingDayBody>, InMemoryWritingDayBodyRepository<WritingDayBody>>();
             services.AddSingleton<IWriterPathService, WritingPathService>();
+            services.AddSingleton<IStorageService, StorageService>();
             services.AddMvc();
         }
 

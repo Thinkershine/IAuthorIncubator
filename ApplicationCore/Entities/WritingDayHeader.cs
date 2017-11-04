@@ -11,7 +11,9 @@ namespace ApplicationCore.Entities
         public int GoldenPenReward { get; set; } 
         public bool RewardReceived { get; set; }
         public int ExperienceReward { get; set; }
+        public bool Accomplished { get; set; }
         public DateTime? AccomplishedDate { get; set; }
+        public bool Locked { get; set; }
         public int RequiredWords { get; set; }
         public int WrittenWords { get; set; }
     }

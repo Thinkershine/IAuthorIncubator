@@ -14,7 +14,7 @@
             currentWrittenWords = countWords($('#txt').val());
             currentWrittingDay = +$("#current-writing-dayID").text();
             typingTimer = setTimeout(function () { doneTyping(currentWrittenWords, currentWrittingDay); }, doneTypingInterval);
-            //autosaveTimer = setTimeout(function () { saveToDB(currentWrittenWords, $('#txt').val()); }, autosaveInterval);
+            autosaveTimer = setTimeout(function () { saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDay); }, autosaveInterval);
         }
     });
 
@@ -48,8 +48,22 @@ function updateSlider(byPercentage: number): void {
     });
 }
 
-function saveToDB(wordsWrittenCount: number, textWritten: any): void {
-    $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
+function saveToDB(wordsWrittenCount: number, writtenText: any, currentWritingDay: number): void {
+
+    //$.post("WritingArea/SaveDay/" + currentWritingDay, writtenText, function (data) {
+    //    $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
+    //});
+
+    $.ajax({
+        url: "WritingArea/SaveDay/" + currentWritingDay,
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, WrittenText: writtenText }),
+        success: function (data) {
+            $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
+        }
+    })
+
     checkCompletion(wordsWrittenCount);
     //TODO: OR COULD GET DATETIME FROM C# when SAVED? 
     //TODO: IF COMPLETED ON THE SERVER, SAVE Completed, add skill points, level up, badges etc. right away

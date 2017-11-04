@@ -183,6 +183,7 @@ nav {
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.3) 0 1px;
     cursor: default;
+    height: 100px;
     margin-bottom: 6px;
     margin-left: auto;
     margin-right: auto;
@@ -494,3 +495,12 @@ blockquote {
 .xp-reward {
     color: goldenrod;
 }
+
+.locked-day {
+    padding-top: 25px;
+    text-align: center;
+}
+
+    .locked-day p {
+        margin-bottom: 5px;
+    }

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using WebMVC.ViewModels;
 
-namespace ApplicationCore.Interfaces
+namespace WebMVC.Interfaces
 {
     public interface IWriterPathService
     {

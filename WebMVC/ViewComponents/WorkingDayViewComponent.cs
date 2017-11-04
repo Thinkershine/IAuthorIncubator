@@ -1,5 +1,5 @@
-﻿using ApplicationCore.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebMVC.Interfaces;
 
 namespace WebMVC.ViewComponents
 {
@@ -16,7 +16,7 @@ namespace WebMVC.ViewComponents
         {
             int pathId = dayIds[0];
             int dayId = dayIds[1];
-            return View("WorkingDayView", _writerPathService.GetPathDayBody(pathId, dayId, "Thinkershine").Result);
+            return View("WorkingDay", _writerPathService.GetPathDayBody(pathId, dayId, "Thinkershine").Result);
         }
     }
 }

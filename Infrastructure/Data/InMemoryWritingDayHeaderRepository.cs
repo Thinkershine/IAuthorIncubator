@@ -20,14 +20,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 0,
-                DayId = 1,
+                DayId = 0,
                 PathId = 0,
                 DayNumber = 1,
                 HiddenQuote = "Journey of a thousand miles, begins with a single step. ~ Lao Tsu",
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = false,
                 RequiredWords = 50,
                 WrittenWords = 0
             } as T);
@@ -35,14 +37,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 1,
-                DayId = 2,
+                DayId = 1,
                 PathId = 0,
                 DayNumber = 2,
                 HiddenQuote = "The writing of a novel is taking life as it already exists, not to report it but to make an object, toward the end that the finished work might contain this life inside it and offer it to the reader. The essence will not be, of course, the same thing as the raw material; it is not even of the same family of things. The novel is something that never was before and will not be again.",
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 50,
                 WrittenWords = 0
             } as T);
@@ -50,14 +54,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 2,
-                DayId = 3,
+                DayId = 2,
                 PathId = 0,
                 DayNumber = 3,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 100,
                 WrittenWords = 0
             } as T);
@@ -65,14 +71,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 3,
-                DayId = 4,
+                DayId = 3,
                 PathId = 0,
                 DayNumber = 4,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 100,
                 WrittenWords = 0
             } as T);
@@ -80,14 +88,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 4,
-                DayId = 5,
+                DayId = 4,
                 PathId = 0,
                 DayNumber = 5,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 150,
                 WrittenWords = 0
             } as T);
@@ -95,14 +105,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 5,
-                DayId = 6,
+                DayId = 5,
                 PathId = 0,
                 DayNumber = 6,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 150,
                 WrittenWords = 0
             } as T);
@@ -110,14 +122,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 6,
-                DayId = 7,
+                DayId = 6,
                 PathId = 0,
                 DayNumber = 7,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 200,
                 WrittenWords = 0
             } as T);
@@ -125,14 +139,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 7,
-                DayId = 8,
+                DayId = 7,
                 PathId = 0,
                 DayNumber = 8,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 200,
                 WrittenWords = 0
             } as T);
@@ -140,14 +156,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 8,
-                DayId = 9,
+                DayId = 8,
                 PathId = 0,
                 DayNumber = 9,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 250,
                 WrittenWords = 0
             } as T);
@@ -155,14 +173,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 9,
-                DayId = 10,
+                DayId = 9,
                 PathId = 0,
                 DayNumber = 10,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 RewardReceived = false,
                 ExperienceReward = 25,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 250,
                 WrittenWords = 0
             } as T);
@@ -170,14 +190,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 10,
-                DayId = 11,
+                DayId = 10,
                 PathId = 0,
                 DayNumber = 11,
                 HiddenQuote = null,
                 GoldenPenReward = 3,
                 RewardReceived = false,
                 ExperienceReward = 30,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 300,
                 WrittenWords = 0
             } as T);
@@ -185,14 +207,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 11,
-                DayId = 12,
+                DayId = 11,
                 PathId = 0,
                 DayNumber = 12,
                 HiddenQuote = null,
                 GoldenPenReward = 3,
                 RewardReceived = false,
                 ExperienceReward = 30,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 300,
                 WrittenWords = 0
             } as T);
@@ -200,14 +224,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 12,
-                DayId = 13,
+                DayId = 12,
                 PathId = 0,
                 DayNumber = 13,
                 HiddenQuote = null,
                 GoldenPenReward = 3,
                 RewardReceived = false,
                 ExperienceReward = 35,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 350,
                 WrittenWords = 0
             } as T);
@@ -215,14 +241,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 13,
-                DayId = 14,
+                DayId = 13,
                 PathId = 0,
                 DayNumber = 14,
                 HiddenQuote = null,
                 GoldenPenReward = 3,
                 RewardReceived = false,
                 ExperienceReward = 35,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 350,
                 WrittenWords = 0
             } as T);
@@ -230,14 +258,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 14,
-                DayId = 15,
+                DayId = 14,
                 PathId = 0,
                 DayNumber = 15,
                 HiddenQuote = null,
                 GoldenPenReward = 4,
                 RewardReceived = false,
                 ExperienceReward = 40,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 400,
                 WrittenWords = 0
             } as T);
@@ -245,14 +275,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 15,
-                DayId = 16,
+                DayId = 15,
                 PathId = 0,
                 DayNumber = 16,
                 HiddenQuote = null,
                 GoldenPenReward = 4,
                 RewardReceived = false,
                 ExperienceReward = 40,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 400,
                 WrittenWords = 0
             } as T);
@@ -260,14 +292,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 16,
-                DayId = 17,
+                DayId = 16,
                 PathId = 0,
                 DayNumber = 17,
                 HiddenQuote = null,
                 GoldenPenReward = 4,
                 RewardReceived = false,
                 ExperienceReward = 45,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 450,
                 WrittenWords = 0
             } as T);
@@ -275,14 +309,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 17,
-                DayId = 18,
+                DayId = 17,
                 PathId = 0,
                 DayNumber = 18,
                 HiddenQuote = null,
                 GoldenPenReward = 4,
                 RewardReceived = false,
                 ExperienceReward = 45,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 450,
                 WrittenWords = 0
             } as T);
@@ -290,14 +326,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 18,
-                DayId = 19,
+                DayId = 18,
                 PathId = 0,
                 DayNumber = 19,
                 HiddenQuote = null,
                 GoldenPenReward = 5,
                 RewardReceived = false,
                 ExperienceReward = 50,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 500,
                 WrittenWords = 0
             } as T);
@@ -305,14 +343,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 19,
-                DayId = 20,
+                DayId = 19,
                 PathId = 0,
                 DayNumber = 20,
                 HiddenQuote = null,
                 GoldenPenReward = 5,
                 RewardReceived = false,
                 ExperienceReward = 50,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 500,
                 WrittenWords = 0
             } as T);
@@ -320,14 +360,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 20,
-                DayId = 21,
+                DayId = 20,
                 PathId = 0,
                 DayNumber = 21,
                 HiddenQuote = null,
                 GoldenPenReward = 5,
                 RewardReceived = false,
                 ExperienceReward = 55,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 550,
                 WrittenWords = 0
             } as T);
@@ -335,14 +377,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 21,
-                DayId = 22,
+                DayId = 21,
                 PathId = 0,
                 DayNumber = 22,
                 HiddenQuote = null,
                 GoldenPenReward = 5,
                 RewardReceived = false,
                 ExperienceReward = 55,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 550,
                 WrittenWords = 0
             } as T);
@@ -350,14 +394,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 22,
-                DayId = 23,
+                DayId = 22,
                 PathId = 0,
                 DayNumber = 23,
                 HiddenQuote = null,
                 GoldenPenReward = 6,
                 RewardReceived = false,
                 ExperienceReward = 60,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 600,
                 WrittenWords = 0
             } as T);
@@ -365,14 +411,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 23,
-                DayId = 24,
+                DayId = 23,
                 PathId = 0,
                 DayNumber = 24,
                 HiddenQuote = null,
                 GoldenPenReward = 6,
                 RewardReceived = false,
                 ExperienceReward = 60,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 600,
                 WrittenWords = 0
             } as T);
@@ -380,14 +428,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 24,
-                DayId = 25,
+                DayId = 24,
                 PathId = 0,
                 DayNumber = 25,
                 HiddenQuote = null,
                 GoldenPenReward = 6,
                 RewardReceived = false,
                 ExperienceReward = 65,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 650,
                 WrittenWords = 0
             } as T);
@@ -395,14 +445,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 25,
-                DayId = 26,
+                DayId = 25,
                 PathId = 0,
                 DayNumber = 26,
                 HiddenQuote = null,
                 GoldenPenReward = 6,
                 RewardReceived = false,
                 ExperienceReward = 65,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 650,
                 WrittenWords = 0
             } as T);
@@ -410,14 +462,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 26,
-                DayId = 27,
+                DayId = 26,
                 PathId = 0,
                 DayNumber = 27,
                 HiddenQuote = null,
                 GoldenPenReward = 7,
                 RewardReceived = false,
                 ExperienceReward = 70,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 700,
                 WrittenWords = 0
             } as T);
@@ -425,14 +479,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 27,
-                DayId = 28,
+                DayId = 27,
                 PathId = 0,
                 DayNumber = 28,
                 HiddenQuote = null,
                 GoldenPenReward = 7,
                 RewardReceived = false,
                 ExperienceReward = 70,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 700,
                 WrittenWords = 0
             } as T);
@@ -440,14 +496,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 28,
-                DayId = 29,
+                DayId = 28,
                 PathId = 0,
                 DayNumber = 29,
                 HiddenQuote = null,
                 GoldenPenReward = 7,
                 RewardReceived = false,
                 ExperienceReward = 75,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 750,
                 WrittenWords = 0
             } as T);
@@ -455,14 +513,16 @@ namespace Infrastructure.Data
             Add(new WritingDayHeader
             {
                 Id = 29,
-                DayId = 30,
+                DayId = 29,
                 PathId = 0,
                 DayNumber = 30,
                 HiddenQuote = null,
                 GoldenPenReward = 7,
                 RewardReceived = false,
                 ExperienceReward = 75,
+                Accomplished = false,
                 AccomplishedDate = null,
+                Locked = true,
                 RequiredWords = 750,
                 WrittenWords = 0
             } as T);

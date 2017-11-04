@@ -1,5 +1,5 @@
-﻿using ApplicationCore.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebMVC.Interfaces;
 
 namespace WebMVC.ViewComponents
 {
@@ -14,7 +14,7 @@ namespace WebMVC.ViewComponents
 
         public IViewComponentResult Invoke(int pathID, int dayID)
         {
-            return View("HiddenQuoteView", _writerPathService.GetQuoteOfTheDay(pathID, dayID).Result);
+            return View("HiddenQuote", _writerPathService.GetQuoteOfTheDay(pathID, dayID).Result);
         }
     }
 }

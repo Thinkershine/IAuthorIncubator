@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ApplicationCore.Interfaces;
+using WebMVC.Interfaces;
 
 namespace WebMVC.ViewComponents
 {
@@ -14,7 +14,7 @@ namespace WebMVC.ViewComponents
 
         public IViewComponentResult Invoke(int pathID)
         {
-            return View("Default", _writerPathService.GetWritingPathForUser(pathID, "Thinkershine").Result);
+            return View("WritingPath", _writerPathService.GetWritingPathForUser(pathID, "Thinkershine").Result);
         }
     }
 }

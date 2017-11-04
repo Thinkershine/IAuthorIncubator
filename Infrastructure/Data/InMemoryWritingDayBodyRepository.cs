@@ -85,7 +85,7 @@ namespace Infrastructure.Data
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _inMemoryWritingDayBodyRepository[entity.Id] = entity;
         }
     }
 }

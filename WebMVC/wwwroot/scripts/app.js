@@ -12,6 +12,7 @@ $(document).ready(function () {
             currentWrittenWords = countWords($('#txt').val());
             currentWrittingDay = +$("#current-writing-dayID").text();
             typingTimer = setTimeout(function () { doneTyping(currentWrittenWords, currentWrittingDay); }, doneTypingInterval);
+            autosaveTimer = setTimeout(function () { saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDay); }, autosaveInterval);
         }
     });
 });
@@ -34,8 +35,16 @@ function updateSlider(byPercentage) {
         transition: 'width .8s ease-in-out'
     });
 }
-function saveToDB(wordsWrittenCount, textWritten) {
-    $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
+function saveToDB(wordsWrittenCount, writtenText, currentWritingDay) {
+    $.ajax({
+        url: "WritingArea/SaveDay/" + currentWritingDay,
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, WrittenText: writtenText }),
+        success: function (data) {
+            $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
+        }
+    });
     checkCompletion(wordsWrittenCount);
 }
 function checkCompletion(currentWrittenWords) {

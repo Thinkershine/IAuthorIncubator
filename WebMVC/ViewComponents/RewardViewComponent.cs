@@ -11,7 +11,7 @@ namespace WebMVC.ViewComponents
         // todo : receive reward
         public IViewComponentResult Invoke(int xpReward, int goldenPenReward)
         {
-            return View("RewardView", new int[] { xpReward, goldenPenReward });
+            return View("Reward", new int[] { xpReward, goldenPenReward });
         }
     }
 }

@@ -14,6 +14,7 @@ namespace ApplicationCore.Entities
         public int CompletionBonus { get; set; }
         //TODO: Develop Trophy public Trophy Trophy { get; set; } 
         public List<WritingDayHeader> Days { get; set; }
+        public List<int> DayIds { get; set; }
         public int MissedDays { get; set; }
         //TODO: Develop Achievement public Achievement TotalStreak { get; set; } 
         public DateTime StartDate { get; set; }

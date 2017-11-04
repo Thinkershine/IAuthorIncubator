@@ -1,16 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ApplicationCore.Interfaces;
 using WebMVC.ViewModels;
+using ApplicationCore.Entities;
+using WebMVC.Interfaces;
 
 namespace WebMVC.Controllers
 {
     public class WritingAreaController : Controller
     {
         private IWriterPathService _writerPathService;
+        private IStorageService _storageService;
 
-        public WritingAreaController(IWriterPathService writerPathSerivce)
+        public WritingAreaController(IWriterPathService writerPathSerivce, 
+            IStorageService storageService)
         {
             _writerPathService = writerPathSerivce;
+            _storageService = storageService;
         }
 
         [Route("WritingArea/GetDay/{pathID?}/{dayID?}")]
@@ -42,12 +46,23 @@ namespace WebMVC.Controllers
             return ViewComponent("Reward", new { xpReward, goldenPenReward });
         }
 
-        public void SaveDay(WritingDayBodyViewModel incomingDay)
+        [HttpPost]
+        [Consumes("application/json")]
+        [Route("WritingArea/SaveDay/{dayID?}")]
+        public void SaveDay([FromBody]WritingDayBodyViewModel writingDayBody)
         {
             if (ModelState.IsValid)
             {
-                //_writerPathService.SaveTheDay(incomingDay);
-                System.Console.WriteLine($"Saving The Day {incomingDay}");
+                WritingDayBody newDayBody = new WritingDayBody
+                {
+                    Id = writingDayBody.Id,
+                    DayId = writingDayBody.DayId,
+                    PathId = writingDayBody.PathId,
+                    WrittenText = writingDayBody.WrittenText
+                };
+
+                _storageService.SaveTheDay(newDayBody);
+                System.Console.WriteLine($"Saving The Day {writingDayBody.WrittenText}");
             }
         }
     }

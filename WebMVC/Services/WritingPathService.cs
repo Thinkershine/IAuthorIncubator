@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using WebMVC.ViewModels;
+using WebMVC.Interfaces;
 
 namespace WebMVC.Services
 {
@@ -46,8 +47,11 @@ namespace WebMVC.Services
             {
                 viewModel.Add(new WritingDayHeaderViewModel {
                     Id = day.Id,
+                    DayId = day.DayId,
                     DayNumber = day.DayNumber,
                     HiddenQuote = day.HiddenQuote,
+                    Accomplished = day.Accomplished,
+                    Locked = day.Locked,
                     ExperienceReward = day.ExperienceReward,
                     RequiredWords = day.RequiredWords,
                     WrittenWords = day.WrittenWords
@@ -89,6 +93,7 @@ namespace WebMVC.Services
             return Task.Run(() => new WritingDayBodyViewModel
             {
                 Id = pathDayModel.Id,
+                DayId = pathDayModel.DayId,
                 PathId = pathId,
                 WrittenText = pathDayModel.WrittenText,
                 HiddenWisdom = pathDayModel.HiddenWisdom,

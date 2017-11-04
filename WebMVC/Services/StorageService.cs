@@ -1,21 +1,21 @@
 ﻿using ApplicationCore.Entities;
-using ApplicationCore.Interfaces;
+using Infrastructure.Data;
 using WebMVC.Interfaces;
 
 namespace WebMVC.Services
 {
     public class StorageService : IStorageService
     {
-        private IRepository<UserWritingDayBody> _writingDayBodyRepository;
+        private InMemoryUserDataRepository _writingUserDayBodyRepository;
 
-        public StorageService(IRepository<UserWritingDayBody> writingDayBodyRepository)
+        public StorageService(InMemoryUserDataRepository writingUserDayBodyRepository)
         {
-            _writingDayBodyRepository = writingDayBodyRepository;
+            _writingUserDayBodyRepository = writingUserDayBodyRepository;
         }
 
         public void SaveTheDay(UserWritingDayBody incomingDayBody)
         {
-            _writingDayBodyRepository.Update(incomingDayBody);
+            _writingUserDayBodyRepository.UpdateUserWritingDayBodyForId(incomingDayBody);
         }
     }
 }

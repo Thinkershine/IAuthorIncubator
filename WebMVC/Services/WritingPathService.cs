@@ -13,17 +13,14 @@ namespace WebMVC.Services
     {
         public IRepository<WritingPath> _writingPathRepository { get; set; }
         public IRepository<WritingDayHeader> _writingDayHeadersRepository { get; set; }
-        public IRepository<UserWritingDayBody> _writingDayBodiesRepository { get; set; }
         public InMemoryUserDataRepository _inMemoryUserDataRepository { get; set; }
 
         public WritingPathService(IRepository<WritingPath> writingPathRepository,
             IRepository<WritingDayHeader> writingDayHeaderRepository,
-            IRepository<UserWritingDayBody> writingDayBodyRepository,
             InMemoryUserDataRepository userDataRepository)
         {
             _writingPathRepository = writingPathRepository;
             _writingDayHeadersRepository = writingDayHeaderRepository;
-            _writingDayBodiesRepository = writingDayBodyRepository;
             _inMemoryUserDataRepository = userDataRepository;
         }
 
@@ -104,13 +101,13 @@ namespace WebMVC.Services
                 ExperienceReward = pathDayModel.ExperienceReward,
                 GoldenPenReward = pathDayModel.GoldenPenReward,
                 RequiredWords = pathDayModel.RequiredWords,
-                WrittenWords = pathDayModel.WrittenWords
+                WrittenWords = _inMemoryUserDataRepository.GetWrittenWordsForDay(pathDay)
             });
         }
 
         public Task<WritingDayBodyViewModel> GetPathDayBody(int pathId, int pathDay, string userName)
         {
-            var pathDayModel = _writingDayBodiesRepository.GetById(pathDay); // TODO : Get by Day ID not by ALL DAYS IDs...
+            var pathDayModel = _inMemoryUserDataRepository.GetUserWritingDayBodyById(pathDay); // TODO : Get by Day ID not by ALL DAYS IDs...
 
             return Task.Run(() => new WritingDayBodyViewModel
             {
@@ -118,6 +115,7 @@ namespace WebMVC.Services
                 DayId = pathDayModel.DayId,
                 PathId = pathId,
                 WrittenText = pathDayModel.WrittenText,
+                WrittenWords = pathDayModel.WrittenWords,
                 HiddenWisdom = pathDayModel.HiddenWisdom,
                 ExercisePrompts = pathDayModel.ExercisePrompts
             });

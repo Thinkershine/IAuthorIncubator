@@ -20,8 +20,8 @@ namespace WebMVC.Controllers
         [Route("WritingArea/GetDay/{pathID?}/{dayID?}")]
         public IActionResult GetDay(int pathID, int dayID)
         {
-            int[] temp = new int[] { pathID, dayID };
-            return ViewComponent("WorkingDay", temp);
+            var workingDayBodyViewModel = _writerPathService.GetPathDayBody(pathID, dayID, "Thinkershine").Result;
+            return ViewComponent("WorkingDay", workingDayBodyViewModel);
         }
 
         [Route("WritingArea/GetAchievement/{id?}")]
@@ -58,7 +58,8 @@ namespace WebMVC.Controllers
                     Id = writingDayBody.Id,
                     DayId = writingDayBody.DayId,
                     PathId = writingDayBody.PathId,
-                    WrittenText = writingDayBody.WrittenText
+                    WrittenText = writingDayBody.WrittenText,
+                    WrittenWords = writingDayBody.WrittenWords
                 };
 
                 _storageService.SaveTheDay(newDayBody);

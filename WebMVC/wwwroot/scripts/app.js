@@ -40,7 +40,7 @@ function saveToDB(wordsWrittenCount, writtenText, currentWritingDay) {
         url: "WritingArea/SaveDay/" + currentWritingDay,
         contentType: "application/json",
         method: "POST",
-        data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, WrittenText: writtenText }),
+        data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
         success: function (data) {
             $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
         }

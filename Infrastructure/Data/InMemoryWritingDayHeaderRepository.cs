@@ -25,11 +25,7 @@ namespace Infrastructure.Data
                 DayNumber = 1,
                 HiddenQuote = "Journey of a thousand miles, begins with a single step. ~ Lao Tsu",
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = false,
                 RequiredWords = 50,
                 WrittenWords = 0
             } as T);
@@ -42,11 +38,7 @@ namespace Infrastructure.Data
                 DayNumber = 2,
                 HiddenQuote = "The writing of a novel is taking life as it already exists, not to report it but to make an object, toward the end that the finished work might contain this life inside it and offer it to the reader. The essence will not be, of course, the same thing as the raw material; it is not even of the same family of things. The novel is something that never was before and will not be again.",
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 50,
                 WrittenWords = 0
             } as T);
@@ -59,11 +51,7 @@ namespace Infrastructure.Data
                 DayNumber = 3,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 100,
                 WrittenWords = 0
             } as T);
@@ -76,11 +64,7 @@ namespace Infrastructure.Data
                 DayNumber = 4,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 100,
                 WrittenWords = 0
             } as T);
@@ -93,11 +77,7 @@ namespace Infrastructure.Data
                 DayNumber = 5,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 150,
                 WrittenWords = 0
             } as T);
@@ -110,11 +90,7 @@ namespace Infrastructure.Data
                 DayNumber = 6,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 150,
                 WrittenWords = 0
             } as T);
@@ -127,11 +103,7 @@ namespace Infrastructure.Data
                 DayNumber = 7,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 200,
                 WrittenWords = 0
             } as T);
@@ -144,11 +116,7 @@ namespace Infrastructure.Data
                 DayNumber = 8,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 200,
                 WrittenWords = 0
             } as T);
@@ -161,13 +129,8 @@ namespace Infrastructure.Data
                 DayNumber = 9,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
-                RequiredWords = 250,
-                WrittenWords = 0
+                RequiredWords = 250
             } as T);
 
             Add(new WritingDayHeader
@@ -178,11 +141,7 @@ namespace Infrastructure.Data
                 DayNumber = 10,
                 HiddenQuote = null,
                 GoldenPenReward = 2,
-                RewardReceived = false,
                 ExperienceReward = 25,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 250,
                 WrittenWords = 0
             } as T);
@@ -195,11 +154,7 @@ namespace Infrastructure.Data
                 DayNumber = 11,
                 HiddenQuote = null,
                 GoldenPenReward = 3,
-                RewardReceived = false,
                 ExperienceReward = 30,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 300,
                 WrittenWords = 0
             } as T);
@@ -212,11 +167,7 @@ namespace Infrastructure.Data
                 DayNumber = 12,
                 HiddenQuote = null,
                 GoldenPenReward = 3,
-                RewardReceived = false,
                 ExperienceReward = 30,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 300,
                 WrittenWords = 0
             } as T);
@@ -229,11 +180,7 @@ namespace Infrastructure.Data
                 DayNumber = 13,
                 HiddenQuote = null,
                 GoldenPenReward = 3,
-                RewardReceived = false,
                 ExperienceReward = 35,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 350,
                 WrittenWords = 0
             } as T);
@@ -246,11 +193,7 @@ namespace Infrastructure.Data
                 DayNumber = 14,
                 HiddenQuote = null,
                 GoldenPenReward = 3,
-                RewardReceived = false,
                 ExperienceReward = 35,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 350,
                 WrittenWords = 0
             } as T);
@@ -263,11 +206,7 @@ namespace Infrastructure.Data
                 DayNumber = 15,
                 HiddenQuote = null,
                 GoldenPenReward = 4,
-                RewardReceived = false,
                 ExperienceReward = 40,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 400,
                 WrittenWords = 0
             } as T);
@@ -280,11 +219,7 @@ namespace Infrastructure.Data
                 DayNumber = 16,
                 HiddenQuote = null,
                 GoldenPenReward = 4,
-                RewardReceived = false,
                 ExperienceReward = 40,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 400,
                 WrittenWords = 0
             } as T);
@@ -297,11 +232,7 @@ namespace Infrastructure.Data
                 DayNumber = 17,
                 HiddenQuote = null,
                 GoldenPenReward = 4,
-                RewardReceived = false,
                 ExperienceReward = 45,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 450,
                 WrittenWords = 0
             } as T);
@@ -314,11 +245,7 @@ namespace Infrastructure.Data
                 DayNumber = 18,
                 HiddenQuote = null,
                 GoldenPenReward = 4,
-                RewardReceived = false,
                 ExperienceReward = 45,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 450,
                 WrittenWords = 0
             } as T);
@@ -331,11 +258,7 @@ namespace Infrastructure.Data
                 DayNumber = 19,
                 HiddenQuote = null,
                 GoldenPenReward = 5,
-                RewardReceived = false,
                 ExperienceReward = 50,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 500,
                 WrittenWords = 0
             } as T);
@@ -348,11 +271,7 @@ namespace Infrastructure.Data
                 DayNumber = 20,
                 HiddenQuote = null,
                 GoldenPenReward = 5,
-                RewardReceived = false,
                 ExperienceReward = 50,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 500,
                 WrittenWords = 0
             } as T);
@@ -365,11 +284,7 @@ namespace Infrastructure.Data
                 DayNumber = 21,
                 HiddenQuote = null,
                 GoldenPenReward = 5,
-                RewardReceived = false,
                 ExperienceReward = 55,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 550,
                 WrittenWords = 0
             } as T);
@@ -382,11 +297,7 @@ namespace Infrastructure.Data
                 DayNumber = 22,
                 HiddenQuote = null,
                 GoldenPenReward = 5,
-                RewardReceived = false,
                 ExperienceReward = 55,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 550,
                 WrittenWords = 0
             } as T);
@@ -399,11 +310,7 @@ namespace Infrastructure.Data
                 DayNumber = 23,
                 HiddenQuote = null,
                 GoldenPenReward = 6,
-                RewardReceived = false,
                 ExperienceReward = 60,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 600,
                 WrittenWords = 0
             } as T);
@@ -416,11 +323,7 @@ namespace Infrastructure.Data
                 DayNumber = 24,
                 HiddenQuote = null,
                 GoldenPenReward = 6,
-                RewardReceived = false,
                 ExperienceReward = 60,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 600,
                 WrittenWords = 0
             } as T);
@@ -433,11 +336,7 @@ namespace Infrastructure.Data
                 DayNumber = 25,
                 HiddenQuote = null,
                 GoldenPenReward = 6,
-                RewardReceived = false,
                 ExperienceReward = 65,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 650,
                 WrittenWords = 0
             } as T);
@@ -450,11 +349,7 @@ namespace Infrastructure.Data
                 DayNumber = 26,
                 HiddenQuote = null,
                 GoldenPenReward = 6,
-                RewardReceived = false,
                 ExperienceReward = 65,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 650,
                 WrittenWords = 0
             } as T);
@@ -467,11 +362,7 @@ namespace Infrastructure.Data
                 DayNumber = 27,
                 HiddenQuote = null,
                 GoldenPenReward = 7,
-                RewardReceived = false,
                 ExperienceReward = 70,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 700,
                 WrittenWords = 0
             } as T);
@@ -484,11 +375,7 @@ namespace Infrastructure.Data
                 DayNumber = 28,
                 HiddenQuote = null,
                 GoldenPenReward = 7,
-                RewardReceived = false,
                 ExperienceReward = 70,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 700,
                 WrittenWords = 0
             } as T);
@@ -501,11 +388,7 @@ namespace Infrastructure.Data
                 DayNumber = 29,
                 HiddenQuote = null,
                 GoldenPenReward = 7,
-                RewardReceived = false,
                 ExperienceReward = 75,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 750,
                 WrittenWords = 0
             } as T);
@@ -518,11 +401,7 @@ namespace Infrastructure.Data
                 DayNumber = 30,
                 HiddenQuote = null,
                 GoldenPenReward = 7,
-                RewardReceived = false,
                 ExperienceReward = 75,
-                Accomplished = false,
-                AccomplishedDate = null,
-                Locked = true,
                 RequiredWords = 750,
                 WrittenWords = 0
             } as T);

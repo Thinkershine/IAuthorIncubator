@@ -11,33 +11,33 @@
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
         if ($('#txt').val()) {
-            currentWrittenWords = countWords($('#txt').val());
-            currentWrittingDay = +$("#current-writing-dayID").text();
-            typingTimer = setTimeout(function () { doneTyping(currentWrittenWords, currentWrittingDay); }, doneTypingInterval);
-            autosaveTimer = setTimeout(function () { saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDay); }, autosaveInterval);
+            typingTimer = setTimeout(function () {
+                currentWrittenWords = countWords($('#txt').val());
+                doneTyping(currentWrittenWords);
+            }, doneTypingInterval);
+
+            autosaveTimer = setTimeout(function () {
+                currentWrittingDay = +$("#current-writing-dayID").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDay);
+            }, autosaveInterval);
         }
     });
-
-    //$('#claim-reward').click(function () {
-    //    $('#achievement-unlocked').addClass('hidden');
-    //    //TODO: SHOW ANIMATIONS HOW EXPERIENCE IS GROWING etc.
-    //});
 });
 
 
-function doneTyping(newText: number, currentDayID: number): void {
+function doneTyping(newText: number): void {
     $('#written-words').text(newText);
-    checkProgress(newText, currentDayID);
+    checkProgress(newText);
 }
 
-function checkProgress(currentWrittenWords: number, dayID: number): void {
+function checkProgress(currentWrittenWords: number): void {
     var requiredWords: number = +$("#writing-day-required-words").text();
     var percentageCompleted: number = (currentWrittenWords * 100) / requiredWords;
     var percentageFloored: number = Math.floor(percentageCompleted);
 
     if (percentageFloored >= 100) {
         percentageFloored = 100;
-        checkCompletion(currentWrittenWords, dayID);
+        checkCompletion(currentWrittenWords);
     }
     updateSlider(percentageFloored);
 }
@@ -49,11 +49,6 @@ function updateSlider(byPercentage: number): void {
 }
 
 function saveToDB(wordsWrittenCount: number, writtenText: any, currentWritingDay: number): void {
-
-    //$.post("WritingArea/SaveDay/" + currentWritingDay, writtenText, function (data) {
-    //    $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
-    //});
-
     $.ajax({
         url: "WritingArea/SaveDay/" + currentWritingDay,
         contentType: "application/json",
@@ -69,9 +64,10 @@ function saveToDB(wordsWrittenCount: number, writtenText: any, currentWritingDay
     // > THEN UPDATE THE VIEW WITH NEXT METHOD
 }
 
-function checkCompletion(currentWrittenWords: number, currentWritingDay: number): void {
+function checkCompletion(currentWrittenWords: number): void {
     var requiredWords: number = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
+        var currentWrittingDayYAY = +$("#current-writing-dayID").text();
 
         $.ajax({
             url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
@@ -87,7 +83,7 @@ function checkCompletion(currentWrittenWords: number, currentWritingDay: number)
             url: "WritingArea/DayAccomplished/",
             contentType: "application/json",
             method: "POST",
-            data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, Accomplished: true }),
+            data: JSON.stringify({ PathId: 0, DayId: currentWrittingDayYAY, Accomplished: true }),
             success: function (data) {
                 // TODO : Display REWARD & ACHIEVEMENT!!! Hurray !
             }
@@ -105,6 +101,16 @@ function displayReward(data: string): void {
 
 function claimReward() {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
+    resetPath();
+        //$('#claim-reward').click(function () {
+    //    $('#achievement-unlocked').addClass('hidden');
+    //    //TODO: SHOW ANIMATIONS HOW EXPERIENCE IS GROWING etc.
+    //});
+}
+
+function resetPath() {
+    pathIsActive = false;
+    getWritingPath();
 }
 
 function countWords(inTextArea: any): number {
@@ -126,12 +132,12 @@ function prepareForCounting(incomingString: string): string {
     incomingString = removeNonWordCharacters(incomingString);
     incomingString = removeNumbers(incomingString);
     incomingString = removeSingleLetters(incomingString);
-
+    console.log("Check");
     return incomingString;
 }
 
 function removeNonWordCharacters(inString: string) {
-    return inString.replace(/[\<\>\@\#\$\%\^\&\*\(\)\-\=\!\\_\+\,\.\:\;\?\|\{\}\[\]\'\"\/\`\~]/g, " ");
+     return inString.replace(/[\<\>\@\#\$\%\^\&\*\(\)\-\=\!\\_\+\,\.\:\;\?\|\{\}\[\]\'\"\/\`\~]/g, " ");
 }
 
 function removeNumbers(inString: string): string {

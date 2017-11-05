@@ -9,24 +9,28 @@ $(document).ready(function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
         if ($('#txt').val()) {
-            currentWrittenWords = countWords($('#txt').val());
-            currentWrittingDay = +$("#current-writing-dayID").text();
-            typingTimer = setTimeout(function () { doneTyping(currentWrittenWords, currentWrittingDay); }, doneTypingInterval);
-            autosaveTimer = setTimeout(function () { saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDay); }, autosaveInterval);
+            typingTimer = setTimeout(function () {
+                currentWrittenWords = countWords($('#txt').val());
+                doneTyping(currentWrittenWords);
+            }, doneTypingInterval);
+            autosaveTimer = setTimeout(function () {
+                currentWrittingDay = +$("#current-writing-dayID").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDay);
+            }, autosaveInterval);
         }
     });
 });
-function doneTyping(newText, currentDayID) {
+function doneTyping(newText) {
     $('#written-words').text(newText);
-    checkProgress(newText, currentDayID);
+    checkProgress(newText);
 }
-function checkProgress(currentWrittenWords, dayID) {
+function checkProgress(currentWrittenWords) {
     var requiredWords = +$("#writing-day-required-words").text();
     var percentageCompleted = (currentWrittenWords * 100) / requiredWords;
     var percentageFloored = Math.floor(percentageCompleted);
     if (percentageFloored >= 100) {
         percentageFloored = 100;
-        checkCompletion(currentWrittenWords, dayID);
+        checkCompletion(currentWrittenWords);
     }
     updateSlider(percentageFloored);
 }
@@ -46,9 +50,10 @@ function saveToDB(wordsWrittenCount, writtenText, currentWritingDay) {
         }
     });
 }
-function checkCompletion(currentWrittenWords, currentWritingDay) {
+function checkCompletion(currentWrittenWords) {
     var requiredWords = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
+        var currentWrittingDayYAY = +$("#current-writing-dayID").text();
         $.ajax({
             url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
             contentType: "text/plain",
@@ -62,7 +67,7 @@ function checkCompletion(currentWrittenWords, currentWritingDay) {
             url: "WritingArea/DayAccomplished/",
             contentType: "application/json",
             method: "POST",
-            data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, Accomplished: true }),
+            data: JSON.stringify({ PathId: 0, DayId: currentWrittingDayYAY, Accomplished: true }),
             success: function (data) {
             }
         });
@@ -73,6 +78,11 @@ function displayReward(data) {
 }
 function claimReward() {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
+    resetPath();
+}
+function resetPath() {
+    pathIsActive = false;
+    getWritingPath();
 }
 function countWords(inTextArea) {
     inTextArea = prepareForCounting(inTextArea);
@@ -90,6 +100,7 @@ function prepareForCounting(incomingString) {
     incomingString = removeNonWordCharacters(incomingString);
     incomingString = removeNumbers(incomingString);
     incomingString = removeSingleLetters(incomingString);
+    console.log("Check");
     return incomingString;
 }
 function removeNonWordCharacters(inString) {

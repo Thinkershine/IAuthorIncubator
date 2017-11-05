@@ -53,11 +53,8 @@ namespace WebMVC.Services
                     DayId = day.DayId,
                     DayNumber = day.DayNumber,
                     HiddenQuote = day.HiddenQuote,
-                    Accomplished = day.Accomplished,
-                    Locked = day.Locked,
                     ExperienceReward = day.ExperienceReward,
                     RequiredWords = day.RequiredWords,
-                    WrittenWords = day.WrittenWords
                 });
             }
 

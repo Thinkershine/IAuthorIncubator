@@ -13,12 +13,12 @@ namespace WebMVC.Services
             _writingUserDayBodyRepository = writingUserDayBodyRepository;
         }
 
-        public void SaveTheDay(UserWritingDayBody incomingDayBody)
+        public void SaveDay(UserWritingDayBody incomingDayBody)
         {
             _writingUserDayBodyRepository.UpdateUserWritingDayBodyForId(incomingDayBody);
         }
 
-        public void AccomplishTheDay(UserPathDayInfo incomingAccomplishedDay)
+        public void AccomplishDay(UserPathDayInfo incomingAccomplishedDay)
         {
             _writingUserDayBodyRepository.AccomplishTheDay(incomingAccomplishedDay);
         }

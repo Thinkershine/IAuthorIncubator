@@ -63,7 +63,7 @@ namespace WebMVC.Controllers
                     WrittenWords = writingDayBody.WrittenWords
                 };
 
-                _storageService.SaveTheDay(newDayBody);
+                _storageService.SaveDay(newDayBody);
             }
         }
 
@@ -81,7 +81,7 @@ namespace WebMVC.Controllers
                     Accomplished = true
                 };
 
-                _storageService.AccomplishTheDay(newAccomplishedDay);
+                _storageService.AccomplishDay(newAccomplishedDay);
             }
         }
 

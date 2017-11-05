@@ -10,5 +10,7 @@ namespace ApplicationCore.Entities
         public int WrittenWords { get; set; }
         public string HiddenWisdom { get; set; }
         public IEnumerable<string> ExercisePrompts { get; set; }
+        //public DateTime? AccomplishedDate { get; set; }
+        //public bool RewardReceived { get; set; }
     }
 }

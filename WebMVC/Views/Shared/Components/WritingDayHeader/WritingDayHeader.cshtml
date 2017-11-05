@@ -1,7 +1,8 @@
 ﻿@model WritingDayHeaderViewModel
 @*WritingArea WritingDayHeader*@
 <div id="writing-day-header">
-    <p class="day-number">Day @Model.DayNumber</p>
+    <p><span onclick="closeWritingArea()" id="close-writing-area" class="animate action-button green"><i class="fa fa-times" aria-hidden="true"></i></span></p>
+    <p class="day-number">Day @Model.DayNumber </p>
     <p>
         <span class="xp-reward">XP:</span> @Model.ExperienceReward |
         Required Words: <span id="writing-day-required-words">@Model.RequiredWords.ToString("##,###")</span>

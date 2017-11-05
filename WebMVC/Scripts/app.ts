@@ -181,8 +181,10 @@ var stopwords = ['a', 'all', 'an', 'and', 'are', 'as', 'at', 'be', 'but',
 
 function getWritingDay(pathId: number, dayId: number): void {
     $.get("WritingArea/GetDay/" + pathId + "/" + dayId, function (data) {
-        setTimeout(function () { $("#writing-area").html(data).removeClass("writing-area-hidden") }, 1000); // todo: show awaiting indicator...?
+        $("#writing-area").html(data).removeClass("writing-area-hidden");
     });
+    //todo: if area is visible?
+    // todo: if the day is different than the one currently in use?
 }
 
 var pathIsActive: boolean = false;
@@ -219,4 +221,13 @@ function changeMessage(message: string): void {
 
 function hideHiddenMessageOfTheDay() {
     $("#quote-of-the-day").addClass('hidden-quote');
+}
+
+function openWritingArea() {
+    $("#writing-area").toggleClass("writing-area-hidden");
+}
+
+function closeWritingArea()
+{
+    $("#writing-area").addClass("writing-area-hidden");
 }

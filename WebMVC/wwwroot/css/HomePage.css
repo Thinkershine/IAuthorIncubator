@@ -231,7 +231,7 @@ nav {
     position: relative;
     text-align: center;
     top: 25px;
-    transition: background .5s, opacity .5s;
+    transition: background .5s, opacity 1s, top 1.5s ease-in-out;
     vertical-align: central;
     width: 825px;
 }
@@ -243,7 +243,7 @@ nav {
 
 .writing-area-hidden {
     opacity: 0;
-    top: -9999px !important;
+    top: -1000 !important;
 }
 
 #writing-day-header {
@@ -261,6 +261,17 @@ nav {
     font-size: 21px;
     font-style: italic;
     padding-top: 8px;
+}
+
+#close-writing-area {
+    top: 3px;
+    font-size: 14px;
+    opacity: .8;
+    padding: 6px 12px;
+    position: absolute;
+    right: 3px;
+    width: 25px;
+    z-index: 40;
 }
 
 /*
@@ -305,7 +316,6 @@ nav {
     #txt::-webkit-scrollbar-corner {
         display: none;
     }
-
 
 /* 
     B. Writing progress Bar

@@ -1,0 +1,16 @@
+﻿@model Infrastructure.UserData.WriterProfile
+
+    <div>
+        <div id="profile-img"></div>
+        <p class="user-name">@Model.PenName </p>
+        <p>@Model.WriterStatus Writer</p>
+        <div>
+            <p>Lvl: @Model.WritingLevel <span class="xp-reward">XP:</span> @Model.WritingExperience</p>
+            <p></p>
+            <div id="user-level-progress-bar" class="progress-background">
+                <div class="progress-slider" style="width: 66%;"></div>
+            </div>
+
+            <p>Currency: <span>GP: @Model.GoldenPens</span></p>
+        </div>
+    </div>

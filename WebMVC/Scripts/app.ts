@@ -43,7 +43,7 @@ function checkProgress(currentWrittenWords: number): void {
 }
 
 function updateSlider(byPercentage: number): void {
-    $(".progress-slider").css("width", byPercentage + "%").css({
+    $("#writing-progress-bar .progress-slider").css("width", byPercentage + "%").css({
         transition: 'width .8s ease-in-out'
     });
 }
@@ -200,6 +200,22 @@ function getWritingPath(): void {
             $("#writing-path-component").html(data).removeClass("writing-path-hidden");
             pathIsActive = true;
         });
+    }
+}
+
+var writerProfileIsActive: boolean = false;
+
+function getWriterProfile(): void {
+    if (writerProfileIsActive)
+    {
+        $("#writer-profile-component").toggleClass("writer-profile-hidden");
+        return;
+    }
+    else {
+        $.get("Writer/GetWriter", function (data) {
+            $("#writer-profile-component").html(data).removeClass("writer-profile-hidden");
+            writerProfileIsActive = true;
+        })
     }
 }
 

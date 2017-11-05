@@ -35,7 +35,7 @@ function checkProgress(currentWrittenWords) {
     updateSlider(percentageFloored);
 }
 function updateSlider(byPercentage) {
-    $(".progress-slider").css("width", byPercentage + "%").css({
+    $("#writing-progress-bar .progress-slider").css("width", byPercentage + "%").css({
         transition: 'width .8s ease-in-out'
     });
 }
@@ -151,6 +151,19 @@ function getWritingPath() {
         $.get("WritingPath/" + pathID, function (data) {
             $("#writing-path-component").html(data).removeClass("writing-path-hidden");
             pathIsActive = true;
+        });
+    }
+}
+var writerProfileIsActive = false;
+function getWriterProfile() {
+    if (writerProfileIsActive) {
+        $("#writer-profile-component").toggleClass("writer-profile-hidden");
+        return;
+    }
+    else {
+        $.get("Writer/GetWriter", function (data) {
+            $("#writer-profile-component").html(data).removeClass("writer-profile-hidden");
+            writerProfileIsActive = true;
         });
     }
 }

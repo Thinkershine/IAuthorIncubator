@@ -26,8 +26,7 @@ namespace Infrastructure.Data
                 HiddenQuote = "Journey of a thousand miles, begins with a single step. ~ Lao Tsu",
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 50,
-                WrittenWords = 0
+                RequiredWords = 50
             } as T);
 
             Add(new WritingDayHeader
@@ -39,8 +38,7 @@ namespace Infrastructure.Data
                 HiddenQuote = "The writing of a novel is taking life as it already exists, not to report it but to make an object, toward the end that the finished work might contain this life inside it and offer it to the reader. The essence will not be, of course, the same thing as the raw material; it is not even of the same family of things. The novel is something that never was before and will not be again.",
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 50,
-                WrittenWords = 0
+                RequiredWords = 50
             } as T);
 
             Add(new WritingDayHeader
@@ -52,8 +50,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 100,
-                WrittenWords = 0
+                RequiredWords = 100
             } as T);
 
             Add(new WritingDayHeader
@@ -65,8 +62,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 100,
-                WrittenWords = 0
+                RequiredWords = 100
             } as T);
 
             Add(new WritingDayHeader
@@ -78,8 +74,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 150,
-                WrittenWords = 0
+                RequiredWords = 150
             } as T);
 
             Add(new WritingDayHeader
@@ -91,8 +86,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 150,
-                WrittenWords = 0
+                RequiredWords = 150
             } as T);
 
             Add(new WritingDayHeader
@@ -104,8 +98,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 200,
-                WrittenWords = 0
+                RequiredWords = 200
             } as T);
 
             Add(new WritingDayHeader
@@ -117,8 +110,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 200,
-                WrittenWords = 0
+                RequiredWords = 200
             } as T);
 
             Add(new WritingDayHeader
@@ -142,8 +134,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 2,
                 ExperienceReward = 25,
-                RequiredWords = 250,
-                WrittenWords = 0
+                RequiredWords = 250
             } as T);
 
             Add(new WritingDayHeader
@@ -155,8 +146,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 3,
                 ExperienceReward = 30,
-                RequiredWords = 300,
-                WrittenWords = 0
+                RequiredWords = 300
             } as T);
 
             Add(new WritingDayHeader
@@ -168,8 +158,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 3,
                 ExperienceReward = 30,
-                RequiredWords = 300,
-                WrittenWords = 0
+                RequiredWords = 300
             } as T);
 
             Add(new WritingDayHeader
@@ -181,8 +170,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 3,
                 ExperienceReward = 35,
-                RequiredWords = 350,
-                WrittenWords = 0
+                RequiredWords = 350
             } as T);
 
             Add(new WritingDayHeader
@@ -194,8 +182,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 3,
                 ExperienceReward = 35,
-                RequiredWords = 350,
-                WrittenWords = 0
+                RequiredWords = 350
             } as T);
 
             Add(new WritingDayHeader
@@ -207,8 +194,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 4,
                 ExperienceReward = 40,
-                RequiredWords = 400,
-                WrittenWords = 0
+                RequiredWords = 400
             } as T);
 
             Add(new WritingDayHeader
@@ -220,8 +206,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 4,
                 ExperienceReward = 40,
-                RequiredWords = 400,
-                WrittenWords = 0
+                RequiredWords = 400
             } as T);
 
             Add(new WritingDayHeader
@@ -233,8 +218,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 4,
                 ExperienceReward = 45,
-                RequiredWords = 450,
-                WrittenWords = 0
+                RequiredWords = 450
             } as T);
 
             Add(new WritingDayHeader
@@ -246,8 +230,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 4,
                 ExperienceReward = 45,
-                RequiredWords = 450,
-                WrittenWords = 0
+                RequiredWords = 450
             } as T);
 
             Add(new WritingDayHeader
@@ -259,8 +242,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 5,
                 ExperienceReward = 50,
-                RequiredWords = 500,
-                WrittenWords = 0
+                RequiredWords = 500
             } as T);
 
             Add(new WritingDayHeader
@@ -272,8 +254,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 5,
                 ExperienceReward = 50,
-                RequiredWords = 500,
-                WrittenWords = 0
+                RequiredWords = 500
             } as T);
 
             Add(new WritingDayHeader
@@ -285,8 +266,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 5,
                 ExperienceReward = 55,
-                RequiredWords = 550,
-                WrittenWords = 0
+                RequiredWords = 550
             } as T);
 
             Add(new WritingDayHeader
@@ -298,8 +278,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 5,
                 ExperienceReward = 55,
-                RequiredWords = 550,
-                WrittenWords = 0
+                RequiredWords = 550
             } as T);
 
             Add(new WritingDayHeader
@@ -311,8 +290,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 6,
                 ExperienceReward = 60,
-                RequiredWords = 600,
-                WrittenWords = 0
+                RequiredWords = 600
             } as T);
 
             Add(new WritingDayHeader
@@ -324,8 +302,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 6,
                 ExperienceReward = 60,
-                RequiredWords = 600,
-                WrittenWords = 0
+                RequiredWords = 600
             } as T);
 
             Add(new WritingDayHeader
@@ -337,8 +314,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 6,
                 ExperienceReward = 65,
-                RequiredWords = 650,
-                WrittenWords = 0
+                RequiredWords = 650
             } as T);
 
             Add(new WritingDayHeader
@@ -350,8 +326,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 6,
                 ExperienceReward = 65,
-                RequiredWords = 650,
-                WrittenWords = 0
+                RequiredWords = 650
             } as T);
 
             Add(new WritingDayHeader
@@ -363,8 +338,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 7,
                 ExperienceReward = 70,
-                RequiredWords = 700,
-                WrittenWords = 0
+                RequiredWords = 700
             } as T);
 
             Add(new WritingDayHeader
@@ -376,8 +350,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 7,
                 ExperienceReward = 70,
-                RequiredWords = 700,
-                WrittenWords = 0
+                RequiredWords = 700
             } as T);
 
             Add(new WritingDayHeader
@@ -389,8 +362,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 7,
                 ExperienceReward = 75,
-                RequiredWords = 750,
-                WrittenWords = 0
+                RequiredWords = 750
             } as T);
 
             Add(new WritingDayHeader
@@ -402,8 +374,7 @@ namespace Infrastructure.Data
                 HiddenQuote = null,
                 GoldenPenReward = 7,
                 ExperienceReward = 75,
-                RequiredWords = 750,
-                WrittenWords = 0
+                RequiredWords = 750
             } as T);
         }
 

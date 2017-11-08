@@ -69,29 +69,59 @@ function checkCompletion(currentWrittenWords: number): void {
     if (currentWrittenWords >= requiredWords) {
         var currentWrittingDayYAY = +$("#current-writing-dayID").text();
 
-        $.ajax({
-            url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
-            contentType: "text/plain",
-            method: "GET",
-            success: function (data) {
-                console.log("SUCCESSFUL CONGRATULATE");
-                displayReward(data);
-            }
-        })
+        var dayAlreadyCompleted = dayAlreadyAccomplished(currentWrittingDayYAY);
+        if (dayAlreadyCompleted) {
+            return;
+        }
+        else {
 
-        $.ajax({
-            url: "WritingArea/DayAccomplished/",
-            contentType: "application/json",
-            method: "POST",
-            data: JSON.stringify({ PathId: 0, DayId: currentWrittingDayYAY, Accomplished: true }),
-            success: function (data) {
-                // TODO : Display REWARD & ACHIEVEMENT!!! Hurray !
-            }
-        })
-        //TODO: SHOW UP ACHIEVEMENT
-        //TODO: STORE IN DB AS COMPLETED
-        //TODO: ASSIGN POINTS, SHOW SKILL UP, LEVEL UP, ETC...
+            // todo : Secure: Don't Display Reward if It's Already Received
+            $.ajax({
+                url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
+                contentType: "text/plain",
+                method: "GET",
+                success: function (data) {
+                    displayReward(data);
+                }
+            })
+
+            $.ajax({
+                url: "WritingArea/DayAccomplished/",
+                contentType: "application/json",
+                method: "POST",
+                data: JSON.stringify({ PathId: 0, DayId: currentWrittingDayYAY, Accomplished: true }),
+                success: function (data) {
+                    // TODO : Display REWARD & ACHIEVEMENT!!! Hurray !
+                }
+            })
+
+            $.ajax({
+                url: "Writer/GainExperience/" + "0/" + currentWrittingDayYAY,
+                contentType: "text/plain",
+                method: "GET",
+                success: function (data) {
+                    $("#writer-profile-component").html(data);
+                }
+            })
+            //TODO: SHOW UP ACHIEVEMENT
+            //TODO: STORE IN DB AS COMPLETED
+            //TODO: ASSIGN POINTS, SHOW SKILL UP, LEVEL UP, ETC...
+        }
     }
+}
+
+// TODO : Check if is not completed before giving EXP & Reward
+function dayAlreadyAccomplished(dayID: number): boolean {
+    var result: boolean = false;
+    $.ajax({
+        url: "Writer/DayAccomplished/" + dayID,
+        contentType: "text/plain",
+        method: "GET",
+        success: function (data) {
+            result = data;
+        }
+    })
+    return result;
 }
 
 function displayReward(data: string): void {
@@ -102,7 +132,7 @@ function displayReward(data: string): void {
 function claimReward() {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
     resetPath();
-        //$('#claim-reward').click(function () {
+    //$('#claim-reward').click(function () {
     //    $('#achievement-unlocked').addClass('hidden');
     //    //TODO: SHOW ANIMATIONS HOW EXPERIENCE IS GROWING etc.
     //});
@@ -137,7 +167,7 @@ function prepareForCounting(incomingString: string): string {
 }
 
 function removeNonWordCharacters(inString: string) {
-     return inString.replace(/[\<\>\@\#\$\%\^\&\*\(\)\-\=\!\\_\+\,\.\:\;\?\|\{\}\[\]\'\"\/\`\~]/g, " ");
+    return inString.replace(/[\<\>\@\#\$\%\^\&\*\(\)\-\=\!\\_\+\,\.\:\;\?\|\{\}\[\]\'\"\/\`\~]/g, " ");
 }
 
 function removeNumbers(inString: string): string {
@@ -206,8 +236,7 @@ function getWritingPath(): void {
 var writerProfileIsActive: boolean = false;
 
 function getWriterProfile(): void {
-    if (writerProfileIsActive)
-    {
+    if (writerProfileIsActive) {
         $("#writer-profile-component").toggleClass("writer-profile-hidden");
         return;
     }
@@ -243,7 +272,6 @@ function openWritingArea() {
     $("#writing-area").toggleClass("writing-area-hidden");
 }
 
-function closeWritingArea()
-{
+function closeWritingArea() {
     $("#writing-area").addClass("writing-area-hidden");
 }

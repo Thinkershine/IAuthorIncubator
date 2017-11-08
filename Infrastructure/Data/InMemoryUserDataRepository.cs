@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using Infrastructure.UserData;
 using System.Collections.Generic;
 
 namespace Infrastructure.Data
@@ -7,11 +8,13 @@ namespace Infrastructure.Data
     {
         private List<UserPathDayInfo> _userPathDayInfo { get; }
         private List<UserWritingDayBody> _userWritingDayBodies { get; }
+        private WriterProfile _writerProfile { get; }
 
-        public InMemoryUserDataRepository()
+        public InMemoryUserDataRepository(WriterProfile writerProfile)
         {
             _userPathDayInfo = new List<UserPathDayInfo>();
             _userWritingDayBodies = new List<UserWritingDayBody>();
+            _writerProfile = writerProfile;
             InitializeUserPathDayInfo();
             InitializeUserWritingDayBodies();
         }
@@ -26,7 +29,7 @@ namespace Infrastructure.Data
                     DayId = i,
                     WrittenWords = 0,
                     Accomplished = false,
-                    Locked = true                
+                    Locked = true
                 });
             }
             _userPathDayInfo[0].Locked = false;
@@ -51,8 +54,9 @@ namespace Infrastructure.Data
                 // " - The power of golden ratio typography cannot be understated.By choosing the line - height of your primary text as your new “baseline unit”, you are effectively tying all the dimensions of your layout together with the golden ratio." +
                 // "Just look at you, with all this newfound knowledge…the ancient Greeks would be proud :D",
                 HiddenWisdom = "Bird by Bird...",
-                ExercisePrompts = new string[] { "Just write" }
-            });
+                ExercisePrompts = new string[] { "Just write" },
+                RewardReceived = false
+        });
 
             for (int i = 1; i < 30; i += 1)
             {
@@ -68,7 +72,8 @@ namespace Infrastructure.Data
                 PathId = pathId,
                 WrittenText = string.Empty,
                 HiddenWisdom = string.Empty,
-                ExercisePrompts = new string[] { string.Empty }
+                ExercisePrompts = new string[] { string.Empty },
+                RewardReceived = false
             };
         }
 
@@ -101,6 +106,17 @@ namespace Infrastructure.Data
             var nextId = dayId + 1;
             _userPathDayInfo[nextId].Locked = false; // todo : clean this
             System.Console.WriteLine($"Day Unlocked {_userPathDayInfo[dayId++].Locked}");
+        }
+
+        public bool RewardReceived(int dayId)
+        {
+            return _writerProfile.RewardReceived(dayId);
+            System.Console.WriteLine("hmm");
+        }
+
+        public void ReceiveReward(int dayId)
+        {
+            _userWritingDayBodies[dayId].RewardReceived = true;
         }
     }
 }

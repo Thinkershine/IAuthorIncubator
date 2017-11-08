@@ -6,6 +6,8 @@ using WebMVC.ViewModels;
 using WebMVC.Interfaces;
 using Infrastructure.Data;
 using WebMVC.ViewModels.UserDTO;
+using Infrastructure.Entities;
+using Infrastructure.UserData;
 
 namespace WebMVC.Services
 {
@@ -14,14 +16,18 @@ namespace WebMVC.Services
         public IRepository<WritingPath> _writingPathRepository { get; set; }
         public IRepository<WritingDayHeader> _writingDayHeadersRepository { get; set; }
         public InMemoryUserDataRepository _inMemoryUserDataRepository { get; set; }
+        public IRepository<WritingDayReward> _inMemoryWritingRewardRepository { get; set; }
+
 
         public WritingPathService(IRepository<WritingPath> writingPathRepository,
             IRepository<WritingDayHeader> writingDayHeaderRepository,
-            InMemoryUserDataRepository userDataRepository)
+            InMemoryUserDataRepository userDataRepository,
+            IRepository<WritingDayReward> writingDayRewardReopsitory)
         {
             _writingPathRepository = writingPathRepository;
             _writingDayHeadersRepository = writingDayHeaderRepository;
             _inMemoryUserDataRepository = userDataRepository;
+            _inMemoryWritingRewardRepository = writingDayRewardReopsitory;
         }
 
         public Task<WritingPathViewModel> GetWritingPathForUser(int pathId, string userName)
@@ -52,7 +58,6 @@ namespace WebMVC.Services
                     Id = day.Id,
                     DayId = day.DayId,
                     DayNumber = day.DayNumber,
-                    HiddenQuote = day.HiddenQuote,
                     ExperienceReward = day.ExperienceReward,
                     RequiredWords = day.RequiredWords,
                 });
@@ -96,7 +101,6 @@ namespace WebMVC.Services
                 Id = pathDayModel.Id,
                 DayNumber = pathDayModel.DayNumber,
                 ExperienceReward = pathDayModel.ExperienceReward,
-                GoldenPenReward = pathDayModel.GoldenPenReward,
                 RequiredWords = pathDayModel.RequiredWords,
                 WrittenWords = _inMemoryUserDataRepository.GetWrittenWordsForDay(pathDay)
             });
@@ -123,6 +127,18 @@ namespace WebMVC.Services
             var pathDayModel = _writingDayHeadersRepository.GetById(dayId); // Todo: Get also by path...
 
             return Task.Run(() => pathDayModel.HiddenQuote);
+        }
+
+        public bool RewardReceived(int rewardId)
+        {
+            var rewardReceived = _inMemoryUserDataRepository.RewardReceived(rewardId);
+            return rewardReceived;
+        }
+
+        public Task<WritingDayReward> GetReward(int pathId, int dayId)
+        {
+            _inMemoryUserDataRepository.ReceiveReward(dayId);
+            return Task.Run(() => _inMemoryWritingRewardRepository.GetById(dayId));
         }
     }
 }

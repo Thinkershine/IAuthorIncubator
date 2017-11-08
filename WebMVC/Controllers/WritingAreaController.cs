@@ -11,7 +11,7 @@ namespace WebMVC.Controllers
         private IWriterPathService _writerPathService;
         private IStorageService _storageService;
 
-        public WritingAreaController(IWriterPathService writerPathSerivce, 
+        public WritingAreaController(IWriterPathService writerPathSerivce,
             IStorageService storageService)
         {
             _writerPathService = writerPathSerivce;
@@ -36,15 +36,20 @@ namespace WebMVC.Controllers
         [Route("WritingArea/GetReward/{dayID?}")]
         public IActionResult GetReward(int dayID)
         {
-            // Todo: Check if the day is not already acomplished
-            var particularDay = _writerPathService.GetPathDayHeader(0, dayID, "Thinkershine").Result;
-            var xpReward = particularDay.ExperienceReward;
-            var goldenPenReward = particularDay.GoldenPenReward;
-            // Todo: Check if the day is unlocked
-            // Todo: Reward user for completion
-            // Todo: Display reward to the user
+            if (_writerPathService.RewardReceived(dayID))
+            {
+                return Ok();
+            }
+            else
+            {
+                var reward = _writerPathService.GetReward(0, dayID).Result;
+                var xpReward = reward.Experience;
+                var goldenPenReward = reward.GoldenPen;
 
-            return ViewComponent("Reward", new { xpReward, goldenPenReward });
+                // todo: Get reward from REWARDS REPOSITORY NOT FROM DAY REPOSITORY !
+
+                return ViewComponent("Reward", new { xpReward, goldenPenReward });
+            }
         }
 
         [HttpPost]

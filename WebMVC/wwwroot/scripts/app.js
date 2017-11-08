@@ -54,24 +54,49 @@ function checkCompletion(currentWrittenWords) {
     var requiredWords = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
         var currentWrittingDayYAY = +$("#current-writing-dayID").text();
-        $.ajax({
-            url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
-            contentType: "text/plain",
-            method: "GET",
-            success: function (data) {
-                console.log("SUCCESSFUL CONGRATULATE");
-                displayReward(data);
-            }
-        });
-        $.ajax({
-            url: "WritingArea/DayAccomplished/",
-            contentType: "application/json",
-            method: "POST",
-            data: JSON.stringify({ PathId: 0, DayId: currentWrittingDayYAY, Accomplished: true }),
-            success: function (data) {
-            }
-        });
+        var dayAlreadyCompleted = dayAlreadyAccomplished(currentWrittingDayYAY);
+        if (dayAlreadyCompleted) {
+            return;
+        }
+        else {
+            $.ajax({
+                url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
+                contentType: "text/plain",
+                method: "GET",
+                success: function (data) {
+                    displayReward(data);
+                }
+            });
+            $.ajax({
+                url: "WritingArea/DayAccomplished/",
+                contentType: "application/json",
+                method: "POST",
+                data: JSON.stringify({ PathId: 0, DayId: currentWrittingDayYAY, Accomplished: true }),
+                success: function (data) {
+                }
+            });
+            $.ajax({
+                url: "Writer/GainExperience/" + "0/" + currentWrittingDayYAY,
+                contentType: "text/plain",
+                method: "GET",
+                success: function (data) {
+                    $("#writer-profile-component").html(data);
+                }
+            });
+        }
     }
+}
+function dayAlreadyAccomplished(dayID) {
+    var result = false;
+    $.ajax({
+        url: "Writer/DayAccomplished/" + dayID,
+        contentType: "text/plain",
+        method: "GET",
+        success: function (data) {
+            result = data;
+        }
+    });
+    return result;
 }
 function displayReward(data) {
     $('#writing-day-reward').html(data).removeClass('writing-area-hidden');

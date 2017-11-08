@@ -7,9 +7,9 @@ namespace WebMVC.ViewComponents
     {
         private WriterProfile WriterProfile { get; }
 
-        public WriterProfileViewComponent()
+        public WriterProfileViewComponent(WriterProfile writerProfile)
         {
-            WriterProfile = new WriterProfile();
+            WriterProfile = writerProfile;
         }
 
         public IViewComponentResult Invoke()

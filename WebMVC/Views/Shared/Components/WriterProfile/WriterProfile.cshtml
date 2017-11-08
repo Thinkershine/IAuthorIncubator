@@ -8,7 +8,7 @@
             <p>Lvl: @Model.WritingLevel <span class="xp-reward">XP:</span> @Model.WritingExperience</p>
             <p></p>
             <div id="user-level-progress-bar" class="progress-background">
-                <div class="progress-slider" style="width: 66%;"></div>
+                <div class="progress-slider" style="width:@Model.CurrentLevelPercentage%"></div>
             </div>
 
             <p>Currency: <span>GP: @Model.GoldenPens</span></p>

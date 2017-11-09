@@ -7,7 +7,6 @@ using WebMVC.Interfaces;
 using Infrastructure.Data;
 using WebMVC.ViewModels.UserDTO;
 using Infrastructure.Entities;
-using Infrastructure.UserData;
 
 namespace WebMVC.Services
 {
@@ -44,7 +43,7 @@ namespace WebMVC.Services
                 TotalWords = writingPath.TotalWords,
                 TotalDays = writingPath.TotalDays,
                 Days = CreateDayHeaderViewModelsFromWritingPathDays(_writingDayHeadersRepository.List()),
-                UserDays = CreateUserDayInfoViewModelForThisPath(_inMemoryUserDataRepository.GetUserPathDayInfo())
+                UserDays = CreateUserDayInfoViewModelForThisPath(_inMemoryUserDataRepository.GetUserPathDayInfo(userName))
                 // TODO I will still need a way to filter results by pathID alone...
             });
         }
@@ -102,13 +101,13 @@ namespace WebMVC.Services
                 DayNumber = pathDayModel.DayNumber,
                 ExperienceReward = pathDayModel.ExperienceReward,
                 RequiredWords = pathDayModel.RequiredWords,
-                WrittenWords = _inMemoryUserDataRepository.GetWrittenWordsForDay(pathDay)
+                WrittenWords = _inMemoryUserDataRepository.GetWrittenWordsForDay(pathDay, userName)
             });
         }
 
         public Task<WritingDayBodyViewModel> GetPathDayBody(int pathId, int pathDay, string userName)
         {
-            var pathDayModel = _inMemoryUserDataRepository.GetUserWritingDayBodyById(pathDay); // TODO : Get by Day ID not by ALL DAYS IDs...
+            var pathDayModel = _inMemoryUserDataRepository.GetUserWritingDayBodyById(pathDay, userName); // TODO : Get by Day ID not by ALL DAYS IDs...
 
             return Task.Run(() => new WritingDayBodyViewModel
             {
@@ -129,7 +128,7 @@ namespace WebMVC.Services
 
         public bool RewardReceived(int rewardId)
         {
-            var rewardReceived = _inMemoryUserDataRepository.RewardReceived(rewardId);
+            var rewardReceived = _inMemoryUserDataRepository.RewardReceived(rewardId, "Thinkershine");
             return rewardReceived;
         }
 

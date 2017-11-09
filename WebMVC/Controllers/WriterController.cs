@@ -1,7 +1,6 @@
-﻿using Infrastructure.Entities;
-using Infrastructure.UserData;
+﻿using Infrastructure.Data;
+using Infrastructure.Entities;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using WebMVC.Interfaces;
 
 namespace WebMVC.Controllers
@@ -9,12 +8,12 @@ namespace WebMVC.Controllers
     public class WriterController : Controller
     {
         private IWriterPathService _writerPathService { get; }
-        private WriterProfile WriterProfile { get; set; }
+        private InMemoryUserDataRepository UserDataRepository { get; set; }
 
-        public WriterController(IWriterPathService writerPathService, WriterProfile writerProfile)
+        public WriterController(IWriterPathService writerPathService, InMemoryUserDataRepository userDataRepository)
         {
             _writerPathService = writerPathService;
-            WriterProfile = writerProfile;
+            UserDataRepository = userDataRepository;
         }
 
         public IActionResult Index()
@@ -32,7 +31,7 @@ namespace WebMVC.Controllers
         public IActionResult GainExperience(int pathID, int dayID)
         {
             WritingDayReward reward = _writerPathService.GetReward(pathID, dayID).Result;
-            WriterProfile.ReceiveReward(reward);
+            UserDataRepository.ReceiveReward(reward, "Thinkershine");
 
             return ViewComponent("WriterProfile");
         }

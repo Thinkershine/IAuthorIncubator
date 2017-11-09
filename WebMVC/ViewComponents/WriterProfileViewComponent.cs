@@ -1,20 +1,20 @@
-﻿using Infrastructure.UserData;
+﻿using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebMVC.ViewComponents
 {
     public class WriterProfileViewComponent : ViewComponent
     {
-        private WriterProfile WriterProfile { get; }
+        private InMemoryUserDataRepository Users { get; }
 
-        public WriterProfileViewComponent(WriterProfile writerProfile)
+        public WriterProfileViewComponent(InMemoryUserDataRepository users)
         {
-            WriterProfile = writerProfile;
+            Users = users;
         }
 
         public IViewComponentResult Invoke()
         {
-            return View("WriterProfile", WriterProfile);
+            return View("WriterProfile", Users.GetUserWriterProfile("Thinkershine"));
         }
     }
 }

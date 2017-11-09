@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using Infrastructure.Entities;
 using Infrastructure.UserData;
 using System.Collections.Generic;
 
@@ -6,93 +7,52 @@ namespace Infrastructure.Data
 {
     public class InMemoryUserDataRepository
     {
-        private List<UserPathDayInfo> _userPathDayInfo { get; }
-        private List<UserWritingDayBody> _userWritingDayBodies { get; }
-        private WriterProfile _writerProfile { get; }
+        private Dictionary<string, User> Users { get; set; }
 
-        public InMemoryUserDataRepository(WriterProfile writerProfile)
+        public InMemoryUserDataRepository()
         {
-            _userPathDayInfo = new List<UserPathDayInfo>();
-            _userWritingDayBodies = new List<UserWritingDayBody>();
-            _writerProfile = writerProfile;
-            InitializeUserPathDayInfo();
-            InitializeUserWritingDayBodies();
+            Users = new Dictionary<string, User>();
+            Users.Add("Thinkershine", new User());
         }
 
-        private void InitializeUserPathDayInfo()
+        public WriterProfile GetUserWriterProfile(string userName)
         {
-            for (int i = 0; i < 30; i += 1)
-            {
-                _userPathDayInfo.Add(new UserPathDayInfo
-                {
-                    PathId = 0,
-                    DayId = i,
-                    WrittenWords = 0,
-                    Accomplished = false,
-                    Locked = true
-                });
-            }
-            _userPathDayInfo[0].Locked = false;
+            return Users[userName].GetWriterProfile();
         }
 
-        private void InitializeUserWritingDayBodies()
+        public List<UserPathDayInfo> GetUserPathDayInfo(string userName)
         {
-            for (int i = 0; i < 30; i += 1)
-            {
-                _userWritingDayBodies.Add(GetEmptyWritingDayBody(i, i, 0));
-            }
-        }
-        private UserWritingDayBody GetEmptyWritingDayBody(int id, int dayId, int pathId)
-        {
-            return new UserWritingDayBody
-            {
-                Id = id,
-                DayId = dayId,
-                PathId = pathId,
-                WrittenText = string.Empty,
-                WrittenWords = 0
-            };
+            return Users[userName].GetUserPathDayInfo();
         }
 
-        public List<UserPathDayInfo> GetUserPathDayInfo()
+        public int GetWrittenWordsForDay(int dayID, string userName)
         {
-            return _userPathDayInfo;
+            return Users[userName].GetWrittenWordsForDay(dayID);
         }
 
-        public int GetWrittenWordsForDay(int dayID)
+        public UserWritingDayBody GetUserWritingDayBodyById(int dayID, string userName)
         {
-            return _userPathDayInfo[dayID].WrittenWords;
+            return Users[userName].GetWritingDayBody(dayID);
         }
 
-        public UserWritingDayBody GetUserWritingDayBodyById(int dayID)
+        public void UpdateUserWritingDay(UserWritingDayBody incomingDayBody, string userName)
         {
-            return _userWritingDayBodies[dayID];
+            Users[userName].UpdateUserWritingDay(incomingDayBody);
         }
 
-        public void UpdateUserWritingDayBodyForId(UserWritingDayBody incomingDayBody)
+        public void AccomplishDay(UserPathDayInfo day, string userName)
         {
-            var dayId = incomingDayBody.DayId;
-            _userPathDayInfo[dayId].WrittenWords = incomingDayBody.WrittenWords;
-            _userWritingDayBodies[dayId] = incomingDayBody;
+            Users[userName].AccomplishDay(day);
         }
 
-        public void AccomplishTheDay(UserPathDayInfo accomplishedDay)
+        public void ReceiveReward(WritingDayReward reward, string userName)
         {
-            var dayId = accomplishedDay.DayId;
-            _userPathDayInfo[dayId].Accomplished = accomplishedDay.Accomplished;
-            var nextId = dayId + 1;
-            _userPathDayInfo[nextId].Locked = false; // todo : clean this
-            System.Console.WriteLine($"Day Unlocked {_userPathDayInfo[dayId++].Locked}");
+            Users[userName].ReceiveReward(reward);
         }
 
-        public bool RewardReceived(int dayId)
+        public bool RewardReceived(int dayID, string userName)
         {
-            return _writerProfile.RewardReceived(dayId);
-        }
-
-        public void ReceiveReward(int dayId)
-        {
-            // todo : If giving reward, give it only to the user....
+            return Users[userName].RewardReceived(dayID);
         }
     }
 }

@@ -131,9 +131,12 @@ function accomplishDay(dayID: number): void {
         url: "WritingArea/AccomplishDay/",
         contentType: "application/json",
         method: "POST",
-        data: JSON.stringify({ PathId: 0, DayId: dayID, Accomplished: true })
+        data: JSON.stringify({ PathId: 0, DayId: dayID, Accomplished: true }),
+        success: function () {
+            resetPath();
+        }
     })
-    resetPath(); // todo : << HERE GET REWARD, ONLY AFTER CLICK OF A BUTTON, IF THIS DIDN"T HAPPEN _> USER WILL GET REWARD NEXT TIME HE LOGS IN TO THE SAME DAY
+    // todo : << HERE GET REWARD, ONLY AFTER CLICK OF A BUTTON, IF THIS DIDN"T HAPPEN _> USER WILL GET REWARD NEXT TIME HE LOGS IN TO THE SAME DAY
 }
 
 

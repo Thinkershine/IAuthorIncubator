@@ -100,9 +100,11 @@ function accomplishDay(dayID) {
         url: "WritingArea/AccomplishDay/",
         contentType: "application/json",
         method: "POST",
-        data: JSON.stringify({ PathId: 0, DayId: dayID, Accomplished: true })
+        data: JSON.stringify({ PathId: 0, DayId: dayID, Accomplished: true }),
+        success: function () {
+            resetPath();
+        }
     });
-    resetPath();
 }
 function resetPath() {
     pathIsActive = false;

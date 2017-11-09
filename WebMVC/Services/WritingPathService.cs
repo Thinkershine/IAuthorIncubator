@@ -116,9 +116,7 @@ namespace WebMVC.Services
                 DayId = pathDayModel.DayId,
                 PathId = pathId,
                 WrittenText = pathDayModel.WrittenText,
-                WrittenWords = pathDayModel.WrittenWords,
-                HiddenWisdom = pathDayModel.HiddenWisdom,
-                ExercisePrompts = pathDayModel.ExercisePrompts
+                WrittenWords = pathDayModel.WrittenWords
             });
         }
 
@@ -137,7 +135,6 @@ namespace WebMVC.Services
 
         public Task<WritingDayReward> GetReward(int pathId, int dayId)
         {
-            _inMemoryUserDataRepository.ReceiveReward(dayId);
             return Task.Run(() => _inMemoryWritingRewardRepository.GetById(dayId));
         }
     }

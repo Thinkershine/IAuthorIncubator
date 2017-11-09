@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebMVC.ViewModels;
 
 namespace WebMVC.ViewComponents
 {
@@ -8,10 +9,9 @@ namespace WebMVC.ViewComponents
         {
         }
 
-        // todo : receive reward
-        public IViewComponentResult Invoke(int xpReward, int goldenPenReward)
+        public IViewComponentResult Invoke(WritingDayRewardViewModel reward)
         {
-            return View("Reward", new int[] { xpReward, goldenPenReward });
+            return View("Reward", reward);
         }
     }
 }

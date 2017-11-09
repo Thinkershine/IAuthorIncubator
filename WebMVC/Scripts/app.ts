@@ -69,74 +69,74 @@ function checkCompletion(currentWrittenWords: number): void {
     if (currentWrittenWords >= requiredWords) {
         var currentWrittingDayYAY = +$("#current-writing-dayID").text();
 
-        var dayAlreadyCompleted = dayAlreadyAccomplished(currentWrittingDayYAY);
-        if (dayAlreadyCompleted) {
-            return;
-        }
-        else {
-
-            // todo : Secure: Don't Display Reward if It's Already Received
-            $.ajax({
-                url: "WritingArea/getreward/" + +$("#current-writing-dayID").text(),
-                contentType: "text/plain",
-                method: "GET",
-                success: function (data) {
-                    displayReward(data);
-                }
-            })
-
-            $.ajax({
-                url: "WritingArea/DayAccomplished/",
-                contentType: "application/json",
-                method: "POST",
-                data: JSON.stringify({ PathId: 0, DayId: currentWrittingDayYAY, Accomplished: true }),
-                success: function (data) {
-                    // TODO : Display REWARD & ACHIEVEMENT!!! Hurray !
-                }
-            })
-
-            $.ajax({
-                url: "Writer/GainExperience/" + "0/" + currentWrittingDayYAY,
-                contentType: "text/plain",
-                method: "GET",
-                success: function (data) {
-                    $("#writer-profile-component").html(data);
-                }
-            })
-            //TODO: SHOW UP ACHIEVEMENT
-            //TODO: STORE IN DB AS COMPLETED
-            //TODO: ASSIGN POINTS, SHOW SKILL UP, LEVEL UP, ETC...
-        }
+        dayAlreadyAccomplished(currentWrittingDayYAY);
     }
 }
 
 // TODO : Check if is not completed before giving EXP & Reward
-function dayAlreadyAccomplished(dayID: number): boolean {
-    var result: boolean = false;
+function dayAlreadyAccomplished(dayID: number): void {
     $.ajax({
         url: "Writer/DayAccomplished/" + dayID,
         contentType: "text/plain",
         method: "GET",
-        success: function (data) {
-            result = data;
+        success: function (data: boolean) {
+            if (data == false) {
+                getReward(dayID);
+            }
         }
     })
-    return result;
 }
 
+function getReward(dayID: number): void {
+    // todo : Secure: Don't Display Reward if It's Already Received
+    $.ajax({
+        url: "WritingArea/GetReward/" + dayID,
+        contentType: "text/plain",
+        method: "GET",
+        success: function (data) {
+            displayReward(data);
+        }
+    })
+}
 function displayReward(data: string): void {
     //TODO: PLAY MUSIC & ANIMATION
     $('#writing-day-reward').html(data).removeClass('writing-area-hidden');
 }
 
-function claimReward() {
+function claimReward(dayID: number):void {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
-    resetPath();
+
+    var currentWrittingDayYAY = +$("#current-writing-dayID").text();
+
+    $.ajax({
+        url: "Writer/GetReward/" + "0/" + currentWrittingDayYAY,
+        contentType: "text/plain",
+        method: "GET",
+        success: function (data) {
+            $("#writer-profile-component").html(data);
+            accomplishDay(dayID);
+        }
+    })
+    //TODO: SHOW UP ACHIEVEMENT
+    //TODO: ASSIGN POINTS, SHOW SKILL UP, LEVEL UP, ETC...
+
     //$('#claim-reward').click(function () {
     //    $('#achievement-unlocked').addClass('hidden');
     //    //TODO: SHOW ANIMATIONS HOW EXPERIENCE IS GROWING etc.
     //});
 }
+function accomplishDay(dayID: number): void {
+        //TODO: STORE IN DB AS COMPLETED
+    $.ajax({
+        url: "WritingArea/AccomplishDay/",
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({ PathId: 0, DayId: dayID, Accomplished: true })
+    })
+    resetPath(); // todo : << HERE GET REWARD, ONLY AFTER CLICK OF A BUTTON, IF THIS DIDN"T HAPPEN _> USER WILL GET REWARD NEXT TIME HE LOGS IN TO THE SAME DAY
+}
+
+
 
 function resetPath() {
     pathIsActive = false;

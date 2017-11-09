@@ -43,12 +43,16 @@ namespace WebMVC.Controllers
             else
             {
                 var reward = _writerPathService.GetReward(0, dayID).Result;
-                var xpReward = reward.Experience;
-                var goldenPenReward = reward.GoldenPen;
+                WritingDayRewardViewModel rewardModel = new WritingDayRewardViewModel
+                {
+                    DayId = reward.DayId,
+                    Experience = reward.Experience,
+                    GoldenPen = reward.GoldenPen
+                };
 
                 // todo: Get reward from REWARDS REPOSITORY NOT FROM DAY REPOSITORY !
 
-                return ViewComponent("Reward", new { xpReward, goldenPenReward });
+                return ViewComponent("Reward", rewardModel);
             }
         }
 
@@ -74,7 +78,7 @@ namespace WebMVC.Controllers
 
         [HttpPost]
         [Consumes("application/json")]
-        [Route("WritingArea/DayAccomplished/{dayID?}")]
+        [Route("WritingArea/AccomplishDay/{dayID?}")]
         public void DayAccomplished([FromBody]UserPathDayInfoViewModel accomplishedDay)
         {
             if (ModelState.IsValid)

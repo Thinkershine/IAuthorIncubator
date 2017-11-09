@@ -4,8 +4,9 @@ namespace ApplicationCore.Entities
 {
     public class WritingDayHeader : BaseEntity
     {
-        public int DayId { get; set; }
         public int PathId { get; set; }
+        public int DayId { get; set; }
+
         public int DayNumber { get; set; }
         public string HiddenQuote { get; set; }// todo : Find better way to store hidden quotes ? 
         // perhaps different table

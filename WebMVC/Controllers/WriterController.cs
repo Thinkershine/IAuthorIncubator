@@ -28,7 +28,7 @@ namespace WebMVC.Controllers
             return ViewComponent("WriterProfile");
         }
 
-        [Route("Writer/GainExperience/{pathID?}/{dayID?}")]
+        [Route("Writer/GetReward/{pathID?}/{dayID?}")]
         public IActionResult GainExperience(int pathID, int dayID)
         {
             WritingDayReward reward = _writerPathService.GetReward(pathID, dayID).Result;
@@ -40,7 +40,8 @@ namespace WebMVC.Controllers
         [Route("Writer/DayAccomplished/{dayID?}")]
         public bool DayAccomplished(int dayID)
         {
-            return _writerPathService.RewardReceived(dayID);
+            bool result = _writerPathService.RewardReceived(dayID);
+            return result;
         }
     }
 }

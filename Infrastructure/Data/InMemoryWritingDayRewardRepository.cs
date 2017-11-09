@@ -27,7 +27,14 @@ namespace Infrastructure.Data
                 GoldenPen = 2
             } as T);
 
-
+            Rewards.Add(new WritingDayReward
+            {
+                Id = 1,
+                PathId = 0,
+                DayId = 1,
+                Experience = 25,
+                GoldenPen = 2
+            } as T);
         }
 
         public T Add(T entity)

@@ -2,10 +2,10 @@
 
     <div>
         <div id="profile-img"></div>
-        <p class="user-name">@Model.PenName </p>
+        <p class="user-name">@Model.PenName</p>
         <p>@Model.WriterStatus Writer</p>
         <div>
-            <p>Lvl: @Model.WritingLevel <span class="xp-reward">XP:</span> @Model.WritingExperience</p>
+            <p><span id="health-points">@Model.HealthPoints <i class="fa fa-heart" aria-hidden="true"></i></span> | Lvl: @Model.WritingLevel <span class="xp-reward">XP:</span> @Model.WritingExperience</p>
             <p></p>
             <div id="user-level-progress-bar" class="progress-background">
                 <div class="progress-slider" style="width:@Model.CurrentLevelPercentage%"></div>

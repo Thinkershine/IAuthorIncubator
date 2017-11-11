@@ -13,7 +13,7 @@ namespace WebMVC.Services
     public class WritingPathService : IWriterPathService
     {
         public IRepository<WritingPath> _writingPathRepository { get; set; }
-        public IRepository<DayHeader> _writingDayHeadersRepository { get; set; }
+        public IRepository<PathDayHeader> _writingDayHeadersRepository { get; set; }
         public IRepository<WritingDayReward> _inMemoryWritingRewardRepository { get; set; }
         public InMemoryUserDataRepository _inMemoryUserDataRepository { get; set; }
 
@@ -21,7 +21,7 @@ namespace WebMVC.Services
         private string CurrentUser = "Thinkershine";
 
         public WritingPathService(IRepository<WritingPath> writingPathRepository,
-            IRepository<DayHeader> writingDayHeaderRepository,
+            IRepository<PathDayHeader> writingDayHeaderRepository,
             IRepository<WritingDayReward> writingDayRewardReopsitory,
             InMemoryUserDataRepository userDataRepository)
         {
@@ -49,10 +49,10 @@ namespace WebMVC.Services
             });
         }
 
-        private List<DayHeaderViewModel> CreateDayHeaderViewModelsFromWritingPathDays(List<DayHeader> dayHeaders)
+        private List<DayHeaderViewModel> CreateDayHeaderViewModelsFromWritingPathDays(List<PathDayHeader> dayHeaders)
         {
             List<DayHeaderViewModel> viewModel = new List<DayHeaderViewModel>();
-            foreach(DayHeader day in dayHeaders)
+            foreach(PathDayHeader day in dayHeaders)
             {
                 viewModel.Add(new DayHeaderViewModel {
                     Id = day.Id,
@@ -64,10 +64,10 @@ namespace WebMVC.Services
 
             return viewModel;
         }
-        private List<UserPathDayInfoViewModel> CreateUserDayInfoViewModelForThisPath(List<UserPathDayInfo> userDataForPath)
+        private List<UserPathDayInfoViewModel> CreateUserDayInfoViewModelForThisPath(List<PathDayBody> userDataForPath)
         {
             List<UserPathDayInfoViewModel> userDataForView = new List<UserPathDayInfoViewModel>();
-            foreach (UserPathDayInfo day in userDataForPath)
+            foreach (PathDayBody day in userDataForPath)
             {
                 userDataForView.Add(new UserPathDayInfoViewModel
                 {
@@ -97,6 +97,7 @@ namespace WebMVC.Services
             return Task.Run(() => new DayHeaderViewModel
             {
                 Id = pathDayModel.Id,
+                PathDayId = pathDayModel.PathDayId,
                 DayNumber = pathDayModel.VisibleDayNumber,
                 ExperienceReward = _inMemoryWritingRewardRepository.GetById(pathDayModel.RewardId).Experience,
                 RequiredWords = pathDayModel.RequiredWords,
@@ -111,7 +112,7 @@ namespace WebMVC.Services
             return Task.Run(() => new DayBodyViewModel
             {
                 Id = pathDayModel.Id,
-                DayId = pathDayModel.DayId,
+                DayId = pathDayModel.PathDayId,
                 PathId = CurrentWritingPath,
                 WrittenText = pathDayModel.WrittenText,
                 WrittenWords = pathDayModel.WrittenWords

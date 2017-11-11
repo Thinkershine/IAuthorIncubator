@@ -6,14 +6,14 @@ namespace Infrastructure.UserData
 {
     public class User
     {
-        private List<UserPathDayInfo> _userPathDayInfo { get; }
-        private List<UserWritingDayBody> _userWritingDayBodies { get; }
+        private List<PathDayBody> _userPathDayInfo { get; }
+        private List<UserDayBody> _userWritingDayBodies { get; }
         private WriterProfile _writerProfile { get; }
 
         public User()
         {
-            _userPathDayInfo = new List<UserPathDayInfo>();
-            _userWritingDayBodies = new List<UserWritingDayBody>();
+            _userPathDayInfo = new List<PathDayBody>();
+            _userWritingDayBodies = new List<UserDayBody>();
             _writerProfile = new WriterProfile();
 
             InitializeUserPathDayInfo();
@@ -24,10 +24,10 @@ namespace Infrastructure.UserData
         {
             for (int i = 0; i < 30; i += 1)
             {
-                _userPathDayInfo.Add(new UserPathDayInfo
+                _userPathDayInfo.Add(new PathDayBody
                 {
                     PathId = 0,
-                    DayId = i,
+                    PathDayId = i,
                     WrittenWords = 0,
                     Accomplished = false,
                     Locked = true
@@ -44,12 +44,12 @@ namespace Infrastructure.UserData
             }
         }
 
-        private UserWritingDayBody GetEmptyWritingDayBody(int id, int dayId, int pathId)
+        private UserDayBody GetEmptyWritingDayBody(int id, int dayId, int pathId)
         {
-            return new UserWritingDayBody
+            return new UserDayBody
             {
                 Id = id,
-                DayId = dayId,
+                PathDayId = dayId,
                 PathId = pathId,
                 WrittenText = string.Empty,
                 WrittenWords = 0
@@ -61,7 +61,7 @@ namespace Infrastructure.UserData
             return _writerProfile;
         }
 
-        public List<UserPathDayInfo> GetUserPathDayInfo()
+        public List<PathDayBody> GetUserPathDayInfo()
         {
             return _userPathDayInfo;
         }
@@ -71,14 +71,14 @@ namespace Infrastructure.UserData
             return _userPathDayInfo[dayID].WrittenWords;
         }
 
-        public UserWritingDayBody GetWritingDayBody(int dayID)
+        public UserDayBody GetWritingDayBody(int dayID)
         {
             return _userWritingDayBodies[dayID];
         }
 
-        public void UpdateUserWritingDay(UserWritingDayBody incomingDayBody)
+        public void UpdateUserWritingDay(UserDayBody incomingDayBody)
         {
-            var dayId = incomingDayBody.DayId;
+            var dayId = incomingDayBody.PathDayId;
             _userPathDayInfo[dayId].WrittenWords = incomingDayBody.WrittenWords;
             _userWritingDayBodies[dayId] = incomingDayBody;
         }

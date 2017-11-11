@@ -20,7 +20,7 @@ namespace Infrastructure.Data
             return Users[userName].GetWriterProfile();
         }
 
-        public List<UserPathDayInfo> GetUserPathDayInfo(string userName)
+        public List<PathDayBody> GetUserPathDayInfo(string userName)
         {
             return Users[userName].GetUserPathDayInfo();
         }
@@ -30,12 +30,12 @@ namespace Infrastructure.Data
             return Users[userName].GetWrittenWordsForDay(dayID);
         }
 
-        public UserWritingDayBody GetUserWritingDayBodyById(int dayID, string userName)
+        public UserDayBody GetUserWritingDayBodyById(int dayID, string userName)
         {
             return Users[userName].GetWritingDayBody(dayID);
         }
 
-        public void UpdateUserWritingDay(UserWritingDayBody incomingDayBody, string userName)
+        public void UpdateUserWritingDay(UserDayBody incomingDayBody, string userName)
         {
             Users[userName].UpdateUserWritingDay(incomingDayBody);
         }

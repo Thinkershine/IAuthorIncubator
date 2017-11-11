@@ -4,8 +4,8 @@ $(document).ready(function () {
     var doneTypingInterval = 100;
     var autosaveInterval = 3000;
     var currentWrittenWords = 0;
-    var currentWrittingDayId = 0;
-    var currentWritingDayNumber = 0;
+    var uniqueDayId = 0;
+    var currentPathDayId = 0;
     $(document).on("keydown", "#txt", function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
@@ -15,9 +15,9 @@ $(document).ready(function () {
                 doneTyping(currentWrittenWords);
             }, doneTypingInterval);
             autosaveTimer = setTimeout(function () {
-                currentWrittingDayId = +$("#current-writing-dayID").text();
-                currentWritingDayNumber = +$("#current-writing-dayNumber").text();
-                saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDayId, currentWritingDayNumber);
+                uniqueDayId = +$("#current-day-uniqueId").text();
+                currentPathDayId = +$("#current-pathDayId").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayId);
             }, autosaveInterval);
         }
     });
@@ -41,22 +41,11 @@ function updateSlider(byPercentage) {
         transition: 'width .8s ease-in-out'
     });
 }
-function saveToDB(wordsWrittenCount, writtenText, currentWritingDayId, currentWritingDayNumber) {
-    $.ajax({
-        url: "WritingArea/SaveDay/" + currentWritingDayId,
-        contentType: "application/json",
-        method: "POST",
-        data: JSON.stringify({ Id: currentWritingDayNumber, PathId: 0, DayId: currentWritingDayId, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
-        success: function (data) {
-            $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
-        }
-    });
-}
 function checkCompletion(currentWrittenWords) {
     var requiredWords = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
-        var currentWrittingDayYAY = +$("#current-writing-dayID").text();
-        dayAlreadyAccomplished(currentWrittingDayYAY);
+        var currentPathDayId = +$("#current-pathDayId").text();
+        dayAlreadyAccomplished(currentPathDayId);
     }
 }
 function dayAlreadyAccomplished(dayID) {
@@ -84,11 +73,24 @@ function getReward(dayID) {
 function displayReward(data) {
     $('#writing-day-reward').html(data).removeClass('writing-area-hidden');
 }
+function saveToDB(wordsWrittenCount, writtenText, uniqueDayId, currentPathDayId) {
+    $('#autosave-info').text("Saving... ");
+    $.ajax({
+        url: "WritingArea/SaveDay/" + currentPathDayId,
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({ Id: uniqueDayId, PathId: 0, DayId: currentPathDayId, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
+        success: function (data) {
+            var savedTime = new Date();
+            $('#autosave-info').text("Saved at " + savedTime.getHours() + ":" + savedTime.getMinutes() + " * " + savedTime.toISOString().slice(0, 10) + " * ");
+        }
+    });
+}
 function claimReward(dayID) {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
-    var currentWrittingDayYAY = +$("#current-writing-dayID").text();
+    var currentPathDayId = +$("#current-pathDayId").text();
     $.ajax({
-        url: "Writer/ClaimReward/" + currentWrittingDayYAY,
+        url: "Writer/ClaimReward/" + currentPathDayId,
         contentType: "text/plain",
         method: "GET",
         success: function (data) {
@@ -103,11 +105,11 @@ function accomplishDay(dayID) {
         contentType: "text/plain",
         method: "GET",
         success: function () {
-            resetPath();
+            updatePath();
         }
     });
 }
-function resetPath() {
+function updatePath() {
     pathIsActive = false;
     getWritingPath();
 }

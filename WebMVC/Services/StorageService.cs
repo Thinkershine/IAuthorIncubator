@@ -13,7 +13,7 @@ namespace WebMVC.Services
             _writingUserDayBodyRepository = writingUserDayBodyRepository;
         }
 
-        public void SaveDay(UserWritingDayBody incomingDayBody)
+        public void SaveDay(UserDayBody incomingDayBody)
         {
             _writingUserDayBodyRepository.UpdateUserWritingDay(incomingDayBody, "Thinkershine");
         }

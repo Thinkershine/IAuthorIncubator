@@ -15,7 +15,7 @@ namespace WebMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IRepository<WritingPath>, InMemoryWritingPathRepository<WritingPath>>();
-            services.AddSingleton<IRepository<DayHeader>, InMemoryWritingDayHeaderRepository<DayHeader>>();
+            services.AddSingleton<IRepository<PathDayHeader>, InMemoryWritingDayHeaderRepository<PathDayHeader>>();
             services.AddSingleton<IRepository<WritingDayReward>, InMemoryWritingDayRewardRepository<WritingDayReward>>();
             services.AddSingleton<InMemoryUserDataRepository>();
             services.AddSingleton<IWriterPathService, WritingPathService>();

@@ -1,9 +1,8 @@
 ﻿@model DayBodyViewModel
 
 <div>
-    @*WritingArea Component*@
     <div id="writing-area-header">
-        @await Component.InvokeAsync("WritingDayHeader", new { PathId = Model.PathId, DayId = Model.Id })
+        @await Component.InvokeAsync("WritingDayHeader", new { Id = Model.Id, DayId = Model.DayId, PathId = Model.PathId })
     </div>
     <div id="writing-area-body">
         <p id="main-writing-area">

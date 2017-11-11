@@ -25,6 +25,7 @@ namespace Infrastructure.UserData
         public float CurrentLevelPercentage { get; set; }
         public WriterStatus WriterStatus { get; set; }
         public int GoldenPens { get; set; }
+        public int HealthPoints { get; set; }
 
         public bool Author { get; set; }
 
@@ -44,6 +45,7 @@ namespace Infrastructure.UserData
             WritingExperience = 0;
             GoldenPens = 10;
             WriterStatus = WriterStatus.Newbie;
+            HealthPoints = 10;
 
             Author = false;
             ReceivedRewards = new List<int>();
@@ -76,9 +78,8 @@ namespace Infrastructure.UserData
             
             var expForNextLevel = (float)WriterStatus + 1;
             var currentLevelWriterStatusPercentage = (WritingExperience * 100) / expForNextLevel;
-            if (currentLevelWriterStatusPercentage >= 1) // todo : change to better experience later... 
+            if (currentLevelWriterStatusPercentage >= 100)
             {
-                // Writer Status Grows with Expreience But Not With Every Level...
                 WriterStatus nextLevel = Enum.GetValues(typeof(WriterStatus)).Cast<WriterStatus>()
                     .First(val => (int)val > (int)WriterStatus);
                 WriterStatus = nextLevel;
@@ -104,7 +105,7 @@ namespace Infrastructure.UserData
             }
             else
             {
-                ReceivedRewards.Add(id); // todo Find such id reward and set it to true
+                ReceivedRewards.Add(id);
                 stored = true;
                 return stored;
             }

@@ -2,7 +2,6 @@
 using WebMVC.ViewModels;
 using ApplicationCore.Entities;
 using WebMVC.Interfaces;
-using WebMVC.ViewModels.UserDTO;
 
 namespace WebMVC.Controllers
 {
@@ -63,10 +62,11 @@ namespace WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserWritingDayBody newDayBody = new UserWritingDayBody
+                // TODO : IF day already exists? Don't add new, but edit old one...
+                UserDayBody newDayBody = new UserDayBody
                 {
                     Id = writingDayBody.Id,
-                    DayId = writingDayBody.DayId,
+                    PathDayId = writingDayBody.DayId,
                     PathId = writingDayBody.PathId,
                     WrittenText = writingDayBody.WrittenText,
                     WrittenWords = writingDayBody.WrittenWords

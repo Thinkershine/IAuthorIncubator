@@ -5,8 +5,8 @@
     var autosaveInterval = 3000;
 
     var currentWrittenWords = 0;
-    var currentWrittingDayId = 0;
-    var currentWritingDayNumber = 0;
+    var uniqueDayId = 0;
+    var currentPathDayId = 0;
 
     $(document).on("keydown", "#txt", function () {
         clearInterval(typingTimer);
@@ -18,14 +18,13 @@
             }, doneTypingInterval);
 
             autosaveTimer = setTimeout(function () {
-                currentWrittingDayId = +$("#current-writing-dayID").text();
-                currentWritingDayNumber = +$("#current-writing-dayNumber").text();
-                saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDayId, currentWritingDayNumber);
+                uniqueDayId = +$("#current-day-uniqueId").text();
+                currentPathDayId = +$("#current-pathDayId").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayId);
             }, autosaveInterval);
         }
     });
 });
-
 
 function doneTyping(newText: number): void {
     $('#written-words').text(newText);
@@ -50,32 +49,15 @@ function updateSlider(byPercentage: number): void {
     });
 }
 
-function saveToDB(wordsWrittenCount: number, writtenText: any, currentWritingDayId: number, currentWritingDayNumber: number): void {
-    $.ajax({
-        url: "WritingArea/SaveDay/" + currentWritingDayId,
-        contentType: "application/json",
-        method: "POST",
-        data: JSON.stringify({ Id: currentWritingDayNumber, PathId: 0, DayId: currentWritingDayId, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
-        success: function (data) {
-            $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
-        }
-    })
-
-    //TODO: OR COULD GET DATETIME FROM C# when SAVED? 
-    //TODO: IF COMPLETED ON THE SERVER, SAVE Completed, add skill points, level up, badges etc. right away
-    // > THEN UPDATE THE VIEW WITH NEXT METHOD
-}
-
 function checkCompletion(currentWrittenWords: number): void {
     var requiredWords: number = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
-        var currentWrittingDayYAY = +$("#current-writing-dayID").text();
+        var currentPathDayId = +$("#current-pathDayId").text();
 
-        dayAlreadyAccomplished(currentWrittingDayYAY);
+        dayAlreadyAccomplished(currentPathDayId);
     }
 }
 
-// TODO : Check if is not completed before giving EXP & Reward
 function dayAlreadyAccomplished(dayID: number): void {
     $.ajax({
         url: "Writer/DayAccomplished/" + dayID,
@@ -100,18 +82,37 @@ function getReward(dayID: number): void {
         }
     })
 }
+
 function displayReward(data: string): void {
     //TODO: PLAY MUSIC & ANIMATION
     $('#writing-day-reward').html(data).removeClass('writing-area-hidden');
 }
 
+function saveToDB(wordsWrittenCount: number, writtenText: any, uniqueDayId: number, currentPathDayId: number): void {
+    $('#autosave-info').text("Saving... ");
+    $.ajax({
+        url: "WritingArea/SaveDay/" + currentPathDayId,
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({ Id: uniqueDayId, PathId: 0, DayId: currentPathDayId, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
+        success: function (data) {
+            var savedTime = new Date();
+            $('#autosave-info').text("Saved at " + savedTime.getHours() + ":" + savedTime.getMinutes() + " * " + savedTime.toISOString().slice(0, 10) + " * ");
+        }
+    })
+
+    //TODO: OR COULD GET DATETIME FROM C# when SAVED? 
+    //TODO: IF COMPLETED ON THE SERVER, SAVE Completed, add skill points, level up, badges etc. right away
+    // > THEN UPDATE THE VIEW WITH NEXT METHOD
+}
+
 function claimReward(dayID: number):void {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
 
-    var currentWrittingDayYAY = +$("#current-writing-dayID").text();
+    var currentPathDayId = +$("#current-pathDayId").text();
 
     $.ajax({
-        url: "Writer/ClaimReward/" + currentWrittingDayYAY,
+        url: "Writer/ClaimReward/" + currentPathDayId,
         contentType: "text/plain",
         method: "GET",
         success: function (data) {
@@ -120,29 +121,25 @@ function claimReward(dayID: number):void {
         }
     })
     //TODO: SHOW UP ACHIEVEMENT
-    //TODO: ASSIGN POINTS, SHOW SKILL UP, LEVEL UP, ETC...
 
     //$('#claim-reward').click(function () {
     //    $('#achievement-unlocked').addClass('hidden');
-    //    //TODO: SHOW ANIMATIONS HOW EXPERIENCE IS GROWING etc.
     //});
 }
+
 function accomplishDay(dayID: number): void {
-        //TODO: STORE IN DB AS COMPLETED
     $.ajax({
         url: "WritingArea/AccomplishDay/" + dayID,
         contentType: "text/plain",
         method: "GET",
         success: function () {
-            resetPath();
+            updatePath();
         }
     })
     // todo : << HERE GET REWARD, ONLY AFTER CLICK OF A BUTTON, IF THIS DIDN"T HAPPEN _> USER WILL GET REWARD NEXT TIME HE LOGS IN TO THE SAME DAY
 }
 
-
-
-function resetPath() {
+function updatePath() {
     pathIsActive = false;
     getWritingPath();
 }

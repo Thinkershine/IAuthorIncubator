@@ -98,12 +98,9 @@ function saveToDB(wordsWrittenCount: number, writtenText: any, uniqueDayId: numb
         success: function (data) {
             var savedTime = new Date();
             $('#autosave-info').text("Saved at " + savedTime.getHours() + ":" + savedTime.getMinutes() + " * " + savedTime.toISOString().slice(0, 10) + " * ");
+            updatePath();
         }
     })
-
-    //TODO: OR COULD GET DATETIME FROM C# when SAVED? 
-    //TODO: IF COMPLETED ON THE SERVER, SAVE Completed, add skill points, level up, badges etc. right away
-    // > THEN UPDATE THE VIEW WITH NEXT METHOD
 }
 
 function claimReward(dayID: number):void {

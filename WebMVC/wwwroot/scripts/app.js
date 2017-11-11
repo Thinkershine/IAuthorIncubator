@@ -83,6 +83,7 @@ function saveToDB(wordsWrittenCount, writtenText, uniqueDayId, currentPathDayId)
         success: function (data) {
             var savedTime = new Date();
             $('#autosave-info').text("Saved at " + savedTime.getHours() + ":" + savedTime.getMinutes() + " * " + savedTime.toISOString().slice(0, 10) + " * ");
+            updatePath();
         }
     });
 }

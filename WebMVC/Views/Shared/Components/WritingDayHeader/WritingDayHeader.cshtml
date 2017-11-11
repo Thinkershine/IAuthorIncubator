@@ -1,4 +1,4 @@
-﻿@model WritingDayHeaderViewModel
+﻿@model DayHeaderViewModel
 @*WritingArea WritingDayHeader*@
 <div id="writing-day-header">
     <p><span onclick="closeWritingArea()" id="close-writing-area" class="animate action-button green"><i class="fa fa-times" aria-hidden="true"></i></span></p>
@@ -15,4 +15,5 @@
         <script>checkProgress(@Model.WrittenWords, @Model.Id)</script>
     </p>
     <p id="current-writing-dayID" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.Id</p>
+    <p id="current-writing-dayNumber" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.DayNumber</p>
 </div>

@@ -83,10 +83,10 @@ namespace Infrastructure.UserData
             _userWritingDayBodies[dayId] = incomingDayBody;
         }
 
-        public void AccomplishDay(UserPathDayInfo day)
+        public void AccomplishDay(int dayID)
         {
-            _userPathDayInfo[day.DayId].Accomplished = day.Accomplished;
-            UnlockNextDay(day.DayId + 1);
+            _userPathDayInfo[dayID].Accomplished = true;
+            UnlockNextDay(dayID + 1);
         }
         private void UnlockNextDay(int ID)
         {

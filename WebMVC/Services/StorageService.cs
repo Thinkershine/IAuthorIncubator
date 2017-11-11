@@ -18,9 +18,9 @@ namespace WebMVC.Services
             _writingUserDayBodyRepository.UpdateUserWritingDay(incomingDayBody, "Thinkershine");
         }
 
-        public void AccomplishDay(UserPathDayInfo incomingAccomplishedDay)
+        public void AccomplishDay(int dayID)
         {
-            _writingUserDayBodyRepository.AccomplishDay(incomingAccomplishedDay, "Thinkershine");
+            _writingUserDayBodyRepository.AccomplishDay(dayID, "Thinkershine");
         }
     }
 }

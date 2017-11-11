@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebMVC.ViewModels
 {
-    public class WritingDayBodyViewModel
+    public class DayBodyViewModel
     {
         public int Id { get; set; }
         [Required]

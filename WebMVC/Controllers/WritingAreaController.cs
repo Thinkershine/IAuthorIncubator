@@ -18,10 +18,10 @@ namespace WebMVC.Controllers
             _storageService = storageService;
         }
 
-        [Route("WritingArea/GetDay/{pathID?}/{dayID?}")]
-        public IActionResult GetDay(int pathID, int dayID)
+        [Route("WritingArea/GetDay/{dayID?}")]
+        public IActionResult GetDay(int dayID)
         {
-            var workingDayBodyViewModel = _writerPathService.GetPathDayBody(pathID, dayID, "Thinkershine").Result;
+            var workingDayBodyViewModel = _writerPathService.GetPathDayBody(dayID).Result;
             return ViewComponent("WorkingDay", workingDayBodyViewModel);
         }
 
@@ -42,10 +42,10 @@ namespace WebMVC.Controllers
             }
             else
             {
-                var reward = _writerPathService.GetReward(0, dayID).Result;
-                WritingDayRewardViewModel rewardModel = new WritingDayRewardViewModel
+                var reward = _writerPathService.GetReward(dayID).Result;
+                RewardViewModel rewardModel = new RewardViewModel
                 {
-                    DayId = reward.DayId,
+                    Id = reward.Id,
                     Experience = reward.Experience,
                     GoldenPen = reward.GoldenPen
                 };
@@ -59,7 +59,7 @@ namespace WebMVC.Controllers
         [HttpPost]
         [Consumes("application/json")]
         [Route("WritingArea/SaveDay/{dayID?}")]
-        public void SaveDay([FromBody]WritingDayBodyViewModel writingDayBody)
+        public void SaveDay([FromBody]DayBodyViewModel writingDayBody)
         {
             if (ModelState.IsValid)
             {
@@ -76,23 +76,10 @@ namespace WebMVC.Controllers
             }
         }
 
-        [HttpPost]
-        [Consumes("application/json")]
         [Route("WritingArea/AccomplishDay/{dayID?}")]
-        public void DayAccomplished([FromBody]UserPathDayInfoViewModel accomplishedDay)
+        public void DayAccomplished(int dayID)
         {
-            if (ModelState.IsValid)
-            {
-                UserPathDayInfo newAccomplishedDay = new UserPathDayInfo
-                {
-                    PathId = accomplishedDay.PathId,
-                    DayId = accomplishedDay.DayId,
-                    Accomplished = true
-                };
-
-                _storageService.AccomplishDay(newAccomplishedDay);
-            }
+            _storageService.AccomplishDay(dayID);
         }
-
     }
 }

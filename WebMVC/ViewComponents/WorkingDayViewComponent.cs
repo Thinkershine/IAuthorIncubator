@@ -5,7 +5,7 @@ namespace WebMVC.ViewComponents
 {
     public class WorkingDayViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(WritingDayBodyViewModel writingDayBody)
+        public IViewComponentResult Invoke(DayBodyViewModel writingDayBody)
         {
             return View("WorkingDay", writingDayBody);
         }

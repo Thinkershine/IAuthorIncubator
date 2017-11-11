@@ -17,363 +17,303 @@ namespace Infrastructure.Data
 
         private void InitializeDayHeaderRepository()
         {
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 0,
-                DayId = 0,
                 PathId = 0,
-                DayNumber = 1,
-                HiddenQuote = "Journey of a thousand miles, begins with a single step. ~ Lao Tsu",
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 1,
+                HiddenQuoteId = "Journey of a thousand miles, begins with a single step. ~ Lao Tsu",
+                RewardId = 0,
                 RequiredWords = 50
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 1,
-                DayId = 1,
                 PathId = 0,
-                DayNumber = 2,
-                HiddenQuote = "The writing of a novel is taking life as it already exists, not to report it but to make an object, toward the end that the finished work might contain this life inside it and offer it to the reader. The essence will not be, of course, the same thing as the raw material; it is not even of the same family of things. The novel is something that never was before and will not be again.",
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 2,
+                HiddenQuoteId = "The writing of a novel is taking life as it already exists, not to report it but to make an object, toward the end that the finished work might contain this life inside it and offer it to the reader. The essence will not be, of course, the same thing as the raw material; it is not even of the same family of things. The novel is something that never was before and will not be again.",
+                RewardId = 1,
                 RequiredWords = 50
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 2,
-                DayId = 2,
                 PathId = 0,
-                DayNumber = 3,
-                HiddenQuote = null,
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 3,
+                HiddenQuoteId = null,
+                RewardId = 2,
                 RequiredWords = 100
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 3,
-                DayId = 3,
                 PathId = 0,
-                DayNumber = 4,
-                HiddenQuote = null,
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 4,
+                HiddenQuoteId = null,
+                RewardId = 3,
                 RequiredWords = 100
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 4,
-                DayId = 4,
                 PathId = 0,
-                DayNumber = 5,
-                HiddenQuote = null,
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 5,
+                HiddenQuoteId = null,
+                RewardId = 4,
                 RequiredWords = 150
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 5,
-                DayId = 5,
                 PathId = 0,
-                DayNumber = 6,
-                HiddenQuote = null,
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 6,
+                HiddenQuoteId = null,
+                RewardId = 5,
                 RequiredWords = 150
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 6,
-                DayId = 6,
                 PathId = 0,
-                DayNumber = 7,
-                HiddenQuote = null,
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 7,
+                HiddenQuoteId = null,
+                RewardId = 6,
                 RequiredWords = 200
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 7,
-                DayId = 7,
                 PathId = 0,
-                DayNumber = 8,
-                HiddenQuote = null,
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 8,
+                HiddenQuoteId = null,
+                RewardId = 7,
                 RequiredWords = 200
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 8,
-                DayId = 8,
                 PathId = 0,
-                DayNumber = 9,
-                HiddenQuote = null,
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 9,
+                HiddenQuoteId = null,
+                RewardId = 8,
                 RequiredWords = 250
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 9,
-                DayId = 9,
                 PathId = 0,
-                DayNumber = 10,
-                HiddenQuote = null,
-                GoldenPenReward = 2,
-                ExperienceReward = 25,
+                VisibleDayNumber = 10,
+                HiddenQuoteId = null,
+                RewardId = 9,
                 RequiredWords = 250
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 10,
-                DayId = 10,
                 PathId = 0,
-                DayNumber = 11,
-                HiddenQuote = null,
-                GoldenPenReward = 3,
-                ExperienceReward = 30,
+                VisibleDayNumber = 11,
+                HiddenQuoteId = null,
+                RewardId = 10,
                 RequiredWords = 300
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 11,
-                DayId = 11,
                 PathId = 0,
-                DayNumber = 12,
-                HiddenQuote = null,
-                GoldenPenReward = 3,
-                ExperienceReward = 30,
+                VisibleDayNumber = 12,
+                HiddenQuoteId = null,
+                RewardId = 11,
                 RequiredWords = 300
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 12,
-                DayId = 12,
                 PathId = 0,
-                DayNumber = 13,
-                HiddenQuote = null,
-                GoldenPenReward = 3,
-                ExperienceReward = 35,
+                VisibleDayNumber = 13,
+                HiddenQuoteId = null,
+                RewardId = 12,
                 RequiredWords = 350
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 13,
-                DayId = 13,
                 PathId = 0,
-                DayNumber = 14,
-                HiddenQuote = null,
-                GoldenPenReward = 3,
-                ExperienceReward = 35,
+                VisibleDayNumber = 14,
+                HiddenQuoteId = null,
+                RewardId = 13,
                 RequiredWords = 350
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 14,
-                DayId = 14,
                 PathId = 0,
-                DayNumber = 15,
-                HiddenQuote = null,
-                GoldenPenReward = 4,
-                ExperienceReward = 40,
+                VisibleDayNumber = 15,
+                HiddenQuoteId = null,
+                RewardId = 14,
                 RequiredWords = 400
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 15,
-                DayId = 15,
                 PathId = 0,
-                DayNumber = 16,
-                HiddenQuote = null,
-                GoldenPenReward = 4,
-                ExperienceReward = 40,
+                VisibleDayNumber = 16,
+                HiddenQuoteId = null,
+                RewardId = 15,
                 RequiredWords = 400
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 16,
-                DayId = 16,
                 PathId = 0,
-                DayNumber = 17,
-                HiddenQuote = null,
-                GoldenPenReward = 4,
-                ExperienceReward = 45,
+                VisibleDayNumber = 17,
+                HiddenQuoteId = null,
+                RewardId = 16,
                 RequiredWords = 450
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 17,
-                DayId = 17,
                 PathId = 0,
-                DayNumber = 18,
-                HiddenQuote = null,
-                GoldenPenReward = 4,
-                ExperienceReward = 45,
+                VisibleDayNumber = 18,
+                HiddenQuoteId = null,
+                RewardId = 17,
                 RequiredWords = 450
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 18,
-                DayId = 18,
                 PathId = 0,
-                DayNumber = 19,
-                HiddenQuote = null,
-                GoldenPenReward = 5,
-                ExperienceReward = 50,
+                VisibleDayNumber = 19,
+                HiddenQuoteId = null,
+                RewardId = 18,
                 RequiredWords = 500
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 19,
-                DayId = 19,
                 PathId = 0,
-                DayNumber = 20,
-                HiddenQuote = null,
-                GoldenPenReward = 5,
-                ExperienceReward = 50,
+                VisibleDayNumber = 20,
+                HiddenQuoteId = null,
+                RewardId = 19,
                 RequiredWords = 500
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 20,
-                DayId = 20,
                 PathId = 0,
-                DayNumber = 21,
-                HiddenQuote = null,
-                GoldenPenReward = 5,
-                ExperienceReward = 55,
+                VisibleDayNumber = 21,
+                HiddenQuoteId = null,
+                RewardId = 20,
                 RequiredWords = 550
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 21,
-                DayId = 21,
                 PathId = 0,
-                DayNumber = 22,
-                HiddenQuote = null,
-                GoldenPenReward = 5,
-                ExperienceReward = 55,
+                VisibleDayNumber = 22,
+                HiddenQuoteId = null,
+                RewardId = 21,
                 RequiredWords = 550
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 22,
-                DayId = 22,
                 PathId = 0,
-                DayNumber = 23,
-                HiddenQuote = null,
-                GoldenPenReward = 6,
-                ExperienceReward = 60,
+                VisibleDayNumber = 23,
+                HiddenQuoteId = null,
+                RewardId = 22,
                 RequiredWords = 600
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 23,
-                DayId = 23,
                 PathId = 0,
-                DayNumber = 24,
-                HiddenQuote = null,
-                GoldenPenReward = 6,
-                ExperienceReward = 60,
+                VisibleDayNumber = 24,
+                HiddenQuoteId = null,
+                RewardId = 23,
                 RequiredWords = 600
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 24,
-                DayId = 24,
                 PathId = 0,
-                DayNumber = 25,
-                HiddenQuote = null,
-                GoldenPenReward = 6,
-                ExperienceReward = 65,
+                VisibleDayNumber = 25,
+                HiddenQuoteId = null,
+                RewardId = 24,
                 RequiredWords = 650
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 25,
-                DayId = 25,
                 PathId = 0,
-                DayNumber = 26,
-                HiddenQuote = null,
-                GoldenPenReward = 6,
-                ExperienceReward = 65,
+                VisibleDayNumber = 26,
+                HiddenQuoteId = null,
+                RewardId = 25,
                 RequiredWords = 650
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 26,
-                DayId = 26,
                 PathId = 0,
-                DayNumber = 27,
-                HiddenQuote = null,
-                GoldenPenReward = 7,
-                ExperienceReward = 70,
+                VisibleDayNumber = 27,
+                HiddenQuoteId = null,
+                RewardId = 26,
                 RequiredWords = 700
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 27,
-                DayId = 27,
                 PathId = 0,
-                DayNumber = 28,
-                HiddenQuote = null,
-                GoldenPenReward = 7,
-                ExperienceReward = 70,
+                VisibleDayNumber = 28,
+                HiddenQuoteId = null,
+                RewardId = 27,
                 RequiredWords = 700
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 28,
-                DayId = 28,
                 PathId = 0,
-                DayNumber = 29,
-                HiddenQuote = null,
-                GoldenPenReward = 7,
-                ExperienceReward = 75,
+                VisibleDayNumber = 29,
+                HiddenQuoteId = null,
+                RewardId = 28,
                 RequiredWords = 750
             } as T);
 
-            Add(new WritingDayHeader
+            Add(new DayHeader
             {
                 Id = 29,
-                DayId = 29,
                 PathId = 0,
-                DayNumber = 30,
-                HiddenQuote = null,
-                GoldenPenReward = 7,
-                ExperienceReward = 75,
+                VisibleDayNumber = 30,
+                HiddenQuoteId = null,
+                RewardId = 29,
                 RequiredWords = 750
             } as T);
         }

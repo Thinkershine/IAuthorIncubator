@@ -40,9 +40,9 @@ namespace Infrastructure.Data
             Users[userName].UpdateUserWritingDay(incomingDayBody);
         }
 
-        public void AccomplishDay(UserPathDayInfo day, string userName)
+        public void AccomplishDay(int dayID, string userName)
         {
-            Users[userName].AccomplishDay(day);
+            Users[userName].AccomplishDay(dayID);
         }
 
         public void ReceiveReward(WritingDayReward reward, string userName)

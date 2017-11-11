@@ -27,10 +27,10 @@ namespace WebMVC.Controllers
             return ViewComponent("WriterProfile");
         }
 
-        [Route("Writer/GetReward/{pathID?}/{dayID?}")]
-        public IActionResult GainExperience(int pathID, int dayID)
+        [Route("Writer/ClaimReward/{dayID?}")]
+        public IActionResult GainExperience(int dayID)
         {
-            WritingDayReward reward = _writerPathService.GetReward(pathID, dayID).Result;
+            WritingDayReward reward = _writerPathService.GetReward(dayID).Result;
             UserDataRepository.ReceiveReward(reward, "Thinkershine");
 
             return ViewComponent("WriterProfile");

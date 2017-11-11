@@ -1,13 +1,14 @@
 ﻿$(document).ready(function () {
     var typingTimer: number;
     var autosaveTimer: number;
-    var doneTypingInterval = 500;
+    var doneTypingInterval = 100;
     var autosaveInterval = 3000;
 
     var currentWrittenWords = 0;
-    var currentWrittingDay = 0;
+    var currentWrittingDayId = 0;
+    var currentWritingDayNumber = 0;
 
-    $(document).on("keyup", "#txt", function () {
+    $(document).on("keydown", "#txt", function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
         if ($('#txt').val()) {
@@ -17,8 +18,9 @@
             }, doneTypingInterval);
 
             autosaveTimer = setTimeout(function () {
-                currentWrittingDay = +$("#current-writing-dayID").text();
-                saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDay);
+                currentWrittingDayId = +$("#current-writing-dayID").text();
+                currentWritingDayNumber = +$("#current-writing-dayNumber").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDayId, currentWritingDayNumber);
             }, autosaveInterval);
         }
     });
@@ -48,12 +50,12 @@ function updateSlider(byPercentage: number): void {
     });
 }
 
-function saveToDB(wordsWrittenCount: number, writtenText: any, currentWritingDay: number): void {
+function saveToDB(wordsWrittenCount: number, writtenText: any, currentWritingDayId: number, currentWritingDayNumber: number): void {
     $.ajax({
-        url: "WritingArea/SaveDay/" + currentWritingDay,
+        url: "WritingArea/SaveDay/" + currentWritingDayId,
         contentType: "application/json",
         method: "POST",
-        data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
+        data: JSON.stringify({ Id: currentWritingDayNumber, PathId: 0, DayId: currentWritingDayId, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
         success: function (data) {
             $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
         }
@@ -109,7 +111,7 @@ function claimReward(dayID: number):void {
     var currentWrittingDayYAY = +$("#current-writing-dayID").text();
 
     $.ajax({
-        url: "Writer/GetReward/" + "0/" + currentWrittingDayYAY,
+        url: "Writer/ClaimReward/" + currentWrittingDayYAY,
         contentType: "text/plain",
         method: "GET",
         success: function (data) {
@@ -128,10 +130,9 @@ function claimReward(dayID: number):void {
 function accomplishDay(dayID: number): void {
         //TODO: STORE IN DB AS COMPLETED
     $.ajax({
-        url: "WritingArea/AccomplishDay/",
-        contentType: "application/json",
-        method: "POST",
-        data: JSON.stringify({ PathId: 0, DayId: dayID, Accomplished: true }),
+        url: "WritingArea/AccomplishDay/" + dayID,
+        contentType: "text/plain",
+        method: "GET",
         success: function () {
             resetPath();
         }
@@ -212,8 +213,8 @@ var stopwords = ['a', 'all', 'an', 'and', 'are', 'as', 'at', 'be', 'but',
 
 //API METHODS
 
-function getWritingDay(pathId: number, dayId: number): void {
-    $.get("WritingArea/GetDay/" + pathId + "/" + dayId, function (data) {
+function getWritingDay(dayId: number): void {
+    $.get("WritingArea/GetDay/" + dayId, function (data) {
         $("#writing-area").html(data).removeClass("writing-area-hidden");
     });
     //todo: if area is visible?
@@ -228,8 +229,7 @@ function getWritingPath(): void {
         return;
     }
     else {
-        var pathID: number = 0;
-        $.get("WritingPath/" + pathID, function (data) {
+        $.get("WritingPath", function (data) {
             $("#writing-path-component").html(data).removeClass("writing-path-hidden");
             pathIsActive = true;
         });
@@ -253,8 +253,8 @@ function getWriterProfile(): void {
 
 //View Methods
 
-function displayHiddenQuote(pathID: number, dayID: number): void {
-    $.get("WritingPath/" + pathID + "/" + dayID, function (data) {
+function displayHiddenQuote(dayID: number): void {
+    $.get("WritingPath/" + dayID, function (data) {
         $("#quote-of-the-day").html(data).removeClass("hidden-quote");
     });
 }

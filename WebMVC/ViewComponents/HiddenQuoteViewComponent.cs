@@ -12,9 +12,9 @@ namespace WebMVC.ViewComponents
             _writerPathService = writerPathService;
         }
 
-        public IViewComponentResult Invoke(int pathID, int dayID)
+        public IViewComponentResult Invoke(int dayID)
         {
-            return View("HiddenQuote", _writerPathService.GetQuoteOfTheDay(pathID, dayID).Result);
+            return View("HiddenQuote", _writerPathService.GetQuoteOfTheDay(dayID).Result);
         }
     }
 }

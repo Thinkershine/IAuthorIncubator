@@ -9,18 +9,18 @@ namespace WebMVC.Controllers
             return View();
         }
 
-        [Route("WritingPath/{pathID?}")]
-        public IActionResult GetWritingPath(int pathID)
+        [Route("WritingPath")]
+        public IActionResult GetWritingPath()
         {
             // Todo : If no writing path ID return last_used_path
 
-            return ViewComponent("WritingPath");
+            return ViewComponent("Path");
         }
 
-        [Route("WritingPath/{pathID?}/{dayID?}")]
-        public IActionResult GetHiddenQuote(int pathID, int dayID)
+        [Route("WritingPath/{dayID?}")]
+        public IActionResult GetHiddenQuote(int dayID)
         {
-            return ViewComponent("HiddenQuote", new { pathID, dayID });
+            return ViewComponent("HiddenQuote", dayID);
         }
     }
 }

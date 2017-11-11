@@ -9,7 +9,7 @@ namespace WebMVC.ViewComponents
         {
         }
 
-        public IViewComponentResult Invoke(WritingDayRewardViewModel reward)
+        public IViewComponentResult Invoke(RewardViewModel reward)
         {
             return View("Reward", reward);
         }

@@ -12,10 +12,9 @@ namespace WebMVC.ViewComponents
             _writerPathService = writerPathSerivce;
         }
 
-        public IViewComponentResult Invoke(int pathId, int dayId)
+        public IViewComponentResult Invoke(int dayId)
         {
-            // Todo: Create it Async
-            return View("WritingDayHeader", _writerPathService.GetPathDayHeader(pathId, dayId, "Thinkershine").Result);
+            return View("WritingDayHeader", _writerPathService.GetPathDayHeader(dayId).Result);
         }
     }
 }

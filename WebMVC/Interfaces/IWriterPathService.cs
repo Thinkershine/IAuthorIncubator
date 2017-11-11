@@ -7,13 +7,13 @@ namespace WebMVC.Interfaces
 {
     public interface IWriterPathService
     {
-        Task<WritingPathViewModel> GetWritingPathForUser(int pathId, string userName);
-        Task<IEnumerable<WritingDayHeaderViewModel>> GetPathDayHeaders(int pathId);
-        Task<IEnumerable<WritingDayBodyViewModel>> GetPathDayBodies(int pathId);
-        Task<WritingDayHeaderViewModel> GetPathDayHeader(int pathId, int pathDay, string userName);
-        Task<WritingDayBodyViewModel> GetPathDayBody(int pathId, int pathDay, string userName);
-        Task<string> GetQuoteOfTheDay(int pathId, int dayId);
+        Task<PathViewModel> GetWritingPathForUser();
+        Task<IEnumerable<DayHeaderViewModel>> GetPathDayHeaders();
+        Task<IEnumerable<DayBodyViewModel>> GetPathDayBodies();
+        Task<DayHeaderViewModel> GetPathDayHeader(int pathDay);
+        Task<DayBodyViewModel> GetPathDayBody(int pathDay);
+        Task<string> GetQuoteOfTheDay(int dayId);
         bool RewardReceived(int rewardId);
-        Task<WritingDayReward> GetReward(int pathId, int dayId);
+        Task<WritingDayReward> GetReward(int dayId);
     }
 }

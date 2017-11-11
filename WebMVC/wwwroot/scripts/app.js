@@ -1,11 +1,12 @@
 $(document).ready(function () {
     var typingTimer;
     var autosaveTimer;
-    var doneTypingInterval = 500;
+    var doneTypingInterval = 100;
     var autosaveInterval = 3000;
     var currentWrittenWords = 0;
-    var currentWrittingDay = 0;
-    $(document).on("keyup", "#txt", function () {
+    var currentWrittingDayId = 0;
+    var currentWritingDayNumber = 0;
+    $(document).on("keydown", "#txt", function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
         if ($('#txt').val()) {
@@ -14,8 +15,9 @@ $(document).ready(function () {
                 doneTyping(currentWrittenWords);
             }, doneTypingInterval);
             autosaveTimer = setTimeout(function () {
-                currentWrittingDay = +$("#current-writing-dayID").text();
-                saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDay);
+                currentWrittingDayId = +$("#current-writing-dayID").text();
+                currentWritingDayNumber = +$("#current-writing-dayNumber").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), currentWrittingDayId, currentWritingDayNumber);
             }, autosaveInterval);
         }
     });
@@ -39,12 +41,12 @@ function updateSlider(byPercentage) {
         transition: 'width .8s ease-in-out'
     });
 }
-function saveToDB(wordsWrittenCount, writtenText, currentWritingDay) {
+function saveToDB(wordsWrittenCount, writtenText, currentWritingDayId, currentWritingDayNumber) {
     $.ajax({
-        url: "WritingArea/SaveDay/" + currentWritingDay,
+        url: "WritingArea/SaveDay/" + currentWritingDayId,
         contentType: "application/json",
         method: "POST",
-        data: JSON.stringify({ PathId: 0, DayId: currentWritingDay, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
+        data: JSON.stringify({ Id: currentWritingDayNumber, PathId: 0, DayId: currentWritingDayId, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
         success: function (data) {
             $('#autosave-info').text("Autosaved... at " + new Date().toISOString().slice(0, 10));
         }
@@ -86,7 +88,7 @@ function claimReward(dayID) {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
     var currentWrittingDayYAY = +$("#current-writing-dayID").text();
     $.ajax({
-        url: "Writer/GetReward/" + "0/" + currentWrittingDayYAY,
+        url: "Writer/ClaimReward/" + currentWrittingDayYAY,
         contentType: "text/plain",
         method: "GET",
         success: function (data) {
@@ -97,10 +99,9 @@ function claimReward(dayID) {
 }
 function accomplishDay(dayID) {
     $.ajax({
-        url: "WritingArea/AccomplishDay/",
-        contentType: "application/json",
-        method: "POST",
-        data: JSON.stringify({ PathId: 0, DayId: dayID, Accomplished: true }),
+        url: "WritingArea/AccomplishDay/" + dayID,
+        contentType: "text/plain",
+        method: "GET",
         success: function () {
             resetPath();
         }
@@ -161,8 +162,8 @@ var stopwords = ['a', 'all', 'an', 'and', 'are', 'as', 'at', 'be', 'but',
     'by', 'can', 'do', 'for', 'from', 'had', 'have', 'if', 'in', 'is', 'it',
     'me', 'my', 'no', 'not', 'of', 'on', 'or', 'our', 's', 'so', 't', 'that',
     'the', 'their', 'they', 'this', 'to', 'us', 'was', 'we', 'who', 'with', 'you'];
-function getWritingDay(pathId, dayId) {
-    $.get("WritingArea/GetDay/" + pathId + "/" + dayId, function (data) {
+function getWritingDay(dayId) {
+    $.get("WritingArea/GetDay/" + dayId, function (data) {
         $("#writing-area").html(data).removeClass("writing-area-hidden");
     });
 }
@@ -173,8 +174,7 @@ function getWritingPath() {
         return;
     }
     else {
-        var pathID = 0;
-        $.get("WritingPath/" + pathID, function (data) {
+        $.get("WritingPath", function (data) {
             $("#writing-path-component").html(data).removeClass("writing-path-hidden");
             pathIsActive = true;
         });
@@ -193,8 +193,8 @@ function getWriterProfile() {
         });
     }
 }
-function displayHiddenQuote(pathID, dayID) {
-    $.get("WritingPath/" + pathID + "/" + dayID, function (data) {
+function displayHiddenQuote(dayID) {
+    $.get("WritingPath/" + dayID, function (data) {
         $("#quote-of-the-day").html(data).removeClass("hidden-quote");
     });
 }

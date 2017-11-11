@@ -1,4 +1,4 @@
-﻿@model WritingPathViewModel
+﻿@model PathViewModel
 
 <div id="writing-path-header">
     <h2>Writer's Journey</h2>
@@ -9,21 +9,21 @@
 
 <div id="days-info-container">
     <div id="days-info-body">
-            @for(int i = 0; i < Model.Days.Count; i += 1)
+            @for(int i = 0; i < Model.DayHeaders.Count; i += 1)
             {
                 <div class="writing-path-single-day-info">
                     @if (Model.UserDays[i].Locked)
                     {
                         <div class="locked-day">
-                            <p>Day @Model.Days[i].DayNumber Locked</p>
+                            <p>Day @Model.DayHeaders[i].DayNumber Locked</p>
                             <p><i class="fa fa-lock fa-2x" aria-hidden="true"></i></p>
                         </div>
                     }
                     else
                     {
-                        <span class="title">Day Title</span> <span class="writing-path-single-day-number">@Model.Days[i].DayNumber</span>
-                        <p><span class="xp-reward">XP:</span> @Model.Days[i].ExperienceReward Goal: @Model.Days[i].RequiredWords words</p>
-                        <p><button onclick="getWritingDay(@Model.Id, @Model.Days[i].Id); displayHiddenQuote(@Model.Id, @Model.Days[i].Id)" class="animate action-button do-it-button green"><span>Write</span></button></p>
+                        <span class="title">Day Title</span> <span class="writing-path-single-day-number">@Model.DayHeaders[i].DayNumber</span>
+                        <p><span class="xp-reward">XP:</span> @Model.DayHeaders[i].ExperienceReward Goal: @Model.DayHeaders[i].RequiredWords words</p>
+                        <p><button onclick="getWritingDay(@Model.DayHeaders[i].Id); displayHiddenQuote(@Model.DayHeaders[i].Id)" class="animate action-button do-it-button green"><span>Write</span></button></p>
                         <p>@Model.UserDays[i].WrittenWords words written 
                         @if (Model.UserDays[i].Accomplished)
                         {

@@ -1,9 +1,9 @@
-﻿@model WritingDayRewardViewModel
+﻿@model RewardViewModel
 
 <div>
     <h2>Congratulations on Your Progress!</h2>
     <p><span>Received: @Model.GoldenPen GoldenPen </span> & Gained <span class="xp-reward">@Model.Experience XP</span>!</p>
     <p class="button-holder">
-        <a onclick="claimReward(@Model.DayId)" class="animate action-button yellow">Progress :)</a>
+        <a onclick="claimReward(@Model.Id)" class="animate action-button yellow">Progress :)</a>
     </p>
 </div>

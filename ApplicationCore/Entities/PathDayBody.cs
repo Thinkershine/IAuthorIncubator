@@ -4,6 +4,7 @@
     {
         public int PathDayBodyID { get; set; }
 
+        public int PathDayNumber { get; set; }
         public int WrittenWords { get; set; }
         public bool Accomplished { get; set; }
         public bool Locked { get; set; }

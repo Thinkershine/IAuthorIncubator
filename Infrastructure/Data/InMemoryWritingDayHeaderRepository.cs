@@ -21,6 +21,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 0,
                 WritingPathID = 0,
+                PathDayNumber = 0,
                 VisibleDayNumber = 1,
                 HiddenQuoteId = "Journey of a thousand miles, begins with a single step. ~ Lao Tsu",
                 WritingDayRewardID = 0,
@@ -31,6 +32,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 1,
                 WritingPathID = 0,
+                PathDayNumber = 1,
                 VisibleDayNumber = 2,
                 HiddenQuoteId = "The writing of a novel is taking life as it already exists, not to report it but to make an object, toward the end that the finished work might contain this life inside it and offer it to the reader. The essence will not be, of course, the same thinghe raw material; it is not even of the same family of things. The novel is something that never was before and will not be again.",
                 WritingDayRewardID = 1,
@@ -41,6 +43,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 2,
                 WritingPathID = 0,
+                PathDayNumber = 2,
                 VisibleDayNumber = 3,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 2,
@@ -51,6 +54,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 3,
                 WritingPathID = 0,
+                PathDayNumber = 3,
                 VisibleDayNumber = 4,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 3,
@@ -61,6 +65,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 4,
                 WritingPathID = 0,
+                PathDayNumber = 4,
                 VisibleDayNumber = 5,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 4,
@@ -71,6 +76,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 5,
                 WritingPathID = 0,
+                PathDayNumber = 5,
                 VisibleDayNumber = 6,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 5,
@@ -81,6 +87,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 6,
                 WritingPathID = 0,
+                PathDayNumber = 6,
                 VisibleDayNumber = 7,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 6,
@@ -91,6 +98,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 7,
                 WritingPathID = 0,
+                PathDayNumber = 7,
                 VisibleDayNumber = 8,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 7,
@@ -101,6 +109,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 8,
                 WritingPathID = 0,
+                PathDayNumber= 8,
                 VisibleDayNumber = 9,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 8,
@@ -111,6 +120,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 9,
                 WritingPathID = 0,
+                PathDayNumber = 9,
                 VisibleDayNumber = 10,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 9,
@@ -121,6 +131,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 10,
                 WritingPathID = 0,
+                PathDayNumber = 10,
                 VisibleDayNumber = 11,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 10,
@@ -131,6 +142,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 11,
                 WritingPathID = 0,
+                PathDayNumber = 11,
                 VisibleDayNumber = 12,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 11,
@@ -141,6 +153,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 12,
                 WritingPathID = 0,
+                PathDayNumber = 12,
                 VisibleDayNumber = 13,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 12,
@@ -151,6 +164,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 13,
                 WritingPathID = 0,
+                PathDayNumber = 13,
                 VisibleDayNumber = 14,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 13,
@@ -161,6 +175,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 14,
                 WritingPathID = 0,
+                PathDayNumber = 14,
                 VisibleDayNumber = 15,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 14,
@@ -171,6 +186,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 15,
                 WritingPathID = 0,
+                PathDayNumber = 15,
                 VisibleDayNumber = 16,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 15,
@@ -181,6 +197,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 16,
                 WritingPathID = 0,
+                PathDayNumber = 16,
                 VisibleDayNumber = 17,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 16,
@@ -191,6 +208,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 17,
                 WritingPathID = 0,
+                PathDayNumber = 17,
                 VisibleDayNumber = 18,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 17,
@@ -201,6 +219,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 18,
                 WritingPathID = 0,
+                PathDayNumber = 18,
                 VisibleDayNumber = 19,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 18,
@@ -211,6 +230,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 19,
                 WritingPathID = 0,
+                PathDayNumber = 19,
                 VisibleDayNumber = 20,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 19,
@@ -221,6 +241,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 20,
                 WritingPathID = 0,
+                PathDayNumber = 20,
                 VisibleDayNumber = 21,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 20,
@@ -231,6 +252,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 21,
                 WritingPathID = 0,
+                PathDayNumber = 21,
                 VisibleDayNumber = 22,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 21,
@@ -241,6 +263,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 22,
                 WritingPathID = 0,
+                PathDayNumber = 22,
                 VisibleDayNumber = 23,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 22,
@@ -251,6 +274,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 23,
                 WritingPathID = 0,
+                PathDayNumber = 23,
                 VisibleDayNumber = 24,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 23,
@@ -261,6 +285,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 24,
                 WritingPathID = 0,
+                PathDayNumber = 24,
                 VisibleDayNumber = 25,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 24,
@@ -271,6 +296,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 25,
                 WritingPathID = 0,
+                PathDayNumber = 25,
                 VisibleDayNumber = 26,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 25,
@@ -281,6 +307,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 26,
                 WritingPathID = 0,
+                PathDayNumber = 26,
                 VisibleDayNumber = 27,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 26,
@@ -291,6 +318,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 27,
                 WritingPathID = 0,
+                PathDayNumber = 27,
                 VisibleDayNumber = 28,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 27,
@@ -301,6 +329,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 28,
                 WritingPathID = 0,
+                PathDayNumber = 28,
                 VisibleDayNumber = 29,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 28,
@@ -311,6 +340,7 @@ namespace Infrastructure.Data
             {
                 PathDayHeaderID = 29,
                 WritingPathID = 0,
+                PathDayNumber = 29,
                 VisibleDayNumber = 30,
                 HiddenQuoteId = null,
                 WritingDayRewardID = 29,

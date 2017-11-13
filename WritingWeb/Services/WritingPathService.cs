@@ -55,7 +55,8 @@ namespace WritingWeb.Services
             {
                 viewModel.Add(new DayHeaderViewModel {
                     PathDayHeaderID = dayHeader.PathDayHeaderID,
-                    PathDayNumber = dayHeader.VisibleDayNumber,
+                    PathDayNumber = dayHeader.PathDayNumber,
+                    VisibleDayNumber = dayHeader.VisibleDayNumber,
                     ExperienceReward = _inMemoryWritingRewardRepository.GetById(dayHeader.WritingDayRewardID).Experience,
                     RequiredWords = dayHeader.RequiredWords,
                 });

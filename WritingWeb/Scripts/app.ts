@@ -20,7 +20,7 @@
             autosaveTimer = setTimeout(function () {
                 uniqueDayId = +$("#current-day-uniqueID").text();
                 currentPathDayNumber = +$("#current-path-DayNumber").text();
-                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayNumber - 1);
+                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayNumber);
             }, autosaveInterval);
         }
     });
@@ -88,13 +88,13 @@ function displayReward(data: string): void {
     $('#writing-day-reward').html(data).removeClass('writing-area-hidden');
 }
 
-function saveToDB(wordsWrittenCount: number, writtenText: any, uniqueDayId: number, currentPathDayId: number): void {
+function saveToDB(wordsWrittenCount: number, writtenText: any, uniqueDayId: number, currentPathDayNumber: number): void {
     $('#autosave-info').text("Saving... ");
     $.ajax({
-        url: "WritingArea/SaveDay/" + currentPathDayId,
+        url: "WritingArea/SaveDay/" + currentPathDayNumber,
         contentType: "application/json",
         method: "POST",
-        data: JSON.stringify({ Id: uniqueDayId, PathId: 0, DayId: currentPathDayId, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
+        data: JSON.stringify({ UserDayBodyID: uniqueDayId, WritingPathID: 0, PathDayNumber: currentPathDayNumber, WrittenText: writtenText, WrittenWords: wordsWrittenCount }),
         success: function (data) {
             var savedTime = new Date();
             $('#autosave-info').text("Saved at " + savedTime.getHours() + ":" + savedTime.getMinutes() + " * " + savedTime.toISOString().slice(0, 10) + " * ");

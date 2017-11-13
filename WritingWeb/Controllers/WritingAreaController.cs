@@ -44,7 +44,7 @@ namespace WritingWeb.Controllers
                 var reward = _writerPathService.GetReward(dayID).Result;
                 RewardViewModel rewardModel = new RewardViewModel
                 {
-                    Id = reward.Id,
+                    WritingDayRewardID = reward.WritingDayRewardID,
                     Experience = reward.Experience,
                     GoldenPen = reward.GoldenPen
                 };

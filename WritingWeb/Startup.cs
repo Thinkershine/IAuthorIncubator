@@ -15,7 +15,7 @@ namespace WritingWeb
         {
             services.AddSingleton<IRepository<WritingPath>, InMemoryWritingPathRepository>();
             services.AddSingleton<IRepository<PathDayHeader>, InMemoryWritingDayHeaderRepository>();
-            services.AddSingleton<IRepository<WritingDayReward>, InMemoryWritingDayRewardRepository<WritingDayReward>>();
+            services.AddSingleton<IRepository<WritingDayReward>, InMemoryWritingDayRewardRepository>();
             services.AddSingleton<InMemoryUserDataRepository>();
             services.AddSingleton<IWriterPathService, WritingPathService>();
             services.AddSingleton<IStorageService, StorageService>();

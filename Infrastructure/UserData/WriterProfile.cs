@@ -88,7 +88,7 @@ namespace Infrastructure.UserData
 
         public void ReceiveReward(WritingDayReward receivedReward)
         {
-            if(StoreReward(receivedReward.Id))
+            if(StoreReward(receivedReward.WritingDayRewardID))
             {
                 WritingExperience += receivedReward.Experience;
                 GoldenPens += receivedReward.GoldenPen;

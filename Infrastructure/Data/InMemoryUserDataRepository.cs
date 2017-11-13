@@ -1,5 +1,4 @@
 ﻿using ApplicationCore.Entities;
-using Infrastructure.Entities;
 using Infrastructure.UserData;
 using System.Collections.Generic;
 

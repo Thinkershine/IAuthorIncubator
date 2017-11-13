@@ -1,6 +1,5 @@
 ﻿using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
-using Infrastructure.Entities;
 using System;
 using System.Collections.Generic;
 

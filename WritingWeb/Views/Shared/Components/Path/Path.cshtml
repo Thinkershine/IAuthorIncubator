@@ -23,8 +23,8 @@
                     {
                         <span class="title">Day Title</span> <span class="writing-path-single-day-number">@Model.DayHeaders[i].DayNumber</span>
                         <p><span class="xp-reward">XP:</span> @Model.DayHeaders[i].ExperienceReward Goal: @Model.DayHeaders[i].RequiredWords words</p>
-                        <p><button onclick="getWritingDay(@Model.DayHeaders[i].Id); displayHiddenQuote(@Model.DayHeaders[i].Id)" class="animate action-button do-it-button green"><span>Write</span></button></p>
-                        <p>@Model.UserDays[i].WrittenWords words written 
+                        <p><button onclick="getWritingDay(@Model.DayHeaders[i].PathDayHeaderID); displayHiddenQuote(@Model.DayHeaders[i].PathDayHeaderID)" class="animate action-button do-it-button green"><span>Write</span></button></p>
+                        <p>@Model.UserDays[i].WrittenWords words written                                    @*// hiddenQuoteID*@
                         @if (Model.UserDays[i].Accomplished)
                         {
                             <i class="fa fa-heart" aria-hidden="true"></i><span> Accomplished</span><i class="fa fa-check" aria-hidden="true"></i>

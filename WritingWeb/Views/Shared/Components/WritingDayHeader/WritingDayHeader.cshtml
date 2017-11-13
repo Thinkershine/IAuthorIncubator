@@ -12,8 +12,9 @@
     </div>
     <p>
         Written Words: <span id="written-words">@Model.WrittenWords</span>
-        <script>checkProgress(@Model.WrittenWords, @Model.Id)</script>
+        <script>checkProgress(@Model.WrittenWords)</script>
     </p>
-    <p id="current-day-uniqueId" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.Id</p>
-    <p id="current-pathDayId" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.PathDayId</p>
+    <p id="current-day-uniqueID" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.PathDayHeaderID</p>
+    <p id="current-path-DayNumber" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.DayNumber</p> @*// todo is this correct day ?*@
+    <p id="current-day-rewardID" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.WritingDayRewardID</p>
 </div>

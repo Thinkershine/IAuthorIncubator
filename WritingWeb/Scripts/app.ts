@@ -18,9 +18,9 @@
             }, doneTypingInterval);
 
             autosaveTimer = setTimeout(function () {
-                uniqueDayId = +$("#current-day-uniqueId").text();
-                currentPathDayId = +$("#current-pathDayId").text();
-                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayId);
+                uniqueDayId = +$("#current-day-uniqueID").text();
+                currentPathDayId = +$("#current-path-DayNumber").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayId - 1);
             }, autosaveInterval);
         }
     });
@@ -52,9 +52,9 @@ function updateSlider(byPercentage: number): void {
 function checkCompletion(currentWrittenWords: number): void {
     var requiredWords: number = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
-        var currentPathDayId = +$("#current-pathDayId").text();
+        var currentDayRewardID = +$("#current-day-rewardID").text();
 
-        dayAlreadyAccomplished(currentPathDayId);
+        dayAlreadyAccomplished(currentDayRewardID);
     }
 }
 
@@ -65,7 +65,7 @@ function dayAlreadyAccomplished(dayID: number): void {
         method: "GET",
         success: function (data: boolean) {
             if (data == false) {
-                getReward(dayID);
+                getReward(dayID);   /*todo day accomplished by accomplished day not by received reward*/
             }
         }
     })
@@ -106,10 +106,10 @@ function saveToDB(wordsWrittenCount: number, writtenText: any, uniqueDayId: numb
 function claimReward(dayID: number):void {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
 
-    var currentPathDayId = +$("#current-pathDayId").text();
+    var currentDayRewardID = +$("#current-day-rewardID").text();
 
     $.ajax({
-        url: "Writer/ClaimReward/" + currentPathDayId,
+        url: "Writer/ClaimReward/" + currentDayRewardID,
         contentType: "text/plain",
         method: "GET",
         success: function (data) {
@@ -160,7 +160,7 @@ function prepareForCounting(incomingString: string): string {
     incomingString = removeNonWordCharacters(incomingString);
     incomingString = removeNumbers(incomingString);
     incomingString = removeSingleLetters(incomingString);
-    console.log("Check");
+
     return incomingString;
 }
 

@@ -1,4 +1,4 @@
-﻿using Infrastructure.Entities;
+﻿using ApplicationCore.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WritingWeb.ViewModels;

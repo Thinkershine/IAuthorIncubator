@@ -6,7 +6,6 @@ using WritingWeb.ViewModels;
 using WritingWeb.Interfaces;
 using Infrastructure.Data;
 using WritingWeb.ViewModels.UserDTO;
-using Infrastructure.Entities;
 
 namespace WritingWeb.Services
 {
@@ -52,13 +51,13 @@ namespace WritingWeb.Services
         private List<DayHeaderViewModel> CreateDayHeaderViewModelsFromWritingPathDays(List<PathDayHeader> dayHeaders)
         {
             List<DayHeaderViewModel> viewModel = new List<DayHeaderViewModel>();
-            foreach(PathDayHeader day in dayHeaders)
+            foreach(PathDayHeader dayHeader in dayHeaders)
             {
                 viewModel.Add(new DayHeaderViewModel {
-                    Id = day.Id,
-                    DayNumber = day.VisibleDayNumber,
-                    ExperienceReward = _inMemoryWritingRewardRepository.GetById(day.RewardId).Experience,
-                    RequiredWords = day.RequiredWords,
+                    PathDayHeaderID = dayHeader.PathDayHeaderID,
+                    DayNumber = dayHeader.VisibleDayNumber,
+                    ExperienceReward = _inMemoryWritingRewardRepository.GetById(dayHeader.WritingDayRewardID).Experience,
+                    RequiredWords = dayHeader.RequiredWords,
                 });
             }
 
@@ -96,10 +95,11 @@ namespace WritingWeb.Services
 
             return Task.Run(() => new DayHeaderViewModel
             {
-                Id = pathDayModel.Id,
-                PathDayId = pathDayModel.PathDayId,
+                PathDayHeaderID = pathDayModel.PathDayHeaderID,
+                WritingPathID = pathDayModel.WritingPathID,
                 DayNumber = pathDayModel.VisibleDayNumber,
-                ExperienceReward = _inMemoryWritingRewardRepository.GetById(pathDayModel.RewardId).Experience,
+                WritingDayRewardID = pathDayModel.WritingDayRewardID,
+                ExperienceReward = _inMemoryWritingRewardRepository.GetById(pathDayModel.WritingDayRewardID).Experience,
                 RequiredWords = pathDayModel.RequiredWords,
                 WrittenWords = _inMemoryUserDataRepository.GetWrittenWordsForDay(pathDay, CurrentUser)
             });

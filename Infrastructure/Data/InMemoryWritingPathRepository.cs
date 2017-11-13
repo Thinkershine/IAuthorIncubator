@@ -52,11 +52,6 @@ namespace Infrastructure.Data
             return _inMemoryWritingPathRepository;
         }
 
-        public List<T> List(ISpecification<T> spec)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(T entity)
         {
             throw new NotImplementedException();

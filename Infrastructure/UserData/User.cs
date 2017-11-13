@@ -1,5 +1,4 @@
 ﻿using ApplicationCore.Entities;
-using Infrastructure.Entities;
 using System.Collections.Generic;
 
 namespace Infrastructure.UserData
@@ -26,8 +25,8 @@ namespace Infrastructure.UserData
             {
                 _userPathDayInfo.Add(new PathDayBody
                 {
-                    PathId = 0,
-                    PathDayId = i,
+                    WritingPathID = 0,
+                    PathDayBodyID = i,
                     WrittenWords = 0,
                     Accomplished = false,
                     Locked = true

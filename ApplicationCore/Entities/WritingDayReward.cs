@@ -1,6 +1,6 @@
 ﻿using ApplicationCore.Entities;
 
-namespace Infrastructure.Entities
+namespace ApplicationCore.Entities
 {
     public class WritingDayReward : BaseEntity
     {

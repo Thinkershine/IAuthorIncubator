@@ -15,9 +15,9 @@ $(document).ready(function () {
                 doneTyping(currentWrittenWords);
             }, doneTypingInterval);
             autosaveTimer = setTimeout(function () {
-                uniqueDayId = +$("#current-day-uniqueId").text();
-                currentPathDayId = +$("#current-pathDayId").text();
-                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayId);
+                uniqueDayId = +$("#current-day-uniqueID").text();
+                currentPathDayId = +$("#current-path-DayNumber").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayId - 1);
             }, autosaveInterval);
         }
     });
@@ -44,8 +44,8 @@ function updateSlider(byPercentage) {
 function checkCompletion(currentWrittenWords) {
     var requiredWords = +$('#writing-day-required-words').text();
     if (currentWrittenWords >= requiredWords) {
-        var currentPathDayId = +$("#current-pathDayId").text();
-        dayAlreadyAccomplished(currentPathDayId);
+        var currentDayRewardID = +$("#current-day-rewardID").text();
+        dayAlreadyAccomplished(currentDayRewardID);
     }
 }
 function dayAlreadyAccomplished(dayID) {
@@ -89,9 +89,9 @@ function saveToDB(wordsWrittenCount, writtenText, uniqueDayId, currentPathDayId)
 }
 function claimReward(dayID) {
     $('#writing-day-reward').html('<div>Awaiting Reward</div>').addClass('writing-area-hidden');
-    var currentPathDayId = +$("#current-pathDayId").text();
+    var currentDayRewardID = +$("#current-day-rewardID").text();
     $.ajax({
-        url: "Writer/ClaimReward/" + currentPathDayId,
+        url: "Writer/ClaimReward/" + currentDayRewardID,
         contentType: "text/plain",
         method: "GET",
         success: function (data) {
@@ -130,7 +130,6 @@ function prepareForCounting(incomingString) {
     incomingString = removeNonWordCharacters(incomingString);
     incomingString = removeNumbers(incomingString);
     incomingString = removeSingleLetters(incomingString);
-    console.log("Check");
     return incomingString;
 }
 function removeNonWordCharacters(inString) {

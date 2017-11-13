@@ -1,5 +1,5 @@
-﻿using Infrastructure.Data;
-using Infrastructure.Entities;
+﻿using ApplicationCore.Entities;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using WritingWeb.Interfaces;
 
@@ -39,6 +39,7 @@ namespace WritingWeb.Controllers
         [Route("Writer/DayAccomplished/{dayID?}")]
         public bool DayAccomplished(int dayID)
         {
+            // todo day accomplished by accomplished day not by received reward
             bool result = _writerPathService.RewardReceived(dayID);
             return result;
         }

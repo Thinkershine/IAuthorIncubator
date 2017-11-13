@@ -1,7 +1,6 @@
 ﻿using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using Infrastructure.Data;
-using Infrastructure.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +14,7 @@ namespace WritingWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IRepository<WritingPath>, InMemoryWritingPathRepository<WritingPath>>();
-            services.AddSingleton<IRepository<PathDayHeader>, InMemoryWritingDayHeaderRepository<PathDayHeader>>();
+            services.AddSingleton<IRepository<PathDayHeader>, InMemoryWritingDayHeaderRepository>();
             services.AddSingleton<IRepository<WritingDayReward>, InMemoryWritingDayRewardRepository<WritingDayReward>>();
             services.AddSingleton<InMemoryUserDataRepository>();
             services.AddSingleton<IWriterPathService, WritingPathService>();

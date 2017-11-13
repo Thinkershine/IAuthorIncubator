@@ -15,13 +15,13 @@
                     @if (Model.UserDays[i].Locked)
                     {
                         <div class="locked-day">
-                            <p>Day @Model.DayHeaders[i].DayNumber Locked</p>
+                            <p>Day @Model.DayHeaders[i].PathDayNumber Locked</p>
                             <p><i class="fa fa-lock fa-2x" aria-hidden="true"></i></p>
                         </div>
                     }
                     else
                     {
-                        <span class="title">Day Title</span> <span class="writing-path-single-day-number">@Model.DayHeaders[i].DayNumber</span>
+                        <span class="title">Day Title</span> <span class="writing-path-single-day-number">@Model.DayHeaders[i].PathDayNumber</span>
                         <p><span class="xp-reward">XP:</span> @Model.DayHeaders[i].ExperienceReward Goal: @Model.DayHeaders[i].RequiredWords words</p>
                         <p><button onclick="getWritingDay(@Model.DayHeaders[i].PathDayHeaderID); displayHiddenQuote(@Model.DayHeaders[i].PathDayHeaderID)" class="animate action-button do-it-button green"><span>Write</span></button></p>
                         <p>@Model.UserDays[i].WrittenWords words written                                    @*// hiddenQuoteID*@

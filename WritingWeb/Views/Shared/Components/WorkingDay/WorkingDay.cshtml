@@ -2,7 +2,7 @@
 
 <div>
     <div id="writing-area-header">
-        @await Component.InvokeAsync("WritingDayHeader", new { Id = Model.Id, DayId = Model.DayId, PathId = Model.PathId })
+        @await Component.InvokeAsync("WritingDayHeader", new { Id = Model.UserDayBodyID, DayId = Model.PathDayNumber, PathId = Model.WritingPathID })
     </div>
     <div id="writing-area-body">
         <p id="main-writing-area">

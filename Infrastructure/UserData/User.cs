@@ -43,13 +43,13 @@ namespace Infrastructure.UserData
             }
         }
 
-        private UserDayBody GetEmptyWritingDayBody(int id, int dayId, int pathId)
+        private UserDayBody GetEmptyWritingDayBody(int ID, int dayID, int pathID)
         {
             return new UserDayBody
             {
-                Id = id,
-                PathDayId = dayId,
-                PathId = pathId,
+                UserDayBodyID = ID,
+                PathDayNumber = dayID,
+                WritingPathID = pathID,
                 WrittenText = string.Empty,
                 WrittenWords = 0
             };
@@ -77,7 +77,7 @@ namespace Infrastructure.UserData
 
         public void UpdateUserWritingDay(UserDayBody incomingDayBody)
         {
-            var dayId = incomingDayBody.PathDayId;
+            var dayId = incomingDayBody.UserDayBodyID;
             _userPathDayInfo[dayId].WrittenWords = incomingDayBody.WrittenWords;
             _userWritingDayBodies[dayId] = incomingDayBody;
         }

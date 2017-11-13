@@ -4,7 +4,8 @@
     {
         public int PathDayHeaderID { get; set; }
 
-        public int VisibleDayNumber { get; set; }
+        public int PathDayNumber { get; set; }
+        public int VisibleDayNumber { get; set; } // + Number to Find around in a path... 
         public string HiddenQuoteId { get; set; } // todo : Hidden Quote Repository
         public int RequiredWords { get; set; }
 

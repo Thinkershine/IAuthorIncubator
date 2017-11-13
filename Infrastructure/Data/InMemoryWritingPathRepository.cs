@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace Infrastructure.Data
 {
-    public class InMemoryWritingPathRepository<T> : IRepository<T> where T : BaseEntity
+    public class InMemoryWritingPathRepository : IRepository<WritingPath>
     {
-        private readonly List<T> _inMemoryWritingPathRepository;
+        private readonly List<WritingPath> _inMemoryWritingPathRepository;
 
         public InMemoryWritingPathRepository()
         {
-            _inMemoryWritingPathRepository = new List<T>();
+            _inMemoryWritingPathRepository = new List<WritingPath>();
             InitializeWritingPath();
         }
         
@@ -19,7 +19,7 @@ namespace Infrastructure.Data
         {
             Add(new WritingPath
             {
-                Id = 0,
+                WritingPathID = 0,
                 PathName = "Developing Writing Habit Path",
                 TotalWords = 11100,
                 TotalDays = 30,
@@ -28,33 +28,33 @@ namespace Infrastructure.Data
                 TwentyOneDaysInARowBonus = 300,
                 CompletionBonus = 500,
                 DayHeaderIds = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 }
-            } as T);
+            });
         }
 
-        public T Add(T entity)
+        public WritingPath Add(WritingPath entity)
         {
             _inMemoryWritingPathRepository.Add(entity);
             return entity;
         }
 
-        public void Delete(T entity)
-        {
-            _inMemoryWritingPathRepository.Remove(entity);
-        }
-
-        public T GetById(int id)
+        WritingPath IRepository<WritingPath>.GetById(int id)
         {
             return _inMemoryWritingPathRepository[id];
         }
 
-        public List<T> List()
-        {
-            return _inMemoryWritingPathRepository;
-        }
-
-        public void Update(T entity)
+        public void Update(WritingPath entity)
         {
             throw new NotImplementedException();
+        }
+
+        public void Delete(WritingPath entity)
+        {
+            _inMemoryWritingPathRepository.Remove(entity);
+        }
+
+        List<WritingPath> IRepository<WritingPath>.List()
+        {
+            return _inMemoryWritingPathRepository;
         }
     }
 }

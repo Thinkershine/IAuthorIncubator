@@ -55,7 +55,7 @@ namespace WritingWeb.Services
             {
                 viewModel.Add(new DayHeaderViewModel {
                     PathDayHeaderID = dayHeader.PathDayHeaderID,
-                    DayNumber = dayHeader.VisibleDayNumber,
+                    PathDayNumber = dayHeader.VisibleDayNumber,
                     ExperienceReward = _inMemoryWritingRewardRepository.GetById(dayHeader.WritingDayRewardID).Experience,
                     RequiredWords = dayHeader.RequiredWords,
                 });
@@ -97,7 +97,7 @@ namespace WritingWeb.Services
             {
                 PathDayHeaderID = pathDayModel.PathDayHeaderID,
                 WritingPathID = pathDayModel.WritingPathID,
-                DayNumber = pathDayModel.VisibleDayNumber,
+                PathDayNumber = pathDayModel.VisibleDayNumber,
                 WritingDayRewardID = pathDayModel.WritingDayRewardID,
                 ExperienceReward = _inMemoryWritingRewardRepository.GetById(pathDayModel.WritingDayRewardID).Experience,
                 RequiredWords = pathDayModel.RequiredWords,
@@ -111,9 +111,9 @@ namespace WritingWeb.Services
 
             return Task.Run(() => new DayBodyViewModel
             {
-                Id = pathDayModel.Id,
-                DayId = pathDayModel.PathDayId,
-                PathId = CurrentWritingPath,
+                UserDayBodyID = pathDayModel.UserDayBodyID,
+                PathDayNumber = pathDayModel.PathDayNumber,
+                WritingPathID = CurrentWritingPath,
                 WrittenText = pathDayModel.WrittenText,
                 WrittenWords = pathDayModel.WrittenWords
             });

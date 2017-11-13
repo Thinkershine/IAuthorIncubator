@@ -2,8 +2,10 @@
 
 namespace ApplicationCore.Entities
 {
-    public class WritingPath : BaseEntity
+    public class WritingPath
     {
+        public int WritingPathID { get; set; }
+
         public string PathName { get; set; }
         public int TotalWords { get; set; }
         public int TotalDays { get; set; }

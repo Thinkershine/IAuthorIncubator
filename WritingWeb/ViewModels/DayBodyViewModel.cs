@@ -5,11 +5,11 @@ namespace WritingWeb.ViewModels
 {
     public class DayBodyViewModel
     {
-        public int Id { get; set; }
+        public int UserDayBodyID { get; set; }
         [Required]
-        public int DayId { get; set; }
+        public int PathDayNumber { get; set; }
         [Required]
-        public int PathId { get; set; }
+        public int WritingPathID { get; set; }
         [Required]
         public string WrittenText { get; set; }
         [Required]

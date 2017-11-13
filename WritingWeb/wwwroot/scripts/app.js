@@ -5,7 +5,7 @@ $(document).ready(function () {
     var autosaveInterval = 3000;
     var currentWrittenWords = 0;
     var uniqueDayId = 0;
-    var currentPathDayId = 0;
+    var currentPathDayNumber = 0;
     $(document).on("keydown", "#txt", function () {
         clearInterval(typingTimer);
         clearInterval(autosaveTimer);
@@ -16,8 +16,8 @@ $(document).ready(function () {
             }, doneTypingInterval);
             autosaveTimer = setTimeout(function () {
                 uniqueDayId = +$("#current-day-uniqueID").text();
-                currentPathDayId = +$("#current-path-DayNumber").text();
-                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayId - 1);
+                currentPathDayNumber = +$("#current-path-DayNumber").text();
+                saveToDB(currentWrittenWords, $('#txt').val(), uniqueDayId, currentPathDayNumber - 1);
             }, autosaveInterval);
         }
     });

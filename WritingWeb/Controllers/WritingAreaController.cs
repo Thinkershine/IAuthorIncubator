@@ -65,9 +65,9 @@ namespace WritingWeb.Controllers
                 // TODO : IF day already exists? Don't add new, but edit old one...
                 UserDayBody newDayBody = new UserDayBody
                 {
-                    Id = writingDayBody.Id,
-                    PathDayId = writingDayBody.DayId,
-                    PathId = writingDayBody.PathId,
+                    UserDayBodyID = writingDayBody.UserDayBodyID,
+                    PathDayNumber = writingDayBody.PathDayNumber,
+                    WritingPathID = writingDayBody.WritingPathID,
                     WrittenText = writingDayBody.WrittenText,
                     WrittenWords = writingDayBody.WrittenWords
                 };

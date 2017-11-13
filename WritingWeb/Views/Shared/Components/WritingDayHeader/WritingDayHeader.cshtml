@@ -2,7 +2,7 @@
 
 <div id="writing-day-header">
     <p><span onclick="closeWritingArea()" id="close-writing-area" class="animate action-button green"><i class="fa fa-times" aria-hidden="true"></i></span></p>
-    <p class="day-number">Day @Model.DayNumber </p>
+    <p class="day-number">Day @Model.PathDayNumber </p>
     <p>
         <span class="xp-reward">XP:</span> @Model.ExperienceReward |
         Required Words: <span id="writing-day-required-words">@Model.RequiredWords.ToString("##,###")</span>
@@ -15,6 +15,6 @@
         <script>checkProgress(@Model.WrittenWords)</script>
     </p>
     <p id="current-day-uniqueID" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.PathDayHeaderID</p>
-    <p id="current-path-DayNumber" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.DayNumber</p> @*// todo is this correct day ?*@
+    <p id="current-path-DayNumber" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.PathDayNumber</p> @*// todo is this correct day ?*@
     <p id="current-day-rewardID" style="visibility: hidden; opacity: 0; top: -2000px;">@Model.WritingDayRewardID</p>
 </div>

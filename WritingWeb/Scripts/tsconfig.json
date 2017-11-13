@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.iterable"
+    ],
+    "target": "es5",
+    "outDir": "../wwwroot/scripts"
+  },
+  "files": [
+    "./app.ts"
+  ],
+  "compileOnSave": true,
+  "allowSyntheticDefaultImports": true
+}

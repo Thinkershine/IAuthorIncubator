@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿import $ = require("jquery");
+
+$(document).ready(function () {
     var typingTimer: number;
     var autosaveTimer: number;
     var doneTypingInterval = 100;
